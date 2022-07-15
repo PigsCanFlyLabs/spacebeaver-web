@@ -31,3 +31,6 @@ class BlockedNumber(models.Model):
 
     def __str__(self):
         return self.number
+
+    class Meta:
+        app_label = "core"
