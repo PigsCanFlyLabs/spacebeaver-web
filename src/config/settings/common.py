@@ -361,9 +361,7 @@ class Settings:
     # DJANGO COUNTRIES
     # ~~~~~~~~~~~~~~~~
     LIBS += ["django_countries"]
-    COUNTRIES_FLAG_URL = (
-        "https://spacebeaver.s3.amazonaws.com/static/flags/{code}.gif"
-    )
+
     # STORAGES
     # ~~~~~~~~
     LIBS += ["storages"]
