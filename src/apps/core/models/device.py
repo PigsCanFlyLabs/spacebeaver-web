@@ -9,9 +9,13 @@ class DeviceManager(models.Manager):
     def can_register_device(self, serial_number: str):
         try:
             device = self.get(serial_number=serial_number)
-            return not device.used and device.user is None
+            is_used = not device.used and device.user is None
+            return (
+                is_used,
+                "" if is_used else "Device with this serial number is used",
+            )
         except self.model.DoesNotExist:
-            return False
+            return False, "Device with this serial number not exists"
 
     def delete_user_device(self, user: User):
         device = self.get(user_id=user.id)

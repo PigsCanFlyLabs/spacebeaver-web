@@ -173,9 +173,9 @@ class DeviceForm(forms.Form):
     def clean(self):
         cleaned_data = super(DeviceForm, self).clean()
         serial_number = cleaned_data["serial_number"]
-        serial_number_is_valid = Device.objects.can_register_device(
+        serial_number_is_valid, message = Device.objects.can_register_device(
             serial_number
         )
         if not serial_number_is_valid:
-            self.add_error("serial_number", "Invalid serial number")
+            self.add_error("serial_number", message)
         return cleaned_data

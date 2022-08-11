@@ -29,7 +29,6 @@ class ReplaceDeviceView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
-        initial = {}
         if form.is_valid():
             if request.user.have_device:
                 Device.objects.delete_user_device(request.user)
@@ -39,14 +38,10 @@ class ReplaceDeviceView(View):
             new_user_device.assign_to_user(request.user)
             new_user_device.set_nickname(form.cleaned_data["nickname"])
             new_user_device.save()
-            initial = {
-                "serial_number": new_user_device.serial_number,
-                "nickname": new_user_device.nickname,
-            }
         return render(
             request,
             self.template,
-            {**self.base_context, "form": self.form_class(initial=initial)},
+            {**self.base_context, "form": form},
         )
 
     @property
