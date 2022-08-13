@@ -9,6 +9,8 @@ from apps.core.views import *
 app_name = "core"
 
 view_urlpatterns = [
+    path("", IndexView.as_view(), name="index"),
+    path("device_lookup", DeviceLookup.as_view(), name="device-lookup"),
     path("sign-up/", SignUpView.as_view(), name="sign-up"),
     path(
         "successful-registration/",
@@ -26,7 +28,12 @@ view_urlpatterns = [
         name="add-device",
     ),
     path(
-        "pick-plan/", login_required(PickPlanView.as_view()), name="pick-plan"
+        "connect",
+        login_required(AddDeviceView.as_view()),
+        name="add-device",
+    ),
+    path(
+        "pick-plan", login_required(PickPlanView.as_view()), name="pick-plan"
     ),
     path(
         "payment-success",
