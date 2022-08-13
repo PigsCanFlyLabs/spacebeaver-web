@@ -34,6 +34,11 @@ view_urlpatterns = [
         name="add-device",
     ),
     path(
+        "connect",
+        login_required(AddDeviceView.as_view()),
+        name="add-device",
+    ),
+    path(
         "pick-plan", login_required(PickPlanView.as_view()), name="pick-plan"
     ),
     path(
