@@ -1,5 +1,3 @@
-from unittest import mock
-
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 
@@ -72,7 +70,7 @@ class UserTestCase(TestCase):
         for field, value in update_data[0].items():
             self.assertEqual(getattr(user, field), value)
 
-        self.assertEqual(user.customer_subscription, None)
+        self.assertIsNone(user.customer_subscription)
         self.assertFalse(user.dont_have_active_subscriptions)
         self.assertFalse(user.have_any_subscription)
 
@@ -84,6 +82,15 @@ class UserTestCase(TestCase):
         login_result = c.login(
             username=user_data["setUp"]["email"],
             password=user_data["setUp"]["password"],
+        )
+        self.assertTrue(login_result)
+
+        self.user.set_password("123456")
+        self.user.save()
+
+        login_result = c.login(
+            username=user_data["setUp"]["email"],
+            password="123456",
         )
         self.assertTrue(login_result)
 
