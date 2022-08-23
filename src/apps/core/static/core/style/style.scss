@@ -36,7 +36,7 @@ body {
 
 .btn-outline {
     @include btn($outline: true);
-    
+
 }
 .table{
     margin: 0;
@@ -52,18 +52,18 @@ body {
     cursor: pointer;
     @include text-config($font-weight: 700, $fs: 14px, $lh: 150%);
     &:hover {
-        color: $primary-blue-hover; 
+        color: $primary-blue-hover;
     }
 
     &--underline{
         border-bottom: 1px solid $primary-black;
 
         &:hover {
-            color: $primary-blue-hover; 
+            color: $primary-blue-hover;
         border-bottom: 1px solid $primary-blue-hover;
 
         }
-        
+
     }
 
     &--blue {

@@ -23,4 +23,5 @@ class PickPlanView(View):
             "description": config.DESCRIPTION,
             "price": config.PRICE,
             "step": OnboardingStepsEnum.PICK_PLAN.value,
+            "back_url": "/add-device/",
         }

@@ -11,17 +11,22 @@ view_urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("sign-up/", SignUpView.as_view(), name="sign-up"),
     path(
+        "successful-registration/",
+        SuccessfulRegistration.as_view(),
+        name="successful-registration",
+    ),
+    path(
         "personal-info/",
         login_required(PersonalInfoView.as_view()),
         name="personal-info",
     ),
     path(
-        "add-device",
+        "add-device/",
         login_required(AddDeviceView.as_view()),
         name="add-device",
     ),
     path(
-        "pick-plan", login_required(PickPlanView.as_view()), name="pick-plan"
+        "pick-plan/", login_required(PickPlanView.as_view()), name="pick-plan"
     ),
     path(
         "payment-success",

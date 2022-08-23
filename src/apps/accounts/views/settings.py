@@ -17,9 +17,7 @@ class SettingsForm(forms.ModelForm):
     )
     password = forms.CharField(
         label="Password",
-        widget=forms.PasswordInput(
-            attrs={"placeholder": "Enter your password"}
-        ),
+        widget=forms.PasswordInput(attrs={"placeholder": "***********"}),
     )
 
     class Meta:

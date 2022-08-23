@@ -31,7 +31,7 @@ class SignUpView(View):
                 password=password,
             )
             login(request, new_user)
-            return redirect(reverse("core:personal-info"))
+            return redirect(reverse("core:successful-registration"))
         return render(
             request, self.template_name, {"form": form, **self.base_context}
         )
@@ -44,3 +44,10 @@ class SignUpView(View):
             "action": reverse("core:sign-up"),
             "step": OnboardingStepsEnum.SIGN_UP.value,
         }
+
+
+class SuccessfulRegistration(View):
+    template_name = "account_created.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)

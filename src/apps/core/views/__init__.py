@@ -11,6 +11,6 @@ from .payment_success import PaymentSuccessView
 from .personal_info import PersonalInfoView
 from .pick_plan import PickPlanView
 from .replace_device import ReplaceDeviceView
-from .sign_up import SignUpView
+from .sign_up import SignUpView, SuccessfulRegistration
 from .subscription import *
 from .success_new_password import SuccessNewPasswordView

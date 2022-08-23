@@ -9,7 +9,7 @@
 
         {{ field }}
       {% else %}
-        <input type="{{ field.field.widget.input_type }}"
+        <input style="margin-bottom: 20px;" type="{{ field.field.widget.input_type }}"
                {% if field.value %}value="{{ field.value }}"{% endif %}
                class="field__input {% if field.errors %} field__input--invalid {% endif %}"
                id="{{ field.id_for_label }}" name="{{ field.name }}"
@@ -23,7 +23,7 @@
           {{ field.errors }}
         </span>
       {% endif %}
-      <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
+      <small id="emailHelp" style="margin-top: 20px;" class="form-text text-muted">{{ field.help_text }}</small>
     </div>
   {% endfor %}
   {% if form.non_field_errors %}
@@ -32,6 +32,6 @@
     </div>
   {% endif %}
   <button type="submit" class="form-submit btn btn--wide">{{ button_name }}</button>
-  <button type="button" class="form-submit btn-outline btn--wide">{{ second_button_name }}</button>
+{#  <button type="button" class="form-submit btn-outline btn--wide">{{ second_button_name }}</button>#}
 </form>
 

@@ -38,4 +38,5 @@ class AddDeviceView(views.View):
             "navname": "Please, add your device",
             "action": reverse("core:add-device"),
             "step": OnboardingStepsEnum.ADD_DEVICE.value,
+            "back_url": "/personal-info/",
         }

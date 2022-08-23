@@ -1,10 +1,10 @@
-
 <form method="post" action="{{ action }}" class="form-body form form-body__grid-layout">
   {% csrf_token %}
   {% for field in form %}
     <div class="form-group field">
 
-      <label for="{{ field.id_for_label }}"  class="field__label {% if field.field.required %} field__label--required {% endif %}">{{ field.label_tag }}</label>
+      <label for="{{ field.id_for_label }}"
+             class="field__label {% if field.field.required %} field__label--required {% endif %}">{{ field.label_tag }}</label>
       {% if field.field.widget.input_type == 'select' %}
         {{ field }}
       {% else %}
@@ -14,7 +14,7 @@
                id="{{ field.id_for_label }}" name="{{ field.name }}"
                aria-describedby="emailHelp" required="{{ field.field.required }}"
                placeholder="{{ field.field.widget.attrs.placeholder }}"
-                {% if field.field.disabled %} disabled {% endif %}
+          {% if field.field.disabled %} disabled {% endif %}
         >
       {% endif %}
       {% if field.errors %}
@@ -31,11 +31,20 @@
     </div>
   {% endif %}
 
+  <footer class="form-body__footer col d-lg-flex">
 
-  <footer class="form-body__footer d-flex">
+    {% if display_second %}
+      <button type="submit" class="btn form-body__footer-btn order-md-2" data-bs-toggle="modal"
+              data-bs-target="#successfullyPaid">{{ button_name_1 }}</button>
+    {% else %}
+    {% endif %}
 
-    <button type="button" class="btn-outline form-body__footer-btn gap-right">{{ button_name_2 }}</button>
-    <button type="submit" class="btn form-body__footer-btn" data-bs-toggle="modal" data-bs-target="#successfullyPaid">{{ button_name_1 }}</button>
-</footer>
+    {% if display_first %}
+      <a type="button" href="{{ back_url }}" class="btn-outline form-body__footer-btn gap-right mt-2 mt-md-0  order-md-1 text-decoration-none">{{ button_name_2 }}</a>
+
+    {% else %}
+    {% endif %}
+
+  </footer>
 </form>
 

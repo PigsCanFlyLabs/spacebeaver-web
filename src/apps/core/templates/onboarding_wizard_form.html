@@ -1,8 +1,12 @@
 {% extends 'registration.html' %}
 {% load bootstrap_steps_form %}
 
-{% block content %}   
-    {% bootstrap_steps_form form action "Next" "Back" %}
+{% block content %}
 
+    {% if '/personal-info/' in request.path %}
+       {% bootstrap_steps_form form action "Next" "Back" False True back_url %}
+    {% else %}
+       {% bootstrap_steps_form form action "Next" "Back" True True back_url %}
+    {% endif %}
 
 {% endblock %}

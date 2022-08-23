@@ -9,7 +9,9 @@ class Local(Settings, Configuration):
     ALLOWED_HOSTS = ["*"]
     CELERY_TASK_ALWAYS_EAGER = True
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
+    COUNTRIES_FLAG_URL = (
+        "https://spacebeaver.s3.amazonaws.com/static/flags/{code}.gif"
+    )
     DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
 
     @property

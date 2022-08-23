@@ -359,7 +359,9 @@ class Settings:
     # DJANGO COUNTRIES
     # ~~~~~~~~~~~~~~~~
     LIBS += ["django_countries"]
-
+    COUNTRIES_FLAG_URL = (
+        "https://spacebeaver.s3.amazonaws.com/static/flags/{code}.gif"
+    )
     # STORAGES
     # ~~~~~~~~
     LIBS += ["storages"]
@@ -454,7 +456,7 @@ class Settings:
     LIBS += ["djstripe"]
 
     STRIPE_LIVE_MODE = DEBUG  # Change to True in production
-    DJSTRIPE_WEBHOOK_SECRET = "whsec_d1e28f144fa2b70e468a8fb483937ed019f1c9ce60387eab505df34881253ea6"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
+    DJSTRIPE_WEBHOOK_SECRET = "whsec_1a83c1500b43dfc4e337b6e0d783dd140294492fcf06b45f03bd1f00b146c91c"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
     DJSTRIPE_USE_NATIVE_JSONFIELD = (
         True  # We recommend setting to True for new installations
     )
@@ -465,7 +467,7 @@ class Settings:
 
     @property
     def STRIPE_TEST_SECRET_KEY(self):
-        return self._STRIPE_TEST_SECRET_KEY
+        return "sk_test_51LZyo1EEjQANv7IDZs6yQmNW1wVfGNoxzEWHNQ7JtGOG3a5xLvJvYNGdscfFH7CtyaOP0fdYNgcISoB8JhRI9DuA007Avv5g2X"
 
     @property
     def STRIPE_LIVE_PUBLIC_KEY(self):
@@ -473,7 +475,7 @@ class Settings:
 
     @property
     def STRIPE_TEST_PUBLIC_KEY(self):
-        return self._STRIPE_TEST_PUBLIC_KEY
+        return "pk_test_51LZyo1EEjQANv7IDhA4GXgqhVkXhAeWdkbgiijCoEDjmEiVUttRJGtuLZy4AZyhbEnJfIt0Sh9pLy2SWmN69lsue00GIoBMHin"
 
     @property
     def DJSTRIPE_WEBHOOK_SECRET(self):
