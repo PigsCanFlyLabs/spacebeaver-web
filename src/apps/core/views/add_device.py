@@ -26,7 +26,7 @@ class AddDeviceView(views.View):
         )
 
     def post(self, request):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.user, request.POST)
         if form.is_valid():
             device = Device.objects.get(
                 serial_number=form.cleaned_data["serial_number"]
