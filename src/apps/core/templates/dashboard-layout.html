@@ -44,6 +44,7 @@
       $('#sidebar').toggleClass('active');
       $('#content-container').toggleClass('without-navbar');
       $('.nav-item__text, .toggle-component').toggle();
+      $('#hide-panel-img').toggleClass('rotate-btn');
     }
   </script>
 
@@ -184,7 +185,7 @@
           <button
             onclick="toggleSideBar()"
             class="hide-panel d-flex align-items-center border-0 toggle-component" type="button">
-            <svg class="hide-panel__icon" width="16" height="16" viewbox="0 0 16 16" fill="none"
+            <svg id="hide-panel-img" class="hide-panel__icon " width="16" height="16" viewbox="0 0 16 16" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M11.8105 1.96694C12.0629 2.21701 12.0647 2.62242 11.8087 2.87249L8.02452 6.57833L7.95767 6.63543C7.70188 6.82567 7.33627 6.80579 7.10405 6.57577C6.97826 6.45116 6.91406 6.28729 6.91406 6.12428C6.91406 5.96041 6.97826 5.79568 7.10579 5.67107L10.89 1.96438L10.9569 1.90728C11.2127 1.71704 11.5783 1.73692 11.8105 1.96694ZM11.8671 13.194C12.0624 13.445 12.0416 13.8048 11.8102 14.034C11.5569 14.2841 11.1448 14.285 10.8898 14.0349L5.19173 8.45307L5.13324 8.38767C5.04458 8.27382 5 8.13714 5 7.99987C5 7.83685 5.0642 7.67298 5.18999 7.54838C5.44332 7.29745 5.8554 7.2966 6.11046 7.54667L11.8085 13.1285L11.8671 13.194Z"

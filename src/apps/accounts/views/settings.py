@@ -13,11 +13,15 @@ User = get_user_model()
 class SettingsForm(forms.ModelForm):
     email = forms.EmailField(
         label="Email",
-        widget=forms.EmailInput(attrs={"placeholder": "Type your email"}),
+        widget=forms.EmailInput(
+            attrs={"placeholder": "Type your email", "readonly": "readonly"}
+        ),
     )
     password = forms.CharField(
         label="Password",
-        widget=forms.PasswordInput(attrs={"placeholder": "***********"}),
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "***********", "readonly": "readonly"}
+        ),
     )
 
     class Meta:
@@ -30,7 +34,12 @@ class SettingsView(View):
     form_class = SettingsForm
 
     def get(self, request):
-        form = self.form_class(initial={"email": request.user.email})
+        form = self.form_class(
+            initial={
+                "email": request.user.email,
+                "password": "****************",
+            }
+        )
         return render(
             request, self.template_name, {**self.base_context, "form": form}
         )

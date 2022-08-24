@@ -1,4 +1,22 @@
+<script>
 
+  function showHide(inputId, targetFA) {
+    var x = document.getElementById(inputId);
+    var iconBtn = document.getElementById(targetFA);
+    if (x.type === "password") {
+      x.type = "text";
+      iconBtn.classList.remove('fa-eye-slash');
+      iconBtn.classList.add('fa-eye');
+
+
+    } else {
+      x.type = "password";
+      iconBtn.classList.remove('fa-eye');
+      iconBtn.classList.add('fa-eye-slash');
+    }
+  }
+
+</script>
 <form method="post" action="{{ action }}" class="form-body form">
   {% csrf_token %}
   {% for field in form %}
@@ -17,14 +35,26 @@
                placeholder="{{ field.field.widget.attrs.placeholder }}"
                 {% if field.field.disabled %} disabled {% endif %}
         >
+
+        {% if field.id_for_label == 'id_new_password1' or field.id_for_label == 'id_new_password2' %}
+          <button type="button" onclick="showHide('{{ field.id_for_label }}', '{{ field.id_for_label }}_sh');"
+                  class="field__change-btn border-0 text-primary bg-transparent" data-toggle="modal"
+
+          ><i id="{{ field.id_for_label }}_sh" class="fa fa-eye-slash text-muted" aria-hidden="true"></i>
+          </button>
+        {% else %}
+
+        {% endif %}
+
       {% endif %}
       {% if field.errors %}
         <span class="field__input-error">
           {{ field.errors }}
         </span>
       {% endif %}
-      <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
+
     </div>
+    <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
   {% endfor %}
   {% if form.non_field_errors %}
     <div class="alert alert-warning" role="alert">

@@ -512,7 +512,9 @@ body {
   height: 100%;
   position: fixed;
 }
-
+.rotate-btn{
+  transform: rotate(180deg);
+}
 .side-nav--smaller {
   width: 270px
 }

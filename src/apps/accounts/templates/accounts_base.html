@@ -13,7 +13,7 @@
     <li class="nav-item tab-item" role="presentation">
     {% url "accounts:settings" as settings_url %}
     <a class="nav-link tab-link {% if request.path == settings_url %}active{% endif %}"
-       href="{{ settings_url }}">Change email</a>
+       href="{{ settings_url }}">Security</a>
     </li>
     <li class="nav-item tab-item" role="presentation">
       {% url 'core:replace-device' as device_url %}
