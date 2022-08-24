@@ -30,13 +30,13 @@
 
                 </div>
                 <div class="user-card__wrap">
-                  <p class="user-card__name">Jacob Jones</p>
+                  <p class="user-card__name">{{ number.name }}</p>
                 </div>
 
               </div>
             </td>
-            <td class="align-middle  d-none d-lg-block">
-              <p class="user-number">{{ number.number }}</p>
+            <td class="align-middle  d-none d-lg-flex ">
+              <span class="user-number d-block p-3">{{ number.number }}</span>
             </td>
             <td class="align-middle">
               <p class="user-tag user-tag--cancel">Blocked</p>
@@ -44,7 +44,7 @@
             </td>
             <td class="align-middle text-end">
               {% url 'core:delete-blocked-number' number.id as action_url %}
-              <button class="btn-success p-1" style="border-radius: 8px; width: 95px;"  onclick="deleteNumberModal(true, '{{ action_url }}')">Unblock</button>
+              <button class="bg-transparent border-0 p-1 fw-bolder block-button" style="border-radius: 8px; width: 95px;"  onclick="deleteNumberModal(true, '{{ action_url }}')">Unblock</button>
             </td>
           </tr>
           {% endfor %}
@@ -65,7 +65,7 @@
         </ul>
       </nav>
 
-      <button class="btn-danger" style="border-radius: 5px; width: 120px; padding: 3px" onclick="addNumberModal(true)">Add to block</button>
+      <button class="bg-transparent border-0 p-1 fw-bolder text-decoration-underline block-button" style="border-radius: 5px; width: 120px; padding: 3px" onclick="addNumberModal(true)">Add to block</button>
 <!-- DELETE NUMBER CONFIRMATION MODAL -->
 
 <div class="modal fade" id="delete-number" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

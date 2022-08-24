@@ -18,7 +18,7 @@
                 {% if field.field.disabled %} disabled {% endif %}
         >
       {% endif %}
-      <button type="button"  class="field__change-btn btn-primary " style="border-radius: 5px; padding-left: 10px; padding-right: 10px"  data-toggle="modal" data-target="{% if field.name == 'password' %} #changePass {% else %} #changeEmail {% endif %}">Change</button>
+      <button type="button"  class="field__change-btn border-0 text-primary bg-transparent"  data-toggle="modal" data-target="{% if field.name == 'password' %} #changePass {% else %} #changeEmail {% endif %}">Change</button>
 
       {% if field.errors %}
         <span class="field__input-error">

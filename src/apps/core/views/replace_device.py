@@ -28,7 +28,7 @@ class ReplaceDeviceView(View):
         )
 
     def post(self, request):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.user, request.POST)
         if form.is_valid():
             if request.user.have_device:
                 Device.objects.delete_user_device(request.user)

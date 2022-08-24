@@ -9,8 +9,9 @@ class BlockedNumberManager(models.Manager):
     def get_user_blocked_numbers(self, user: User):
         return self.filter(user__id=user.id)
 
-    def add_user_blocked_number(self, number: str, user: User):
+    def add_user_blocked_number(self, name, number: str, user: User):
         number, created = self.get_or_create(number=number)
+        number.name = name
         number.user.add(user)
         number.save()
 
@@ -21,6 +22,7 @@ class BlockedNumberManager(models.Manager):
 
 
 class BlockedNumber(models.Model):
+    name = models.CharField(max_length=150, null=True)
     number = models.CharField(max_length=20, unique=True)
     user = models.ManyToManyField(User, related_name="blocked_numbers")
 

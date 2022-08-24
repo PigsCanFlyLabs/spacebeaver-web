@@ -6,13 +6,15 @@ User = get_user_model()
 
 
 class DeviceManager(models.Manager):
-    def can_register_device(self, serial_number: str):
+    def can_register_device(self, serial_number: str, user=None):
         try:
             device = self.get(serial_number=serial_number)
-            is_used = not device.used and device.user is None
+            can_used = (not device.used and device.user is None) or (
+                device.used and user and device.user.id == user.id
+            )
             return (
-                is_used,
-                "" if is_used else "Device with this serial number is used",
+                can_used,
+                "" if can_used else "Device with this serial number is used",
             )
         except self.model.DoesNotExist:
             return False, "Device with this serial number not exists"

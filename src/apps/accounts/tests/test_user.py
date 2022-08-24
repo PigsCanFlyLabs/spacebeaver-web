@@ -112,11 +112,11 @@ class UserTestCase(TestCase):
         self.assertEqual(user_blocked_numbers_cnt, 0)
 
         BlockedNumber.object.add_user_blocked_number(
-            number=self.BLOCKED_NUMBER, user=self.user
+            name="test", number=self.BLOCKED_NUMBER, user=self.user
         )
         # Test adding identical numbers
         BlockedNumber.object.add_user_blocked_number(
-            number=self.BLOCKED_NUMBER, user=self.user
+            name="test", number=self.BLOCKED_NUMBER, user=self.user
         )
 
         user_blocked_numbers = BlockedNumber.object.get_user_blocked_numbers(
@@ -139,7 +139,9 @@ class UserTestCase(TestCase):
 
         for i in range(5):
             BlockedNumber.object.add_user_blocked_number(
-                number=self.BLOCKED_NUMBER.replace("5", str(i)), user=self.user
+                name="test",
+                number=self.BLOCKED_NUMBER.replace("5", str(i)),
+                user=self.user,
             )
 
         self.assertEqual(

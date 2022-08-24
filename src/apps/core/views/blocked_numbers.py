@@ -18,7 +18,7 @@ class BlockedNumbersView(View):
             extra_context = {}
         numbers = BlockedNumber.object.get_user_blocked_numbers(
             request.user
-        ).values("id", "number")
+        ).values("id", "number", "name")
         paginator = Paginator(numbers, self.page_size)
         page = paginator.get_page(request.GET.get("page", 1))
         form = self.form_class()
@@ -32,7 +32,9 @@ class BlockedNumbersView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             BlockedNumber.object.add_user_blocked_number(
-                form.cleaned_data["number"], request.user
+                form.cleaned_data["name"],
+                form.cleaned_data["number"],
+                request.user,
             )
             return self.get(request)
         return self.get(request, {"form": form, "error": True})

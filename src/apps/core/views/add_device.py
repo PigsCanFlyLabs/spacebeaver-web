@@ -12,7 +12,14 @@ class AddDeviceView(views.View):
     form_class = DeviceForm
 
     def get(self, request):
-        form = self.form_class()
+        if request.user.have_device:
+            device = Device.objects.get(user=request.user)
+            if device:
+                initial = {
+                    "serial_number": device.serial_number,
+                    "nickname": device.nickname,
+                }
+        form = self.form_class(initial=initial)
         return render(
             request, self.template, {"form": form, **self.base_context}
         )

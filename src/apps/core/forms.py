@@ -151,10 +151,15 @@ class PersonalInfoForm(forms.ModelForm):
 
 
 class BlockedNumberForm(forms.Form):
+    name = forms.CharField(required=True)
     number = forms.CharField(required=True)
 
 
 class DeviceForm(forms.Form):
+    def __init__(self, user=None, *args, **kwargs):
+        self.user = user
+        super().__init__(*args, **kwargs)
+
     serial_number = forms.CharField(
         max_length=100,
         widget=forms.TextInput(
@@ -174,7 +179,7 @@ class DeviceForm(forms.Form):
         cleaned_data = super(DeviceForm, self).clean()
         serial_number = cleaned_data["serial_number"]
         serial_number_is_valid, message = Device.objects.can_register_device(
-            serial_number
+            serial_number, user=self.user
         )
         if not serial_number_is_valid:
             self.add_error("serial_number", message)

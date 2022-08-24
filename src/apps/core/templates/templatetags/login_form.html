@@ -1,10 +1,29 @@
+<script>
 
+  function showHide(inputId, targetFA) {
+    var x = document.getElementById(inputId);
+    var iconBtn = document.getElementById(targetFA);
+    if (x.type === "password") {
+      x.type = "text";
+      iconBtn.classList.remove('fa-eye-slash');
+      iconBtn.classList.add('fa-eye');
+
+
+    } else {
+      x.type = "password";
+      iconBtn.classList.remove('fa-eye');
+      iconBtn.classList.add('fa-eye-slash');
+    }
+  }
+
+</script>
 <form method="post" action="{{ action }}" class="form-body form">
   {% csrf_token %}
   {% for field in form %}
     <div class="form-group field">
 
-      <label for="{{ field.id_for_label }}"  class="field__label {% if field.field.required %} field__label--required {% endif %}">{{ field.label_tag }}</label>
+      <label for="{{ field.id_for_label }}"
+             class="field__label {% if field.field.required %} field__label--required {% endif %}">{{ field.label_tag }}</label>
       {% if field.field.widget.input_type == 'select' %}
 
         {{ field }}
@@ -15,8 +34,18 @@
                id="{{ field.id_for_label }}" name="{{ field.name }}"
                aria-describedby="emailHelp" required="{{ field.field.required }}"
                placeholder="{{ field.field.widget.attrs.placeholder }}"
-                {% if field.field.disabled %} disabled {% endif %}
+          {% if field.field.disabled %} disabled {% endif %}
         >
+        {% if field.id_for_label != 'id_username' %}
+          <button type="button" onclick="showHide('{{ field.id_for_label }}', '{{ field.id_for_label }}_sh');"
+                  class="field__change-btn border-0 text-primary bg-transparent" data-toggle="modal"
+
+          ><i id="{{ field.id_for_label }}_sh" class="fa fa-eye-slash text-muted" aria-hidden="true"></i>
+          </button>
+        {% else %}
+
+        {% endif %}
+
       {% endif %}
       {% if field.errors %}
         <span class="field__input-error">
