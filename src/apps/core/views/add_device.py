@@ -12,6 +12,7 @@ class AddDeviceView(views.View):
     form_class = DeviceForm
 
     def get(self, request):
+        initial = {}
         if request.user.have_device:
             device = Device.objects.get(user=request.user)
             if device:
