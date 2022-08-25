@@ -29,4 +29,5 @@ def get_card_info_from_payment_method(payment_method: PaymentMethod):
             "last4": card["last4"],
             "exp_month": exp_month,
             "exp_year": exp_year,
+            "name": payment_method.billing_details["name"],
         }

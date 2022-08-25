@@ -73,7 +73,7 @@
               <p class="plan-card-simple__duration">You have not plan now</p>
             {% endif %}
             {% if plan %}
-              <button class="btn-outline plan-card-simple__btn" type="button"
+              <button style="margin-left: 30px;" class="btn-outline plan-card-simple__btn" type="button"
                       onclick="cancelSubscriptionConfirmation(true)">Cancel plan
               </button>
             {% else %}
@@ -218,7 +218,7 @@
               </div>
               <div id="card-cardholder-element" class="field">
                 <label class="field__label" for="cardName">Cardholder name</label>
-                <input type="text" id="cardName" class="field__input" placeholder="Enter cardholder name">
+                <input type="text" id="cardName" class="field__input" placeholder="{{ card.name }}">
                 <span class="field__input-error"></span>
               </div>
             </fieldset>
@@ -336,30 +336,30 @@
     const baseStyle = {
       display: "block",
       backgroundColor: "#f6f6f8",
-      color: "#222223",
+      color: '#222223FF',
       fontSize: '16px',
       border: "1px solid #f6f6f8",
     }
     let stripe = Stripe("{{ stripe_api_key }}");
     let elements = stripe.elements();
-    var cardNumberElement = elements.create('cardNumber', {
-      placeholder: 'Custom card number placeholder',
+    let cardNumberElement = elements.create('cardNumber', {
+      placeholder: '**** **** **** {{ card.last4 }}',
       style: {
         base: baseStyle
       }
     });
     cardNumberElement.mount('#card-number-element');
 
-    var cardExpiryElement = elements.create('cardExpiry', {
-      placeholder: 'Custom expiry date placeholder',
+    let cardExpiryElement = elements.create('cardExpiry', {
+      placeholder: '{{ card.exp_month }} / {{ card.exp_year}}',
       style: {
         base: baseStyle
       }
     });
     cardExpiryElement.mount('#card-expiry-element');
 
-    var cardCvcElement = elements.create('cardCvc', {
-      placeholder: 'Custom CVC placeholder',
+    let cardCvcElement = elements.create('cardCvc', {
+      placeholder: 'CVC',
       style: {
         base: baseStyle
       }
@@ -393,7 +393,6 @@
         if (res.error) {
           setErrorText(res.error);
         } else if (res.success) {
-          card.clear();
           updatePaymentMethodModal(false);
         } else {
           setErrorText("Update error")
