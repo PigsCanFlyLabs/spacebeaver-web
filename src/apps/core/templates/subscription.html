@@ -12,10 +12,32 @@
 {% endblock %}
 
 {% block content %}
-  <div class="centered col-md-4">
+  <div class="centered col-md-10">
     <form id="payment-form">
       <div class="card-container">
-
+        {% csrf_token %}
+        <fieldset class="form-body__grid-layout">
+          <div class="field">
+            <label class="field__label" for="card-number-element">Card number</label>
+            <div id="card-number-element" class="field__input"></div>
+            <span class="field__input-error field__input--shown"></span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="card-expiry-element">Expiration month and year</label>
+            <div id="card-expiry-element" class="field__input"></div>
+            <span class="field__input-error field__input--shown"></span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="card-cvc-element">CVV</label>
+            <div id="card-cvc-element" class="field__input"></div>
+            <span class="field__input-error"></span>
+          </div>
+          <div id="card-cardholder-element" class="field">
+            <label class="field__label" for="cardName">Cardholder name</label>
+            <input type="text" id="cardName" class="field__input" placeholder="Enter cardholder name">
+            <span class="field__input-error"></span>
+          </div>
+        </fieldset>
         <div id="card-element">
           <!-- Elements will create input elements here -->
         </div>
@@ -26,10 +48,13 @@
 
 
       <footer class="form-body__footer d-lg-flex">
-        <button id="submit" type="submit" class="btn form-body__footer-btn order-md-2" data-toggle="modal" data-target="#successfullyPaid">Next</button>
-        <a type="button" href="{{ back_url }}" class="btn-outline form-body__footer-btn gap-right mt-2 mt-md-0 order-md-1 text-decoration-none">Back</a>
+        <button id="submit" type="submit" class="btn form-body__footer-btn order-md-2" data-toggle="modal"
+                data-target="#successfullyPaid">Next
+        </button>
+        <a type="button" href="{{ back_url }}"
+           class="btn-outline form-body__footer-btn gap-right mt-2 mt-md-0 order-md-1 text-decoration-none">Back</a>
 
-    </footer>
+      </footer>
     </form>
   </div>
   <div id="loader-container">
@@ -37,39 +62,43 @@
     </div>
   </div>
 
-  <div class="modal fade" id="successfullyPaid" tabindex="-1" aria-labelledby="successfullyPaidLabel" aria-hidden="true">
+  <div class="modal fade" id="successfullyPaid" tabindex="-1" aria-labelledby="successfullyPaidLabel"
+       aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content modal__content">
         <div class="modal-body p-0">
-            <header class="form-header text-center">
-                <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+          <header class="form-header text-center">
+            <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
 
-                <h1 class="title title--sm">Successfully paid</h1>
-                <p class="subtitle">You have successfully paid 200$</p>
+            <h1 class="title title--sm">Successfully paid</h1>
+            <p class="subtitle">You have successfully paid 200$</p>
 
-            </header>
+          </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" class="btn modal__footer-btn" data-dismiss="modal" data-toggle="modal" data-target="#successfullyActivated">Activate your account</button>
+          <button type="button" class="btn modal__footer-btn" data-dismiss="modal" data-toggle="modal"
+                  data-target="#successfullyActivated">Activate your account
+          </button>
         </div>
       </div>
     </div>
   </div>
 
 
-<div class="modal fade" id="successfullyActivated" tabindex="-1" aria-labelledby="successfullyActivatedLabel" aria-hidden="true">
+  <div class="modal fade" id="successfullyActivated" tabindex="-1" aria-labelledby="successfullyActivatedLabel"
+       aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content modal__content">
         <div class="modal-body p-0">
-            <header class="form-header text-center">
-                <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
-                <h1 class="title title--sm">Successfully activated</h1>
-                <p class="subtitle">Your account has been successfully activated and the serial number confirmed</p>
+          <header class="form-header text-center">
+            <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+            <h1 class="title title--sm">Successfully activated</h1>
+            <p class="subtitle">Your account has been successfully activated and the serial number confirmed</p>
 
-            </header>
+          </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <a  href="{% url 'core:dashboard' %}" class="btn modal__footer-btn" >Go to Dashboard</a>
+          <a href="{% url 'core:dashboard' %}" class="btn modal__footer-btn">Go to Dashboard</a>
           <!-- data-bs-dismiss="modal" -->
         </div>
       </div>
@@ -80,16 +109,38 @@
 
 {% block extra_js %}
   <script>
+    const baseStyle = {
+      display: "block",
+      backgroundColor: "#f6f6f8",
+      color: "#222223",
+      fontSize: '16px',
+      border: "1px solid #f6f6f8",
+    }
     let stripe = Stripe("{{ stripe_api_key }}");
     let elements = stripe.elements();
-    let card = elements.create('card');
-
-
-    card.mount('#card-element');
-    card.on('change', function (event) {
-      displayError(event);
+    var cardNumberElement = elements.create('cardNumber', {
+      placeholder: 'Custom card number placeholder',
+      style: {
+        base: baseStyle
+      }
     });
+    cardNumberElement.mount('#card-number-element');
 
+    var cardExpiryElement = elements.create('cardExpiry', {
+      placeholder: 'Custom expiry date placeholder',
+      style: {
+        base: baseStyle
+      }
+    });
+    cardExpiryElement.mount('#card-expiry-element');
+
+    var cardCvcElement = elements.create('cardCvc', {
+      placeholder: 'Custom CVC placeholder',
+      style: {
+        base: baseStyle
+      }
+    });
+    cardCvcElement.mount('#card-cvc-element');
 
     function setErrorText(text) {
       let displayError = document.getElementById('card-element-errors');
@@ -112,54 +163,54 @@
 
     function createSubscription({paymentMethodId}) {
       return (
-              fetch('/create-subscription', {
-                method: 'post',
-                headers: {
-                  'Content-type': 'application/json',
-                  'X-CSRFToken': "{{ csrf_token }}"
-                },
-                body: JSON.stringify({
-                  paymentMethodId: paymentMethodId,
-                }),
-              })
-                      .then(res => res.json())
-                      .then(res => {
-                        console.log(res);
-                        if (res.error) {
-                          setErrorText(res.error);
-                        } else if (res.object === "subscription" && res.status === "active") {
-                          window.location.replace(`${location.origin}{% url "core:payment-success" %}`)
-                        } else {
-                          setErrorText("Payment error")
-                        }
-                      })
-                      .catch(err => {
-                        console.log('catch', err)
-                      })
-                      .finally(() => setLoading(false))
+        fetch('/create-subscription', {
+          method: 'post',
+          headers: {
+            'Content-type': 'application/json',
+            'X-CSRFToken': "{{ csrf_token }}"
+          },
+          body: JSON.stringify({
+            paymentMethodId: paymentMethodId,
+          }),
+        })
+          .then(res => res.json())
+          .then(res => {
+            console.log(res);
+            if (res.error) {
+              setErrorText(res.error);
+            } else if (res.object === "subscription" && res.status === "active") {
+              window.location.replace(`${location.origin}{% url "core:payment-success" %}`)
+            } else {
+              setErrorText("Payment error")
+            }
+          })
+          .catch(err => {
+            console.log('catch', err)
+          })
+          .finally(() => setLoading(false))
       );
     }
 
-    function createPaymentMethod({card}) {
+    function createPaymentMethod() {
       stripe
-              .createPaymentMethod({
-                type: 'card',
-                card: card,
-                billing_details: {
-                  name: "{{ request.user.full_name }}",
-                  email: "{{ request.user.email }}"
-                },
-              })
-              .then((result) => {
-                if (result.error) {
-                  displayError(result);
-                  setLoading(false);
-                } else {
-                  createSubscription({
-                    paymentMethodId: result.paymentMethod.id,
-                  });
-                }
-              });
+        .createPaymentMethod({
+          type: 'card',
+          card: cardNumberElement,
+          billing_details: {
+            name: $('#cardName').val(),
+            email: "{{ request.user.email }}"
+          },
+        })
+        .then((result) => {
+          if (result.error) {
+            displayError(result);
+            setLoading(false);
+          } else {
+            createSubscription({
+              paymentMethodId: result.paymentMethod.id,
+            });
+          }
+        });
     }
 
     const form = document.getElementById('payment-form');
@@ -167,7 +218,7 @@
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       setLoading(true);
-      createPaymentMethod({card});
+      createPaymentMethod();
     });
   </script>
 {% endblock %}

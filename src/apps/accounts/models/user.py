@@ -134,6 +134,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     country = CountryField(blank=True, null=True)
     twillion_number = models.CharField(max_length=100, null=True, blank=True)
     company_email = models.EmailField(null=True, blank=True)
+    external_email = models.EmailField(null=True, blank=True)
+    external_phone = models.CharField(max_length=20, null=True, blank=True)
 
     objects = UserManager()
 
