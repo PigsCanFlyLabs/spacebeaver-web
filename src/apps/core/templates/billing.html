@@ -203,22 +203,23 @@
             <fieldset class="form-body__grid-layout">
               <div class="field">
                 <label class="field__label" for="card-number-element">Card number</label>
-                <div id="card-number-element" class="field__input"></div>
+                <div id="card-number-element" class="field__input" style="padding: 16px 16px"></div>
                 <span class="field__input-error field__input--shown"></span>
               </div>
               <div class="field">
                 <label class="field__label" for="card-expiry-element">Expiration month and year</label>
-                <div id="card-expiry-element" class="field__input"></div>
+                <div id="card-expiry-element" class="field__input" style="padding: 16px 16px"></div>
                 <span class="field__input-error field__input--shown"></span>
               </div>
               <div class="field">
                 <label class="field__label" for="card-cvc-element">CVV</label>
-                <div id="card-cvc-element" class="field__input"></div>
+                <div id="card-cvc-element" class="field__input" style="padding: 16px 16px"></div>
                 <span class="field__input-error"></span>
               </div>
               <div id="card-cardholder-element" class="field">
                 <label class="field__label" for="cardName">Cardholder name</label>
-                <input type="text" id="cardName" class="field__input" placeholder="{{ card.name }}">
+                <div class="field__input"><input type="text" id="cardName" class="border-0 bg-transparent "
+                                                 autocomplete="off" placeholder="{{ card.name }}"></div>
                 <span class="field__input-error"></span>
               </div>
             </fieldset>
@@ -239,33 +240,20 @@
   <!-- UPDATE PAYMENT METHOD MODAL -->
   <div class="modal fade" id="update-payment-method-modal" tabindex="-1" role="dialog"
        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add card</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal__content">
+        <div class="modal-body p-0">
+          <header class="form-header text-center">
+            <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+            <h1 class="title title--sm">Successfully updated</h1>
+            <p class="subtitle">Your card changed</p>
+
+          </header>
         </div>
-        <form id="payment-form">
-          <div class="modal-body">
-            <div class="card-container">
-
-              <div id="card-element">
-                <!-- Elements will create input elements here -->
-              </div>
-            </div>
-
-            <!-- We'll put the error messages in this element -->
-            <div id="card-element-errors" role="alert"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" style="width: 100%">Save changes</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" width: 100%">Close</button>
-
-          </div>
-        </form>
-
+        <div class="modal-footer modal__footer p-0 border-0">
+          <button data-dismiss="modal" class="btn modal__footer-btn">OK</button>
+          <!-- data-bs-dismiss="modal" -->
+        </div>
       </div>
     </div>
   </div>
@@ -326,7 +314,7 @@
   <script>
 
     const updatePaymentMethodModal = (show) => {
-      $('#update-payment-method-modal').modal(show ? 'show' : 'hide');
+      $('#update-payment-method-modal').modal('show');
     }
   </script>
   <script>
@@ -339,6 +327,7 @@
       color: '#222223FF',
       fontSize: '16px',
       border: "1px solid #f6f6f8",
+      fontFamily: "Aeonik, Arial, sans-serif"
     }
     let stripe = Stripe("{{ stripe_api_key }}");
     let elements = stripe.elements();
@@ -391,10 +380,13 @@
         )
       }).then(res => res.json()).then(res => {
         if (res.error) {
+          console.log(res.error);
           setErrorText(res.error);
         } else if (res.success) {
+          console.log(res);
           updatePaymentMethodModal(false);
         } else {
+          console.log(res);
           setErrorText("Update error")
         }
       }).catch(err => {
@@ -425,8 +417,9 @@
     const form = document.getElementById('update-payment');
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
-      setLoading(true);
-      createPaymentMethod({cardNumberElement});
+      updatePaymentMethodModal();
+      {#setLoading(true);#}
+      {#createPaymentMethod({cardNumberElement});#}
     });
   </script>
 

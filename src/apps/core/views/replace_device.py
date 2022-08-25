@@ -12,6 +12,7 @@ class ReplaceDeviceView(View):
     form_class = DeviceForm
 
     def get(self, request):
+        self.show_replace_notification = False
         initial = {}
         if request.user.have_device:
             device = Device.objects.get(user=request.user)
@@ -28,6 +29,7 @@ class ReplaceDeviceView(View):
         )
 
     def post(self, request):
+        self.show_replace_notification = False
         form = self.form_class(request.user, request.POST)
         if form.is_valid():
             if request.user.have_device:
@@ -38,6 +40,7 @@ class ReplaceDeviceView(View):
             new_user_device.assign_to_user(request.user)
             new_user_device.set_nickname(form.cleaned_data["nickname"])
             new_user_device.save()
+            self.show_replace_notification = True
         return render(
             request,
             self.template,
@@ -52,4 +55,7 @@ class ReplaceDeviceView(View):
             "action": reverse("core:replace-device"),
             "action_button_name": "Update",
             "step": ProfileStepsEnum.SETTINGS.value,
+            "show_replace_success_notification": getattr(
+                self, "show_replace_notification", False
+            ),
         }

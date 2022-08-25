@@ -139,14 +139,14 @@
           <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
           <h1 class="title title--sm">Successfully blocked</h1>
           <p class="subtitle">
-            <span class="subtitle__bold">+449827789202</span>
-            has been changed blocked
+            <span class="subtitle__bold">{{ blocked_number }}</span>
+            has been blocked
           </p>
 
         </header>
       </div>
       <div class="modal-footer modal__footer p-0 border-0">
-        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to Blocked numbers</button>
+        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
       </div>
     </div>
   </div>
@@ -156,6 +156,15 @@
 
 {% block extra_js %}
 <script>
+
+
+  $(document).ready(function (){
+    if ("{{ show_success_notification }}" === "True"){
+      $('#successfullyBlocked').modal('show');
+    }
+
+  })
+
   const deleteNumberModal = (show, action = '') => {
     if (action) {
       $('#delete-number-form').attr('action', action);

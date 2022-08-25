@@ -19,22 +19,23 @@
         <fieldset class="form-body__grid-layout">
           <div class="field">
             <label class="field__label" for="card-number-element">Card number</label>
-            <div id="card-number-element" class="field__input"></div>
+            <div id="card-number-element" class="field__input" style="padding: 16px 16px"></div>
             <span class="field__input-error field__input--shown"></span>
           </div>
           <div class="field">
             <label class="field__label" for="card-expiry-element">Expiration month and year</label>
-            <div id="card-expiry-element" class="field__input"></div>
+            <div id="card-expiry-element" class="field__input" style="padding: 16px 16px"></div>
             <span class="field__input-error field__input--shown"></span>
           </div>
           <div class="field">
             <label class="field__label" for="card-cvc-element">CVV</label>
-            <div id="card-cvc-element" class="field__input"></div>
+            <div id="card-cvc-element" class="field__input" style="padding: 16px 16px"></div>
             <span class="field__input-error"></span>
           </div>
           <div id="card-cardholder-element" class="field">
             <label class="field__label" for="cardName">Cardholder name</label>
-            <input type="text" id="cardName" class="field__input" placeholder="Enter cardholder name">
+            <div class="field__input"><input type="text" id="cardName" class="border-0 bg-transparent "
+                                             autocomplete="off" placeholder="Cardholder name"></div>
             <span class="field__input-error"></span>
           </div>
         </fieldset>
@@ -44,12 +45,12 @@
       </div>
 
       <!-- We'll put the error messages in this element -->
-      <div id="card-element-errors" role="alert"></div>
+      <div id="card-element-errors" class="text-danger" role="alert"></div>
 
 
       <footer class="form-body__footer d-lg-flex">
-        <button id="submit" type="submit" class="btn form-body__footer-btn order-md-2" data-toggle="modal"
-                data-target="#successfullyPaid">Next
+        <button id="submit" type="submit" class="btn form-body__footer-btn order-md-2" data-toggle="modal">
+          Next
         </button>
         <a type="button" href="{{ back_url }}"
            class="btn-outline form-body__footer-btn gap-right mt-2 mt-md-0 order-md-1 text-decoration-none">Back</a>
@@ -77,7 +78,7 @@
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
           <a type="button" class="btn modal__footer-btn" data-dismiss="modal" data-toggle="modal"
-                  data-target="#successfullyActivated">Activate your account
+             data-target="#successfullyActivated">Activate your account
           </a>
         </div>
       </div>
@@ -119,7 +120,7 @@
     let stripe = Stripe("{{ stripe_api_key }}");
     let elements = stripe.elements();
     var cardNumberElement = elements.create('cardNumber', {
-      placeholder: 'Custom card number placeholder',
+      placeholder: 'Card number',
       style: {
         base: baseStyle
       }
@@ -127,7 +128,7 @@
     cardNumberElement.mount('#card-number-element');
 
     var cardExpiryElement = elements.create('cardExpiry', {
-      placeholder: 'Custom expiry date placeholder',
+      placeholder: 'Expiry date',
       style: {
         base: baseStyle
       }
@@ -135,7 +136,7 @@
     cardExpiryElement.mount('#card-expiry-element');
 
     var cardCvcElement = elements.create('cardCvc', {
-      placeholder: 'Custom CVC placeholder',
+      placeholder: 'CVC',
       style: {
         base: baseStyle
       }
@@ -162,6 +163,7 @@
     }
 
     function createSubscription({paymentMethodId}) {
+      alert("cc sss");
       return (
         fetch('/create-subscription', {
           method: 'post',
@@ -175,7 +177,6 @@
         })
           .then(res => res.json())
           .then(res => {
-            console.log(res);
             if (res.error) {
               setErrorText(res.error);
             } else if (res.object === "subscription" && res.status === "active") {
@@ -208,6 +209,7 @@
             displayError(result);
             setLoading(false);
           } else {
+            $('#successfullyPaid').modal('show');
             createSubscription({
               paymentMethodId: result.paymentMethod.id,
             });

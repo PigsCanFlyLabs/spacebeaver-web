@@ -30,12 +30,15 @@ class BlockedNumbersView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
+        self.success_notification = False
         if form.is_valid():
+            self.success_notification = True
             BlockedNumber.object.add_user_blocked_number(
                 form.cleaned_data["name"],
                 form.cleaned_data["number"],
                 request.user,
             )
+            self.blocked_number = form.cleaned_data["number"]
             return self.get(request)
         return self.get(request, {"form": form, "error": True})
 
@@ -45,6 +48,10 @@ class BlockedNumbersView(View):
             "title": "Blocked numbers",
             "navname": "Blocked numbers",
             "step": ProfileStepsEnum.SETTINGS.value,
+            "show_success_notification": getattr(
+                self, "success_notification", False
+            ),
+            "blocked_number": getattr(self, "blocked_number", ""),
         }
 
 

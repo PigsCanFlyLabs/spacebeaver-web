@@ -49,9 +49,11 @@ class ProfileView(View):
         return render(request, self.template, context)
 
     def post(self, request):
+        self.show_profile_success_change = False
         form = self.form_class(request.POST, instance=request.user)
         if form.is_valid():
             form.save(commit=True)
+            self.show_profile_success_change = True
             # if request.user.have_device:
             #     User.objects.update_user_device_nickname(
             #         request.user, form.cleaned_data["device_nickname"]
@@ -69,4 +71,7 @@ class ProfileView(View):
             "action_button_name": "Save",
             "step": ProfileStepsEnum.SETTINGS.value,
             "forget": True,
+            "show_profile_success_change": getattr(
+                self, "show_profile_success_change", False
+            ),
         }

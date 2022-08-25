@@ -2,8 +2,60 @@
 {% load bootstrap_form %}
 {% load bootstrap_save_form %}
 {% load form_with_helpers %}
-
 {% block tab_content %}
+  <script>
+
+    $(document).ready(function () {
+      if ("{{ show_replace_success_notification }}" === "True") {
+        $('#successfullyReplace').modal('show');
+      }
+
+      if ("{{ show_profile_success_change }}" === "True") {
+        $('#successfullyChangeProfile').modal('show');
+      }
+
+
+    })
+
+  </script>
+  <div class="modal fade" id="successfullyReplace" tabindex="-1" aria-labelledby="successfullyBlockedLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal__content">
+        <div class="modal-body p-0">
+          <header class="form-header text-center">
+            <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+            <h1 class="title title--sm">Successfully replace device</h1>
+
+          </header>
+        </div>
+        <div class="modal-footer modal__footer p-0 border-0">
+          <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="successfullyChangeProfile" tabindex="-1" aria-labelledby="successfullyBlockedLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal__content">
+        <div class="modal-body p-0">
+          <header class="form-header text-center">
+            <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+            <h1 class="title title--sm">Successfully change profile information</h1>
+
+          </header>
+        </div>
+        <div class="modal-footer modal__footer p-0 border-0">
+          <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   {% if request.path == settings_url %}
     {% form_with_helpers form action 'Save' %}
   {% else %}

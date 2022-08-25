@@ -246,9 +246,21 @@ body {
   font-size: 16px;
   line-height: 150%;
   color: #222223;
+  border-color: #222223;
   transition: border .3s ease-in-out
 }
+#cardName{
+    width: 100%;
+  font-family: Aeonik, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
 
+}
+#cardName:focus, #cardName:focus{
+    outline: none;
+}
 .field__input::placeholder {
   color: #91979f
 }
