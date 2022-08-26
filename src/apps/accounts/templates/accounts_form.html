@@ -57,7 +57,7 @@
 
 
   {% if request.path == settings_url %}
-    {% form_with_helpers form action 'Save' %}
+    {% form_with_helpers form action 'Save' change_email_form change_password_form %}
   {% else %}
     {% bootstrap_save_form form action 'Save' %}
   {% endif %}
