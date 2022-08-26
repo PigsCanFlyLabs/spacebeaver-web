@@ -14,6 +14,27 @@
         $('#successfullyChangeProfile').modal('show');
       }
 
+      if ("{{ show_email_notification }}" === "True") {
+        $('#emailConfirmation').modal('show');
+      }
+
+      if ("{{ password_changed_notification }}" === "True") {
+        $('#passwordChanged').modal('show');
+      }
+
+      if ("{{ email_changed_notification }}" === "True") {
+        $('#emailChanged').modal('show');
+      }
+
+
+
+      {% if 'reset_password' in request.GET %}
+        $('#changePass').modal('show');
+
+      {% elif 'reset_email' in request.GET %}
+        $('#changeEmail').modal('show');
+
+      {% endif %}
 
     })
 
@@ -36,7 +57,6 @@
     </div>
   </div>
 
-
   <div class="modal fade" id="successfullyChangeProfile" tabindex="-1" aria-labelledby="successfullyBlockedLabel"
        aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -55,9 +75,48 @@
     </div>
   </div>
 
+  <div class="modal fade" id="emailConfirmation" tabindex="-1" aria-labelledby="emailConfirmationLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal__content">
+        <div class="modal-body p-0">
+          <header class="form-header text-center">
+            <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+            <h1 class="title title--sm">Confirmation</h1>
+            <p class="subtitle">We’ll send a confirmation link to your email</p>
+
+          </header>
+        </div>
+        <div class="modal-footer modal__footer p-0 border-0">
+          <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="emailConfirmation" tabindex="-1" aria-labelledby="emailConfirmationLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal__content">
+        <div class="modal-body p-0">
+          <header class="form-header text-center">
+            <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+            <h1 class="title title--sm">Confirmation</h1>
+            <p class="subtitle">Data su</p>
+
+          </header>
+        </div>
+        <div class="modal-footer modal__footer p-0 border-0">
+          <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   {% if request.path == settings_url %}
-    {% form_with_helpers form action 'Save' change_email_form change_password_form %}
+    {% form_with_helpers form action 'Save' reset_email_form reset_password_form change_email_form change_password_form %}
   {% else %}
     {% bootstrap_save_form form action 'Save' %}
   {% endif %}

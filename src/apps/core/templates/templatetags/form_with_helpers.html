@@ -1,3 +1,23 @@
+<script>
+
+  function showHide(inputId, targetFA) {
+    var x = document.getElementById(inputId);
+    var iconBtn = document.getElementById(targetFA);
+    if (x.type === "password") {
+      x.type = "text";
+      iconBtn.classList.remove('fa-eye-slash');
+      iconBtn.classList.add('fa-eye');
+
+
+    } else {
+      x.type = "password";
+      iconBtn.classList.remove('fa-eye');
+      iconBtn.classList.add('fa-eye-slash');
+    }
+  }
+
+</script>
+
 <form method="post" action="{{ action }}" class="form-body form form-body__grid-layout">
   {% csrf_token %}
   {% for field in form %}
@@ -21,7 +41,8 @@
         >
       {% endif %}
       <button type="button" class="field__change-btn border-0 text-primary bg-transparent" data-toggle="modal"
-              data-target="{% if field.name == 'password' %} #changePass {% else %} #changeEmail {% endif %}">Change
+              data-target="{% if field.name == 'password' %} #sendPassChangeConfirm {% else %} #sendEmailChangeConfirm {% endif %}">
+        Change
       </button>
 
       {% if field.errors %}
@@ -45,6 +66,151 @@
   </footer>
 </form>
 
+<div class="modal fade" id="sendEmailChangeConfirm" tabindex="-1" aria-labelledby="changeEmailLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal__content">
+      <div class="modal-body p-0">
+        <button type="button" class="close-btn border-0" data-dismiss="modal" aria-label="Close">
+          <img class="close-btn__icon " src="{% static 'core/img/svg/icon-close-circle.svg' %}" alt="">
+        </button>
+
+        <header class="form-header text-center">
+          <h1 class="title title--sm text-start">Change email</h1>
+          <p class="subtitle  text-start">Enter your email address and we'll send you a email change link.</p>
+
+        </header>
+        <form class="form-body  form" action="/accounts/settings" method="post">
+          {% csrf_token %}
+
+          {% for field in reset_email_form %}
+            <div class="form-group field">
+
+              <label for="{{ field.id_for_label }}"
+                     class="field__label {% if field.field.required %} field__label--required {% endif %}">{{ field.label_tag }}</label>
+              {% if field.field.widget.input_type == 'select' %}
+
+                {{ field }}
+              {% else %}
+                <input type="{{ field.field.widget.input_type }}"
+                       {% if field.value %}value="{{ field.value }}"{% endif %}
+                       class="field__input {% if field.errors %} field__input--invalid {% endif %}"
+                       id="{{ field.id_for_label }}" name="{{ field.name }}"
+                       aria-describedby="emailHelp" required="{{ field.field.required }}"
+                       placeholder="{{ field.field.widget.attrs.placeholder }}"
+                  {% if field.field.disabled %} disabled {% endif %}
+                  {% if field.field.widget.attrs.readonly %} readonly {% endif %}
+
+                >
+              {% endif %}
+
+
+              {% if field.errors %}
+                <span class="field__input-error">
+          {{ field.errors }}
+        </span>
+              {% endif %}
+              <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
+            </div>
+          {% endfor %}
+
+          <button type="submit" class="btn modal__footer-btn">Send a link</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="emailConfirmation" tabindex="-1" aria-labelledby="emailConfirmationLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal__content">
+      <div class="modal-body p-0">
+        <header class="form-header text-center">
+          <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+          <h1 class="title title--sm">Confirmation</h1>
+          <p class="subtitle">We’ll send a confirmation link to your new email</p>
+
+        </header>
+      </div>
+      <div class="modal-footer modal__footer p-0 border-0">
+        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to email</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="sendPassChangeConfirm" tabindex="-1" aria-labelledby="changePassLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal__content">
+      <div class="modal-body p-0">
+        <button type="button" class="close-btn border-0" data-dismiss="modal" aria-label="Close">
+          <img class="close-btn__icon " src="{% static 'core/img/svg/icon-close-circle.svg' %}" alt="">
+        </button>
+
+        <header class="form-header text-center">
+          <h1 class="title title--sm text-start">Change password</h1>
+          <p class="subtitle  text-start">Enter your email address and we'll send you a password reset link.</p>
+
+        </header>
+        <form class="form-body  form" action="" method="post">
+          {% csrf_token %}
+
+          {% for field in reset_password_form %}
+            <div class="form-group field">
+
+              <label for="{{ field.id_for_label }}"
+                     class="field__label {% if field.field.required %} field__label--required {% endif %}">{{ field.label_tag }}</label>
+              {% if field.field.widget.input_type == 'select' %}
+
+                {{ field }}
+              {% else %}
+                <input type="{{ field.field.widget.input_type }}"
+                       {% if field.value %}value="{{ field.value }}"{% endif %}
+                       class="field__input {% if field.errors %} field__input--invalid {% endif %}"
+                       id="{{ field.id_for_label }}" name="{{ field.name }}"
+                       aria-describedby="emailHelp" required="{{ field.field.required }}"
+                       placeholder="{{ field.field.widget.attrs.placeholder }}"
+                  {% if field.field.disabled %} disabled {% endif %}
+                  {% if field.field.widget.attrs.readonly %} readonly {% endif %}
+
+                >
+              {% endif %}
+
+
+              {% if field.errors %}
+                <span class="field__input-error">
+          {{ field.errors }}
+        </span>
+              {% endif %}
+              <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn modal__footer-btn">Send a link
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="passConfirmation" tabindex="-1" aria-labelledby="passConfirmationLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal__content">
+      <div class="modal-body p-0">
+        <header class="form-header text-center">
+          <img class="form-header-icon" src="{% static 'core/img/svg/icon-mail.svg' %}" alt="">
+          <h1 class="title title--sm">Password link sent</h1>
+          <p class="subtitle">Please, check your inbox <span class="subtitle__bold">mike@gmail.com</span></p>
+
+        </header>
+      </div>
+      <div class="modal-footer modal__footer p-0 border-0">
+        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to email</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" id="changeEmail" tabindex="-1" aria-labelledby="changeEmailLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal__content">
@@ -60,7 +226,6 @@
         </header>
         <form class="form-body  form" action="/accounts/settings" method="post">
           {% csrf_token %}
-
           {% for field in change_email_form %}
             <div class="form-group field">
 
@@ -99,25 +264,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="emailConfirmation" tabindex="-1" aria-labelledby="emailConfirmationLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content modal__content">
-      <div class="modal-body p-0">
-        <header class="form-header text-center">
-          <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
-          <h1 class="title title--sm">Confirmation</h1>
-          <p class="subtitle">We’ll send a confirmation link to your new email</p>
-
-        </header>
-      </div>
-      <div class="modal-footer modal__footer p-0 border-0">
-        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to email</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="modal fade" id="changePass" tabindex="-1" aria-labelledby="changePassLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal__content">
@@ -128,10 +274,10 @@
 
         <header class="form-header text-center">
           <h1 class="title title--sm text-start">Change password</h1>
-          <p class="subtitle  text-start">Enter your email address and we'll send you a password reset link.</p>
+          <p class="subtitle  text-start">Enter and confirm your new password.</p>
 
         </header>
-        <form class="form-body  form" action="" method="post">
+        <form class="form-body  form" action="/accounts/settings" method="post">
           {% csrf_token %}
 
           {% for field in change_password_form %}
@@ -154,8 +300,14 @@
 
                 >
               {% endif %}
+              {% if field.id_for_label != 'id_username' %}
+                <button type="button" onclick="showHide('{{ field.id_for_label }}', '{{ field.id_for_label }}_sh');"
+                        class="field__change-btn border-0 text-primary bg-transparent" data-toggle="modal"
 
-
+                ><i id="{{ field.id_for_label }}_sh" class="fa fa-eye-slash text-muted" aria-hidden="true"></i>
+                </button>
+              {% else %}
+              {% endif %}
               {% if field.errors %}
                 <span class="field__input-error">
           {{ field.errors }}
@@ -164,8 +316,8 @@
               <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
             </div>
           {% endfor %}
-          <button type="submit" class="btn modal__footer-btn" data-dismiss="modal" data-toggle="modal"
-                  data-target="#passConfirmation">Send a link
+          <button type="submit" class="btn modal__footer-btn">
+            Change password
           </button>
         </form>
       </div>
@@ -173,14 +325,31 @@
   </div>
 </div>
 
-<div class="modal fade" id="passConfirmation" tabindex="-1" aria-labelledby="passConfirmationLabel" aria-hidden="true">
+<div class="modal fade" id="passwordChanged" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal__content">
       <div class="modal-body p-0">
         <header class="form-header text-center">
-          <img class="form-header-icon" src="{% static 'core/img/svg/icon-mail.svg' %}" alt="">
-          <h1 class="title title--sm">Password link sent</h1>
-          <p class="subtitle">Please, check your inbox <span class="subtitle__bold">mike@gmail.com</span></p>
+          <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+          <h1 class="title title--sm">Password changed</h1>
+          <p class="subtitle">Password has been changed successfully </p>
+
+        </header>
+      </div>
+      <div class="modal-footer modal__footer p-0 border-0">
+        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to email</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="emailChanged" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal__content">
+      <div class="modal-body p-0">
+        <header class="form-header text-center">
+          <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+          <h1 class="title title--sm">Email changed</h1>
+          <p class="subtitle">Email has been changed successfully </p>
 
         </header>
       </div>

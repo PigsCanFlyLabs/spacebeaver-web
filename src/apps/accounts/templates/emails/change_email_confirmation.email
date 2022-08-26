@@ -1,0 +1,11 @@
+{% block plain %}
+<h3> Hi {{ username }}</h3>
+
+<p>We received a request for a email change on your Spacebeawer account.</p>
+<p>You can reset your email <a href="{{reset_url}}">here</a>.</p>
+
+Thanks
+
+Spacebeawer team
+{% endblock %}
+

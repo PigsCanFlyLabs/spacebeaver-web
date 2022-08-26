@@ -49,7 +49,7 @@ view_urlpatterns = [
     ),
     path("billing", login_required(BillingView.as_view()), name="billing"),
     path(
-        "blocked-numbers",
+        "blocked-numbers/",
         login_required(BlockedNumbersView.as_view()),
         name="blocked-numbers",
     ),

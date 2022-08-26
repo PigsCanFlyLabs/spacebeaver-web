@@ -9,6 +9,8 @@ def form_with_helpers(
     form,
     action,
     action_button_name="Create account",
+    reset_email_form=None,
+    reset_password_form=None,
     change_email_form=None,
     change_password_form=None,
 ):
@@ -16,6 +18,8 @@ def form_with_helpers(
         "form": form,
         "action": action,
         "button_name": action_button_name,
+        "reset_email_form": reset_email_form,
+        "reset_password_form": reset_password_form,
         "change_email_form": change_email_form,
         "change_password_form": change_password_form,
     }
