@@ -1,5 +1,9 @@
 <script>
 
+  function reloadPage(){
+    window.location.href = "/accounts/settings"
+  }
+
   function showHide(inputId, targetFA) {
     var x = document.getElementById(inputId);
     var iconBtn = document.getElementById(targetFA);
@@ -76,13 +80,13 @@
 
         <header class="form-header text-center">
           <h1 class="title title--sm text-start">Change email</h1>
-          <p class="subtitle  text-start">Enter your email address and we'll send you a email change link.</p>
+          <p class="subtitle  text-start">Enter your new email address and we'll send you a email change link.</p>
 
         </header>
         <form class="form-body  form" action="/accounts/settings" method="post">
           {% csrf_token %}
 
-          {% for field in reset_email_form %}
+          {% for field in change_email_form %}
             <div class="form-group field">
 
               <label for="{{ field.id_for_label }}"
@@ -115,25 +119,6 @@
 
           <button type="submit" class="btn modal__footer-btn">Send a link</button>
         </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="emailConfirmation" tabindex="-1" aria-labelledby="emailConfirmationLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content modal__content">
-      <div class="modal-body p-0">
-        <header class="form-header text-center">
-          <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
-          <h1 class="title title--sm">Confirmation</h1>
-          <p class="subtitle">We’ll send a confirmation link to your new email</p>
-
-        </header>
-      </div>
-      <div class="modal-footer modal__footer p-0 border-0">
-        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to email</button>
       </div>
     </div>
   </div>
@@ -193,23 +178,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="passConfirmation" tabindex="-1" aria-labelledby="passConfirmationLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content modal__content">
-      <div class="modal-body p-0">
-        <header class="form-header text-center">
-          <img class="form-header-icon" src="{% static 'core/img/svg/icon-mail.svg' %}" alt="">
-          <h1 class="title title--sm">Password link sent</h1>
-          <p class="subtitle">Please, check your inbox <span class="subtitle__bold">mike@gmail.com</span></p>
-
-        </header>
-      </div>
-      <div class="modal-footer modal__footer p-0 border-0">
-        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to email</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="modal fade" id="changeEmail" tabindex="-1" aria-labelledby="changeEmailLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -325,37 +293,4 @@
   </div>
 </div>
 
-<div class="modal fade" id="passwordChanged" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content modal__content">
-      <div class="modal-body p-0">
-        <header class="form-header text-center">
-          <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
-          <h1 class="title title--sm">Password changed</h1>
-          <p class="subtitle">Password has been changed successfully </p>
 
-        </header>
-      </div>
-      <div class="modal-footer modal__footer p-0 border-0">
-        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to email</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="emailChanged" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content modal__content">
-      <div class="modal-body p-0">
-        <header class="form-header text-center">
-          <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
-          <h1 class="title title--sm">Email changed</h1>
-          <p class="subtitle">Email has been changed successfully </p>
-
-        </header>
-      </div>
-      <div class="modal-footer modal__footer p-0 border-0">
-        <button type="button" class="btn modal__footer-btn" data-dismiss="modal">Go to email</button>
-      </div>
-    </div>
-  </div>
-</div>

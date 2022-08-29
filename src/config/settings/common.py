@@ -506,6 +506,22 @@ class Settings:
         "rate_limit": "50/m",
     }
 
+    @property
+    def EMAIL_HOST(self):
+        return os.environ.get("SMTP_HOST")
+
+    @property
+    def EMAIL_PORT(self):
+        return os.environ.get("SMTP_PORT")
+
+    @property
+    def EMAIL_HOST_USER(self):
+        return os.environ.get("SMTP_USERNAME")
+
+    @property
+    def EMAIL_HOST_PASSWORD(self):
+        return os.environ.get("SMTP_PASSWORD")
+
     # CELERY
     # ~~~~~~
     LIBS += ["django_celery_beat"]

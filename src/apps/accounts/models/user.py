@@ -137,6 +137,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     external_email = models.EmailField(null=True, blank=True)
     external_phone = models.CharField(max_length=20, null=True, blank=True)
 
+    email_reset_request_time = models.DateTimeField(default=timezone.now)
+    password_reset_request_time = models.DateTimeField(default=timezone.now)
+
     objects = UserManager()
 
     USERNAME_FIELD = "email"

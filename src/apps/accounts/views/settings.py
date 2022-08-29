@@ -1,8 +1,11 @@
+import datetime
+
 from django import forms
 from django.conf import settings
 from django.contrib.auth import authenticate, get_user_model, login
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils import timezone
 from django.views import View
 
 from templated_email import send_templated_mail
@@ -32,23 +35,16 @@ class SettingsForm(forms.ModelForm):
         fields = ["email", "password"]
 
 
-class SendResetEmailForm(forms.Form):
-    email = forms.EmailField(
+class ChangeEmailForm(forms.Form):
+    new_email = forms.EmailField(
         label="Email",
-        widget=forms.EmailInput(attrs={"placeholder": "Enter your email"}),
+        widget=forms.EmailInput(attrs={"placeholder": "Enter your new email"}),
     )
 
 
 class SendResetPasswordForm(forms.Form):
     password_email = forms.EmailField(
         label="Email",
-        widget=forms.EmailInput(attrs={"placeholder": "Enter your email"}),
-    )
-
-
-class ResetEmailForm(forms.Form):
-    new_email = forms.EmailField(
-        label="New email",
         widget=forms.EmailInput(attrs={"placeholder": "Enter your email"}),
     )
 
@@ -67,31 +63,54 @@ class SettingsView(View):
     form_class = SettingsForm
 
     def get(self, request):
-        self.show_email_notification = False
-        self.password_changed_notification = False
-        self.successfuly_changed = False
         form = self.form_class(
             initial={
                 "email": request.user.email,
                 "password": "****************",
             }
         )
-        reset_email_form = SendResetEmailForm()
+        change_email_form = ChangeEmailForm()
         reset_password_form = SendResetPasswordForm()
-        change_email_form = ResetEmailForm()
         change_password_form = ResetPasswordForm()
+
+        change_email = request.GET.get("change_email", None)
+        reset_password = "reset_password" in request.GET
+
+        if reset_password:
+            if timezone.now() > (
+                request.user.email_reset_request_time
+                + datetime.timedelta(days=3)
+            ):
+                self.expired_link = True
+
+        if change_email:
+            if timezone.now() < (
+                request.user.email_reset_request_time
+                + datetime.timedelta(days=3)
+            ):
+                request.user.customer.email = change_email
+                request.user.customer.save()
+                request.user.email = change_email
+                request.user.save()
+                self.email_changed_notification = True
+
+            else:
+                self.expired_link = True
+
         return render(
             request,
             self.template_name,
             {
                 **self.base_context,
                 "form": form,
-                "reset_email_form": reset_email_form,
                 "reset_password_form": reset_password_form,
                 "change_email_form": change_email_form,
                 "change_password_form": change_password_form,
                 "show_email_notification": getattr(
                     self, "show_email_notification", False
+                ),
+                "show_password_notification": getattr(
+                    self, "show_password_notification", False
                 ),
                 "password_changed_notification": getattr(
                     self, "password_changed_notification", False
@@ -99,6 +118,7 @@ class SettingsView(View):
                 "email_changed_notification": getattr(
                     self, "email_changed_notification", False
                 ),
+                "expired_link": getattr(self, "expired_link", False),
             },
         )
 
@@ -109,48 +129,64 @@ class SettingsView(View):
         self.password_changed_notification = False
         self.email_changed_notification = False
         self.successfuly_changed = False
+        self.expired_link = False
 
-        if "email" in request.POST:
-            form = SendResetEmailForm(request.POST)
-            if form.is_valid():
-                self.send_confirmation_email(request, change_email)
-        elif "password_email" in request.POST:
+        if "password_email" in request.POST:
             form = SendResetPasswordForm(request.POST)
             change_email = False
             if form.is_valid():
+                request.user.password_reset_request_time = timezone.now()
                 self.send_confirmation_email(request, change_email)
+                self.show_password_notification = True
+
         elif "new_email" in request.POST:
-            form = ResetEmailForm(request.POST)
+            form = ChangeEmailForm(request.POST)
             if form.is_valid():
-                request.user.customer.email = form.cleaned_data["new_email"]
-                request.user.customer.save()
-                request.user.email = form.cleaned_data["new_email"]
+                request.user.email_reset_request_time = timezone.now()
                 request.user.save()
-                self.email_changed_notification = True
+                self.change_email_url(request, form.cleaned_data["new_email"])
+                self.show_email_notification = True
 
         elif "password1" in request.POST and "password2" in request.POST:
             form = ResetPasswordForm(request.POST)
             if form.is_valid():
-                new_password1 = form.cleaned_data["password1"]
-                new_password2 = form.cleaned_data["password2"]
 
-                if new_password1 == new_password2:
-                    request.user.set_password(new_password1)
-                    request.user.save()
-                user = authenticate(
-                    username=request.user.email,
-                    password=form.cleaned_data["password1"],
-                )
-                login(request, user)
-                self.password_changed_notification = True
+                if timezone.now() < (
+                    request.user.password_reset_request_time
+                    + datetime.timedelta(days=3)
+                ):
+                    new_password1 = form.cleaned_data["password1"]
+                    new_password2 = form.cleaned_data["password2"]
+
+                    if new_password1 == new_password2:
+                        request.user.set_password(new_password1)
+                        request.user.save()
+                    user = authenticate(
+                        username=request.user.email,
+                        password=form.cleaned_data["password1"],
+                    )
+                    login(request, user)
+                    self.password_changed_notification = True
+                else:
+                    self.expired_link = True
 
         return self.get(request)
+
+    def change_email_url(self, request, new_email):
+        reset_url = f"{request.build_absolute_uri()}?change_email={new_email}"
+        email_template = "change_email_confirmation"
+        send_templated_mail(
+            email_template,
+            settings.DEFAULT_FROM_EMAIL,
+            [request.user.email],
+            {"username": request.user.full_name, "reset_url": reset_url},
+        )
 
     def send_confirmation_email(self, request, change_email):
         reset_url = f"{request.build_absolute_uri()}?" + (
             "reset_email" if change_email else "reset_password"
         )
-        self.show_email_notification = True
+
         email_template = (
             "change_email_confirmation"
             if change_email
