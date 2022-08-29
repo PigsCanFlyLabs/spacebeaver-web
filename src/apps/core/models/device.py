@@ -10,7 +10,7 @@ class DeviceManager(models.Manager):
         try:
             device = self.get(serial_number=serial_number)
             can_used = (not device.used and device.user is None) or (
-                device.used and user and device.user.id == user.id
+                device.used and user and device.user and device.user.id == user.id
             )
             return (
                 can_used,
