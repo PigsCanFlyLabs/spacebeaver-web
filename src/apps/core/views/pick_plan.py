@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render
+from django.urls import reverse
 from django.views import View
 
 from constance import config
@@ -23,5 +24,5 @@ class PickPlanView(View):
             "description": config.DESCRIPTION,
             "price": config.PRICE,
             "step": OnboardingStepsEnum.PICK_PLAN.value,
-            "back_url": "/add-device/",
+            "back_url": reverse("core:add-device"),
         }

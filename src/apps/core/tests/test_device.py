@@ -25,7 +25,7 @@ device2_data = {
 }
 
 
-class TestDeviceKeys(TestCase):
+class TestDeviceCase(TestCase):
     def setUp(self) -> None:
         self.user = user_model.objects.create(
             full_name=user_data["full_name"],

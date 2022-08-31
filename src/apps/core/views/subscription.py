@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.views import View
 
 from constance import config
@@ -29,7 +30,7 @@ class SubscriptionView(View):
             "navname": "Please enter your payment information",
             "stripe_api_key": STRIPE_PUBLIC_API_KEY,
             "step": OnboardingStepsEnum.PAYMENT.value,
-            "back_url": "/pick-plan/",
+            "back_url": reverse("core:pick-plan"),
         }
 
 

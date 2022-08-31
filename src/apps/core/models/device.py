@@ -48,10 +48,12 @@ class Device(models.Model):
         return f"Device: {self.serial_number}"
 
     def assign_to_user(self, user: User):
-        if self.is_used:
+        if self.is_used and user and self.user.id != user.id:
             raise ValueError(f"{self.serial_number} already used")
-        if Device.objects.filter(user_id=user.id):
-            raise ValueError(f"User: {user} already have device")
+        user_device = Device.objects.filter(user_id=user.id)
+        for device in user_device:
+            if device.serial_number != self.serial_number:
+                raise ValueError(f"User: {user} already have device")
         self.user = user
         self.used = True
 
