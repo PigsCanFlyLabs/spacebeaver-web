@@ -1,6 +1,7 @@
 from django.contrib.auth import views as auth_view
 from django.contrib.auth.decorators import login_required
 from django.urls import path, reverse_lazy
+from django.views.generic import TemplateView
 
 from apps.core.views import *
 
@@ -8,7 +9,7 @@ from apps.core.views import *
 app_name = "core"
 
 view_urlpatterns = [
-    path("", IndexView.as_view(), name="index"),
+    path("index/", IndexView.as_view(), name="index"),
     path("sign-up/", SignUpView.as_view(), name="sign-up"),
     path(
         "successful-registration/",
@@ -88,6 +89,15 @@ view_urlpatterns = [
             success_url=reverse_lazy("core:new-password-link"),
         ),
         name="forget-password",
+    ),
+    # EXAMPLE PATH FOR KIRILL
+    path("mobile/", TemplateView.as_view(template_name="about_example.html")),
+    path("product/", TemplateView.as_view(template_name="about_example.html")),
+    path("about/", TemplateView.as_view(template_name="about_example.html")),
+    path("faq/", TemplateView.as_view(template_name="about_example.html")),
+    path("pricing/", TemplateView.as_view(template_name="about_example.html")),
+    path(
+        "warranty/", TemplateView.as_view(template_name="about_example.html")
     ),
 ]
 

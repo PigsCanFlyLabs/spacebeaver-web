@@ -44,7 +44,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("djstripe/", include("djstripe.urls", namespace="djstripe")),
     path("", include("apps.urls")),
-    path("cms-settings/", include("cms.urls")),
+    path("", include("cms.urls")),
 ]
 
 if settings.DEBUG:
