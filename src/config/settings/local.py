@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from configurations import Configuration
+import stripe
 
 from .common import Settings
 
@@ -13,6 +14,7 @@ class Local(Settings, Configuration):
         "https://spacebeaver.s3.amazonaws.com/static/flags/{code}.gif"
     )
     DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
+
 
     @property
     def CORS_ORIGIN_REGEX_WHITELIST(self):

@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import re
+
 from configurations import Configuration
 
 from .common import Settings

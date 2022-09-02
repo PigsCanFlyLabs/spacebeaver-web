@@ -3,6 +3,7 @@
 {% block content %}
 
   <form class="form-body form-body__flex-layout form" action="" method="post">
+  {% csrf_token %}
     <div class="plan-card mb-2">
       <div class="plan-card__header d-flex align-items-center">
         <div class="plan-card__img-wrap gap-right">
@@ -15,12 +16,7 @@
         <span class="plan-card__price">{{ price }}$</span><span class="plan-card__period">/month</span>
       </div>
 
-      <ul class="plan-card__options p-0">
-        <li class="plan-card__options-item">Ipser lorem non veniter um</li>
-        <li class="plan-card__options-item">Ipser lorem non veniter um</li>
-        <li class="plan-card__options-item">Ipser lorem non veniter um</li>
-        <li class="plan-card__options-item">Ipser lorem non veniter um</li>
-      </ul>
+      {{ description }}
 
       <a href="{% url 'core:subscription' %}" class="plan-card__btn">Select plan</a>
 

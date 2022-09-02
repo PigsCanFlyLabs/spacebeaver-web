@@ -20,7 +20,7 @@ class DeviceManager(models.Manager):
                 "" if can_used else "Device with this serial number is used",
             )
         except self.model.DoesNotExist:
-            return False, "Device with this serial number not exists"
+            return False, "Device with this serial number does not exist"
 
     def delete_user_device(self, user: User):
         device = self.get(user_id=user.id)

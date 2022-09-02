@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LogoutView
-from django.urls import include, path, reverse
+from django.urls import path
 
 from apps.accounts.views import (
     ChangeEmailView,
@@ -10,6 +9,7 @@ from apps.accounts.views import (
     ProfileView,
     SettingsView,
 )
+from apps.core.views import LoginView
 
 
 app_name = "accounts"
@@ -26,6 +26,7 @@ urlpatterns = [
         login_required(ChangeEmailView.as_view()),
         name="change-email",
     ),
+    path("login/", LoginView.as_view(), name="login"),
     path(
         "settings",
         login_required(SettingsView.as_view()),

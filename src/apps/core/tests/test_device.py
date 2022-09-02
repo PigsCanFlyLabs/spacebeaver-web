@@ -50,7 +50,9 @@ class TestDeviceCase(TestCase):
             device_data["serial_number"]
         )
         self.assertFalse(cant_register_device)
-        self.assertEqual(message, "Device with this serial number not exists")
+        self.assertEqual(
+            message, "Device with this serial number does not exist"
+        )
 
         device = Device.objects.create(**device_data)
 
