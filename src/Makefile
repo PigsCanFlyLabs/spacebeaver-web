@@ -13,9 +13,9 @@ clean:
 test tests:
 	make clean
 ifdef DEBUG
-	pytest --black --ff --isort --blockage --instafail -n 0 --pdb -v
+	pytest --black --ff --isort --blockage --blockage-http-whitelist="api.stripe.com" --instafail -n 0 --pdb -v
 else
-	coverage run -m pytest --black --ff --isort --blockage --instafail -n 0 --durations=25 -v
+	coverage run -m pytest --black --ff --isort --blockage --blockage-http-whitelist="api.stripe.com" --instafail -n 0 --durations=25 -v
 	coverage report -m
 endif
 

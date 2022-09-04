@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import View
 
@@ -13,6 +13,9 @@ class PickPlanView(View):
 
     def get(self, request):
         return render(request, self.template, self.base_context)
+
+    def post(self, request):
+        return redirect(reverse("core:subscription"))
 
     @property
     def base_context(self):

@@ -6,19 +6,19 @@ from apps.core.models import Device
 
 user_model = get_user_model()
 
-user_data = {
+USER_DATA = {
     "email": "softformanse@gmail.com",
     "full_name": "softformanse test",
     "password": "testpwd",
 }
 
-device_data = {
+DEVICE_DATA = {
     "serial_number": "123456",
     "used": False,
     "nickname": "Test device",
 }
 
-device2_data = {
+DEVICE_DATA2 = {
     "serial_number": "1234567",
     "used": False,
     "nickname": "Test device",
@@ -28,33 +28,33 @@ device2_data = {
 class TestDeviceCase(TestCase):
     def setUp(self) -> None:
         self.user = user_model.objects.create(
-            full_name=user_data["full_name"],
-            email=user_data["email"],
+            full_name=USER_DATA["full_name"],
+            email=USER_DATA["email"],
         )
         self.user.is_active = True
-        self.user.set_password(user_data["password"])
+        self.user.set_password(USER_DATA["password"])
         self.user.save()
 
     def test_device_creation(self):
-        device = Device.objects.create(**device_data)
+        device = Device.objects.create(**DEVICE_DATA)
         self.assertEqual(Device.objects.all().count(), 1)
         self.assertIsNone(device.user)
-        self.assertEqual(device.serial_number, device_data["serial_number"])
-        self.assertEqual(device.nickname, device_data["nickname"])
-        self.assertFalse(device.is_used, device_data["used"])
+        self.assertEqual(device.serial_number, DEVICE_DATA["serial_number"])
+        self.assertEqual(device.nickname, DEVICE_DATA["nickname"])
+        self.assertFalse(device.is_used, DEVICE_DATA["used"])
         device.set_nickname("Test change nickname")
         self.assertEqual(device.nickname, "Test change nickname")
 
     def test_device_not_exists(self):
         cant_register_device, message = Device.objects.can_register_device(
-            device_data["serial_number"]
+            DEVICE_DATA["serial_number"]
         )
         self.assertFalse(cant_register_device)
         self.assertEqual(
             message, "Device with this serial number does not exist"
         )
 
-        device = Device.objects.create(**device_data)
+        device = Device.objects.create(**DEVICE_DATA)
 
         can_register_device, message = Device.objects.can_register_device(
             device.serial_number
@@ -62,7 +62,7 @@ class TestDeviceCase(TestCase):
         self.assertTrue(can_register_device)
 
     def test_device_assign(self):
-        device = Device.objects.create(**device_data)
+        device = Device.objects.create(**DEVICE_DATA)
         device.assign_to_user(self.user)
         device.save()
 
@@ -82,8 +82,8 @@ class TestDeviceCase(TestCase):
         self.assertIsNone(device.user)
 
     def test_device_replace(self):
-        device1 = Device.objects.create(**device_data)
-        device2 = Device.objects.create(**device2_data)
+        device1 = Device.objects.create(**DEVICE_DATA)
+        device2 = Device.objects.create(**DEVICE_DATA2)
 
         device1.assign_to_user(self.user)
         device1.set_nickname("device 1")
@@ -96,7 +96,7 @@ class TestDeviceCase(TestCase):
         Device.objects.delete_user_device(self.user)
 
         device1 = Device.objects.get(
-            serial_number=device_data["serial_number"]
+            serial_number=DEVICE_DATA["serial_number"]
         )
 
         self.assertFalse(device1.is_used)
@@ -111,11 +111,11 @@ class TestDeviceCase(TestCase):
         self.assertEqual(self.user.id, device2.user.id)
 
     def test_change_device_info(self):
-        device = Device.objects.create(**device_data)
-        self.assertEqual(device.serial_number, device_data["serial_number"])
-        self.assertEqual(device.nickname, device_data["nickname"])
+        device = Device.objects.create(**DEVICE_DATA)
+        self.assertEqual(device.serial_number, DEVICE_DATA["serial_number"])
+        self.assertEqual(device.nickname, DEVICE_DATA["nickname"])
         device.set_nickname("test change nickname")
-        device.serial_number = device2_data["serial_number"]
+        device.serial_number = DEVICE_DATA2["serial_number"]
         device.save()
         self.assertEqual(device.nickname, "test change nickname")
-        self.assertEqual(device.serial_number, device2_data["serial_number"])
+        self.assertEqual(device.serial_number, DEVICE_DATA2["serial_number"])
