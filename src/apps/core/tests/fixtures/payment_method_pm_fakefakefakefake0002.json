@@ -1,5 +1,5 @@
 {
-    "id": "pm_fakefakefakefake0001",
+    "id": "pm_fakefakefakefake0002",
     "object": "payment_method",
     "billing_details": {
         "address": {
@@ -24,7 +24,7 @@
         "country": "US",
         "exp_month": 6,
         "exp_year": 2021,
-        "fingerprint": "88PuXw9tEmvYe69o",
+        "fingerprint": "88PuXw9tEmvYe69x",
         "funding": "credit",
         "generated_from": null,
         "last4": "4242",
@@ -40,10 +40,11 @@
         "wallet": null
     },
     "created": 123456789,
+    "customer": "cus_6lsBvm5rJ0zyHc",
     "livemode": false,
     "metadata": {
         "order_id": "123456789",
-        "djstripe_test_fake_id": "pm_fakefakefakefake0001"
+        "djstripe_test_fake_id": "pm_fakefakefakefake0002"
     },
     "type": "card"
 }
