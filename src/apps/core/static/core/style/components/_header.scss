@@ -1,0 +1,22 @@
+.header {}
+
+.header__wrap {}
+
+.header__content {
+  display: flex;
+}
+
+.main-wrapper {
+  display: block;
+  width: 100%;
+  max-width: 1290px;
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 992px) {
+  .main-wrapper {
+    padding: 0 16px;
+  }
+}

@@ -96,6 +96,7 @@ view_urlpatterns = [
         name="forget-password",
     ),
     # EXAMPLE PATH FOR KIRILL
+    path("homepage/", TemplateView.as_view(template_name="homepage.html")),
     path("mobile/", TemplateView.as_view(template_name="about_example.html")),
     path("product/", TemplateView.as_view(template_name="about_example.html")),
     path("about/", TemplateView.as_view(template_name="about_example.html")),
