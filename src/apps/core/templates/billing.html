@@ -149,52 +149,6 @@
                 </td>
               </tr>
             {% endfor %}
-            <tr>
-              <td class="align-middle">
-                <div class="payment-card d-flex align-items-center">
-                  <div class="payment-card__img d-flex align-items-center justify-content-center">
-                    <svg class="payment-card__icon" width="24" height="24" viewbox="0 0 24 24"
-                         fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2 8.5H14.5" stroke="#222223" stroke-width="1.8"
-                            stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M6 16.5H8" stroke="#222223" stroke-width="1.8"
-                            stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M10.5 16.5H14.5" stroke="#222223" stroke-width="1.8"
-                            stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path
-                        d="M22 14.03V16.11C22 19.62 21.11 20.5 17.56 20.5H6.44C2.89 20.5 2 19.62 2 16.11V7.89C2 4.38 2.89 3.5 6.44 3.5H14.5"
-                        stroke="#222223" stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round"/>
-                      <path d="M20 9.5V3.5L22 5.5" stroke="#222223" stroke-width="1.8"
-                            stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M20 3.5L18 5.5" stroke="#222223" stroke-width="1.8"
-                            stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                  </div>
-                  <div class="payment-card__transaction-wrap">
-                    <p class="payment-card__transaction-name">Basic plan</p>
-                    <p class="payment-card__transaction-date">Jul 29 2022</p>
-                  </div>
-
-                </div>
-              </td>
-              <td class="align-middle">
-                <p class="transaction-amount">$200</p>
-              </td>
-              <td class="align-middle">
-                <div class="transaction-tag transaction-tag--paid">
-                  Paid
-                </div>
-              </td>
-              <td class="align-middle">
-                <p class="transaction-pay-method">Stripe</p>
-
-              </td>
-              <td class="align-middle">
-                <p class="transaction-description text-end">Plan update</p>
-              </td>
-            </tr>
             </tbody>
           </table>
         </section>
@@ -300,7 +254,7 @@
           </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" class="btn modal__footer-btn" data-bs-dismiss="modal" data-dismiss="modal">Back to
+          <button type="button" class="btn modal__footer-btn" onclick="document.location.reload()" data-bs-dismiss="modal" data-dismiss="modal">Back to
             Billing
           </button>
 

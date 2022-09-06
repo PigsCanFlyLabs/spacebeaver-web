@@ -174,7 +174,7 @@ class SettingsView(View):
 
     def change_email_url(self, request, new_email):
         reset_url = f"{request.build_absolute_uri()}?change_email={new_email}"
-        email_template = "change_email_confirmation"
+        email_template = "change_email_confirmation.email"
         send_templated_mail(
             email_template,
             settings.DEFAULT_FROM_EMAIL,

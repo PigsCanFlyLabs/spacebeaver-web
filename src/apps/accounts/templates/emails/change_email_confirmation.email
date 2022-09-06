@@ -1,8 +1,10 @@
 {% block plain %}
-<h3> Hi {{ username }}</h3>
+Hi {{ username }}
 
-<p>We received a request for a email change on your Spacebeaver account.</p>
-<p>You can change your email {{reset_url}}">here</a>.</p>
+We received a request for a email change on your Spacebeaver account.
+You can change your email here
+
+{{reset_url}}
 
 Thanks
 
