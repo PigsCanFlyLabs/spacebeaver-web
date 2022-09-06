@@ -12,6 +12,9 @@ def get_plan_info_from_subscription(subscription: Subscription):
         "interval": plan.interval,
         "product_name": product.name,
         "product_description": product.description,
+        "period_start": subscription.current_period_start.strftime("%d %b %Y"),
+        "period_end": subscription.current_period_end.strftime("%d %b %Y"),
+        "status": subscription.status,
     }
 
 

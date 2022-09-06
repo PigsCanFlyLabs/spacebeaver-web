@@ -105,10 +105,15 @@ api_urlpatterns = [
     path(
         "create-subscription",
         login_required(CreateSubscriptionAPIView.as_view()),
+        name="create-subscription",
     ),
     path("update-payment-method", UpdatePaymentMethodAPIView.as_view()),
     path("delete-payment-method", DeletePaymentMethodAPIView.as_view()),
-    path("cancel-subscription", CancelSubscriptionAPIView.as_view()),
+    path(
+        "cancel-subscription",
+        CancelSubscriptionAPIView.as_view(),
+        name="cancel-subscription",
+    ),
     path("device-owner", DeviceOwnerApiView.as_view()),
 ]
 

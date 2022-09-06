@@ -36,6 +36,11 @@
                  placeholder="{{ field.field.widget.attrs.placeholder }}"
             {% if field.field.disabled %} disabled {% endif %}
           >
+          {% if field.errors %}
+            <span class="field__input-error">
+          {{ field.errors }}
+        </span>
+          {% endif %}
           {% if field.id_for_label != 'id_email' %}
             <button type="button" onclick="showHide('{{ field.id_for_label }}', '{{ field.id_for_label }}_sh');"
                     class="field__change-btn border-0 text-primary bg-transparent" data-toggle="modal"

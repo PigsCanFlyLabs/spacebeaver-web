@@ -50,21 +50,26 @@
                 <div class="plan-card-simple__description-wrap ">
                   <div class="plan-card-simple__title-wrap d-flex align-items-baseline">
                     <span class="plan-card-simple__title">{{ plan.product_name }}</span>
-                    <span class="plan-card-simple__status plan-card-simple__status--active">Activated</span>
-                    <span class="plan-card-simple__status plan-card-simple__status--cancel">Canceled</span>
-                    <span
-                      class="plan-card-simple__status plan-card-simple__status--deactivated">Deactivated</span>
+                    {% if plan.status == 'active' %}
+
+                      <span class="plan-card-simple__status plan-card-simple__status--active">Activated</span>
+                    {% elif plan.status == 'canceled' %}
+                      <span class="plan-card-simple__status plan-card-simple__status--cancel">Canceled</span>
+                    {% endif %}
+
+                    {#                    <span#}
+                    {#                      class="plan-card-simple__status plan-card-simple__status--deactivated">Deactivated</span>#}
                   </div>
                   <p class="plan-card-simple__duration">
                     Start date -
                     <span>
-                                    Jul 29 2022</span>
+                                    {{ plan.period_start }}</span>
                     for
                     <span>{{ plan.amount }}
                                     {{ plan.currency }}/{{ plan.interval_count }}
                       {{ plan.interval }}</span>
                     until
-                    <span>Aug 29 2022</span>
+                    <span>{{ plan.period_end }}</span>
                   </p>
                 </div>
               </div>
@@ -74,7 +79,7 @@
             {% endif %}
             {% if plan %}
               <button style="margin-left: 30px;" class="btn-outline plan-card-simple__btn" type="button"
-                      onclick="cancelSubscriptionConfirmation(true)">Cancel plan
+                      onclick="cancelSubscription(true)">Cancel plan
               </button>
             {% else %}
               <a href="{% url 'core:pick-plan' %}" class="btn-outline plan-card-simple__btn ms-lg-3" type="button">Update
@@ -456,36 +461,39 @@
     })
   </script>
 
-  {#  <script>#}
-  {#    /**********************#}
-  {#     * CANCEL SUBSCRIPTION#}
-  {#     **********************/#}
-  {#    const cancelSubscriptionConfirmation = (show) => {#}
-  {#      $('#cancel-subscription').modal(show ? 'show' : 'hide');#}
-  {#    }#}
-  {#    const cancelSubscription = () => {#}
-  {#      setLoading(true);#}
-  {#      fetch('/cancel-subscription', {#}
-  {#        method: 'post',#}
-  {#        headers: {#}
-  {#          'Content-type': 'application/json',#}
-  {#          'X-CSRFToken': "{{ csrf_token }}"#}
-  {#        }#}
-  {#      }).then(res => res.json()).then(res => {#}
-  {#        if (res.error) {#}
-  {#          console.log(res);#}
-  {#        } else if (res.success) {#}
-  {#          console.log(res);#}
-  {#        }#}
-  {#        console.log(res);#}
-  {#      }).finally(() => {#}
-  {#        setLoading(false);#}
-  {#        cancelSubscriptionConfirmation(false);#}
-  {#      });#}
-  {#    }#}
-  {##}
-  {#    $('#cancel-subscription-button').click(() => {#}
-  {#      cancelSubscription();#}
-  {#    })#}
-  {#  </script>#}
+  <script>
+    /**********************
+     * CANCEL SUBSCRIPTION
+     **********************/
+    const cancelSubscriptionConfirmation = (show) => {
+      $('#cancel-subscription').modal(show ? 'show' : 'hide');
+    }
+    const cancelSubscription = () => {
+      setLoading(true);
+
+      fetch('{% url 'core:cancel-subscription' %}', {
+        method: 'post',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': "{{ csrf_token }}"
+        }
+      }).then(res => res.json()).then(res => {
+        if (res.error) {
+          console.log(res);
+        } else if (res.success) {
+          console.log(res);
+          setLoading(false);
+          cancelSubscriptionConfirmation(true);
+        }
+        console.log(res);
+      }).finally(() => {
+        setLoading(false);
+        cancelSubscriptionConfirmation(false);
+      });
+    }
+
+    $('#cancel-subscription-button').click(() => {
+      cancelSubscription();
+    })
+  </script>
 {% endblock %}

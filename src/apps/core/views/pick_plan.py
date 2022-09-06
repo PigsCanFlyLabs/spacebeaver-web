@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views import View
 
 from constance import config
+from djstripe.models import Subscription
 
 from apps.core.consts import OnboardingStepsEnum
 
@@ -12,6 +13,12 @@ class PickPlanView(View):
     template = "pick_plan.html"
 
     def get(self, request):
+        # customer_id = request.user.customer_id
+        # subscription = Subscription.objects.filter(customer_id=customer_id).first()
+        # context = self.base_context
+        # if subscription:
+        #     context.update({"selected_plan": subscription})
+
         return render(request, self.template, self.base_context)
 
     def post(self, request):
