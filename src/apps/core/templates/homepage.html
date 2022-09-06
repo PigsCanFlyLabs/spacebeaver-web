@@ -20,77 +20,11 @@
           integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
           crossorigin="anonymous"></script>
   <title>Homepage</title>
-  <style>
-    .centered {
-      margin: 10px auto;
-
-    }
-
-    .page-container {
-      margin: 20px;
-    }
-  </style>
   {% render_block "css" %}
 
 </head>
 <body>
-  <header class="header">
-    <div class="header__wrapper main-wrapper">
-      <div class="header__content">
-        <a href="#" class="header__logo header-logo">
-          <img class="header-logo__img " src="{% static 'core/img/svg/logo-without-name.svg' %}" alt="">
-          <span class="header-logo__text">SpaceBeaver</span>
-        </a>
-
-        <div class="header__nav header-nav d-none d-lg-flex">
-          <a href="#" class="header-nav__link">Homepage</a>
-          <a href="#" class="header-nav__link">Products</a>
-          <a href="#" class="header-nav__link">About us</a>
-          <a href="#" class="header-nav__link">Pricing</a>
-          <a href="#" class="header-nav__link">Mobile app</a>
-        </div>
-
-        <div class="header__btns header-btns base-btn__group d-none d-lg-flex">
-          <a href="#" class="header-btns__btn base-btn base-btn--s base-btn--transparent">Sign in</a>
-          <a href="#" class="header-btns__btn base-btn base-btn--gray base-btn--s">Sign up</a>
-        </div>
-
-        <button class="navbar-toggler d-lg-none d-block" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    
-          <img class="navbar-toggler__icon" src="{% static 'core/img/svg/burger.svg' %}" alt="">
-        </button>
-    
-
-      </div>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class=" text-uppercase nav-link nav-link text-dark" href="#">Homepage</a>
-          </li>
-          <li class="nav-item">
-            <a class=" text-uppercase nav-link nav-link text-dark" href="#">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class=" text-uppercase nav-link text-dark" href="#">About us</a>
-          </li>
-          <li class="nav-item">
-            <a class=" text-uppercase nav-link text-dark" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class=" text-uppercase nav-link text-dark" href="#">Mobile app</a>
-          </li>
-          <li class="nav-item">
-            <a class=" text-uppercase nav-link text-dark" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class=" text-uppercase nav-link text-dark" href="#">sign up</a>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-  </header>
+  {% include "header.html" %}
 
   <section class="home__section home__section--usp">
     <div class="home-usp">
@@ -132,7 +66,7 @@
             <p class="home-features-item__text page-text">To receive real-time progress updates and exchange messages </p>
           </div>
 
-          <div class="home-features__item home-features-item">
+          <div class="home-features__item home-features-item home-features-item--arrows">
             <div class="home-features-item__ico-wrap">
               <img src="{% static 'core/img/svg/home-features-ico-2.svg' %}" alt="" class="home-features-item__ico">
             </div>
@@ -227,12 +161,12 @@
               <h3 class="home-benefits-content__title page-h3">
                 When you are beyond cell coverage
               </h3>
-              <ul class="home-benefits-content__list">
-                <li class="home-benefits-content___item page-text">Seamless messaging via satellite, cellular and Wi-Fi		</li>
-                <li class="home-benefits-content___item page-text">SOS alerting with 24/7 monitoring and progress updates		</li>
-                <li class="home-benefits-content___item page-text">Long messages of 950+ characters	</li>
-                <li class="home-benefits-content___item page-text">Location sharing</li>
-                <li class="home-benefits-content___item page-text">More messages at a lower cost</li>
+              <ul class="home-benefits-content__list base-check__list">
+                <li class="home-benefits-content___item page-text base-check__item">Seamless messaging via satellite, cellular and Wi-Fi		</li>
+                <li class="home-benefits-content___item page-text base-check__item">SOS alerting with 24/7 monitoring and progress updates		</li>
+                <li class="home-benefits-content___item page-text base-check__item">Long messages of 950+ characters	</li>
+                <li class="home-benefits-content___item page-text base-check__item">Location sharing</li>
+                <li class="home-benefits-content___item page-text base-check__item">More messages at a lower cost</li>
               </ul>
             </div>
           </div>
@@ -242,12 +176,12 @@
               <h3 class="home-benefits-content__title page-h3">
                 When you are beyond cell coverage
               </h3>
-              <ul class="home-benefits-content__list">
-                <li class="home-benefits-content___item page-text">Seamless messaging via satellite, cellular and Wi-Fi		</li>
-                <li class="home-benefits-content___item page-text">SOS alerting with 24/7 monitoring and progress updates		</li>
-                <li class="home-benefits-content___item page-text">Long messages of 950+ characters	</li>
-                <li class="home-benefits-content___item page-text">Location sharing</li>
-                <li class="home-benefits-content___item page-text">More messages at a lower cost</li>
+              <ul class="home-benefits-content__list base-check__list">
+                <li class="home-benefits-content___item page-text base-check__item">Seamless messaging via satellite, cellular and Wi-Fi		</li>
+                <li class="home-benefits-content___item page-text base-check__item">SOS alerting with 24/7 monitoring and progress updates		</li>
+                <li class="home-benefits-content___item page-text base-check__item">Long messages of 950+ characters	</li>
+                <li class="home-benefits-content___item page-text base-check__item">Location sharing</li>
+                <li class="home-benefits-content___item page-text base-check__item">More messages at a lower cost</li>
               </ul>
             </div>
             <div class="home-benefits__img-wrap">
@@ -348,7 +282,7 @@
         <div class="home-coverage__content">
           <div class="home-coverage__box">
             <h6 class="home-coverage__subtitle page-subtitle">Count on Space Beaver</h6>
-            <h2 class="home-coverage__title page-h2">Hello Space Beaver, Goodbye Coverage Gaps</h2>
+            <h3 class="home-coverage__title page-h3">Hello Space Beaver, Goodbye Coverage Gaps</h3>
             <p class="home-coverage__text page-text">
               Meet the affordable accessory that extends your smartphone messaging coverage to everywhere on Earth.
             </p>
@@ -361,82 +295,7 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer__wrapper main-wrapper">
-      <div class="footer__navigation">
-        <div class="footer__box footer__box--socials">
-          <a href="" class="footer__link">space@beaver.com</a>
-          <div class="footer__socials footer-socials">
-            <a href="#" class="footer-socials__link">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.1775 21C12.1179 21 12.0583 21 11.9983 20.9997C10.5873 21.0032 9.2836 20.9673 8.01572 20.8901C6.85333 20.8194 5.79228 20.4177 4.94713 19.7286C4.13163 19.0637 3.57474 18.1646 3.29197 17.0566C3.04587 16.092 3.03282 15.1451 3.02033 14.2292C3.01126 13.5721 3.00192 12.7935 3 12.0016C3.00192 11.2065 3.01126 10.4278 3.02033 9.7707C3.03282 8.85499 3.04587 7.90811 3.29197 6.94337C3.57474 5.83539 4.13163 4.9363 4.94713 4.27135C5.79228 3.58223 6.85333 3.18054 8.01586 3.10981C9.28373 3.03277 10.5877 2.99679 12.0017 3.00022C13.4131 2.9972 14.7164 3.03277 15.9843 3.10981C17.1467 3.18054 18.2077 3.58223 19.0529 4.27135C19.8685 4.9363 20.4253 5.83539 20.708 6.94337C20.9541 7.90797 20.9672 8.85499 20.9797 9.7707C20.9887 10.4278 20.9982 11.2065 21 11.9983V12.0016C20.9982 12.7935 20.9887 13.5721 20.9797 14.2292C20.9672 15.145 20.9543 16.0918 20.708 17.0566C20.4253 18.1646 19.8685 19.0637 19.0529 19.7286C18.2077 20.4177 17.1467 20.8194 15.9843 20.8901C14.7701 20.964 13.5228 21 12.1775 21V21ZM11.9983 19.5935C13.3863 19.5968 14.6608 19.5617 15.8989 19.4865C16.7778 19.4331 17.5399 19.1478 18.1642 18.6388C18.7413 18.1681 19.1387 17.5188 19.3454 16.7089C19.5503 15.9059 19.5621 15.0437 19.5735 14.21C19.5824 13.5573 19.5918 12.7841 19.5937 12C19.5918 11.2157 19.5824 10.4427 19.5735 9.78993C19.5621 8.9562 19.5503 8.09405 19.3454 7.29095C19.1387 6.48098 18.7413 5.83168 18.1642 5.36106C17.5399 4.85211 16.7778 4.56688 15.8989 4.51346C14.6608 4.43806 13.3863 4.40332 12.0016 4.40634C10.6138 4.40304 9.33922 4.43806 8.10115 4.51346C7.22221 4.56688 6.46014 4.85211 5.83582 5.36106C5.25874 5.83168 4.86129 6.48098 4.6546 7.29095C4.4497 8.09405 4.43789 8.95607 4.42649 9.78993C4.41757 10.4432 4.40823 11.2168 4.4063 12.0016C4.40823 12.783 4.41757 13.5567 4.42649 14.21C4.43789 15.0437 4.4497 15.9059 4.6546 16.7089C4.86129 17.5188 5.25874 18.1681 5.83582 18.6388C6.46014 19.1477 7.22221 19.4329 8.10115 19.4864C9.33922 19.5617 10.6141 19.5969 11.9983 19.5935V19.5935ZM11.9648 16.3945C9.54165 16.3945 7.57007 14.4232 7.57007 12C7.57007 9.5768 9.54165 7.60543 11.9648 7.60543C14.388 7.60543 16.3595 9.5768 16.3595 12C16.3595 14.4232 14.388 16.3945 11.9648 16.3945V16.3945ZM11.9648 9.01168C10.317 9.01168 8.97638 10.3523 8.97638 12C8.97638 13.6477 10.317 14.9883 11.9648 14.9883C13.6126 14.9883 14.9532 13.6477 14.9532 12C14.9532 10.3523 13.6126 9.01168 11.9648 9.01168V9.01168ZM16.8517 6.19918C16.2692 6.19918 15.797 6.67132 15.797 7.25387C15.797 7.83642 16.2692 8.30856 16.8517 8.30856C17.4343 8.30856 17.9064 7.83642 17.9064 7.25387C17.9064 6.67132 17.4343 6.19918 16.8517 6.19918Z" stroke-width="0.4"/>
-                </svg>
-                
-            </a>
-            <a href="#" class="footer-socials__link">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.41107 18.0376C7.69489 17.5003 9.27957 14.7856 13.309 13.3677C14.3241 16.0304 14.7694 18.2561 14.8948 19.0126C14.0078 19.3838 13.021 19.586 12 19.586C10.2712 19.586 8.67979 19.0025 7.41107 18.0376ZM12 2.9C6.97677 2.9 2.9 6.97677 2.9 12C2.9 17.0232 6.97677 21.1 12 21.1C17.0051 21.1 21.1 17.0234 21.1 12C21.1 6.97664 17.0051 2.9 12 2.9ZM14.2693 11.2391C14.122 10.8955 13.9736 10.5492 13.8112 10.216C16.3091 9.18294 17.5954 7.73289 17.9415 7.30099C18.9348 8.55106 19.5229 10.1032 19.5826 11.8051C18.9953 11.6915 16.7169 11.305 14.4031 11.568C14.3862 11.5267 14.3691 11.4841 14.3518 11.4409L14.3517 11.4404C14.3248 11.3733 14.2974 11.3048 14.2699 11.2406L14.2693 11.2391ZM12 4.432C13.8853 4.432 15.6337 5.13535 16.9582 6.27249C16.6804 6.63327 15.5397 7.97377 13.1081 8.90557C12.0087 6.89281 10.8113 5.21544 10.4041 4.64505C10.3918 4.62789 10.3803 4.61173 10.3695 4.59659C10.8927 4.49133 11.4316 4.432 12 4.432ZM8.69203 5.17807C9.0005 5.605 10.2382 7.35791 11.417 9.43421C8.15372 10.281 5.27123 10.3312 4.5832 10.3339C5.11906 8.05255 6.65163 6.16593 8.69203 5.17807ZM4.414 12.018V12.0176V12.0172V12.0167V12.0163V12.0159V12.0155V12.015V12.0146V12.0142V12.0138V12.0133V12.0129V12.0125V12.0121V12.0116V12.0112V12.0108V12.0103V12.0099V12.0095V12.0091V12.0086V12.0082V12.0078V12.0073V12.0069V12.0065V12.006V12.0056V12.0052V12.0047V12.0043V12.0039V12.0034V12.003V12.0026V12.0021V12.0017V12.0012V12.0008V12.0004V11.9999V11.9995V11.9991V11.9986V11.9982V11.9977V11.9973V11.9969V11.9964V11.996V11.9955V11.9951V11.9947V11.9942V11.9938V11.9933V11.9929V11.9924V11.992V11.9916V11.9911V11.9907V11.9902V11.9898V11.9893V11.9889V11.9884V11.988V11.9876V11.9871V11.9867V11.9862V11.9858V11.9853V11.9849V11.9844V11.984V11.9835V11.9831V11.9826V11.9822V11.9817V11.9813V11.9808V11.9804V11.9799V11.9795V11.979V11.9786V11.9781V11.9777V11.9772V11.9767V11.9763V11.9758V11.9754V11.9749V11.9745V11.974V11.9736V11.9731V11.9727V11.9722V11.9717V11.9713V11.9708V11.9704V11.9699V11.9695V11.969V11.9685V11.9681V11.9676V11.9672V11.9667V11.9663V11.9658V11.9653V11.9649V11.9644V11.964V11.9635V11.963V11.9626V11.9621V11.9616V11.9612V11.9607V11.9603V11.9598V11.9593V11.9589V11.9584V11.958V11.9575V11.957V11.9566V11.9561V11.9556V11.9552V11.9547V11.9542V11.9538V11.9533V11.9529V11.9524V11.9519V11.9515V11.951V11.9505V11.9501V11.9496V11.9491V11.9487V11.9482V11.9477V11.9473V11.9468V11.9463V11.9459V11.9454V11.9449V11.9445V11.944V11.9435V11.9431V11.9426V11.9421V11.9416V11.9412V11.9407V11.9402V11.9398V11.9393V11.9388V11.9384V11.9379V11.9374V11.937V11.9365V11.936V11.9355V11.9351V11.9346V11.9341V11.9337V11.9332V11.9327V11.9322V11.9318V11.9313V11.9308V11.9304V11.9299V11.9294V11.9289V11.9285V11.928V11.9275V11.9271V11.9266V11.9261V11.9256V11.9252V11.9247V11.9242V11.9238V11.9233V11.9228V11.9223V11.9219V11.9214V11.9209V11.9204V11.92V11.9195V11.919V11.9185V11.9181V11.9176V11.9171V11.9167V11.9162V11.9157V11.9152V11.9148V11.9143V11.9138V11.9133V11.9129V11.9124V11.9119V11.9114V11.911V11.9105V11.91V11.9095V11.9091V11.9086V11.9081V11.9076V11.9072V11.9067V11.9062V11.9057V11.9053V11.9048V11.9043V11.9038V11.9034V11.9029V11.9024V11.9019V11.9015V11.901V11.9005V11.9001V11.8996V11.8991V11.8986V11.8982V11.8977V11.8972V11.8967V11.8963V11.8958V11.8953V11.8948V11.8944V11.8939V11.8934V11.8929V11.8925V11.892V11.8915V11.891V11.8906V11.8901V11.8896V11.8891V11.8887V11.8882V11.8877V11.8873C5.11817 11.9018 8.5914 11.8643 12.1641 10.8058C12.3512 11.1802 12.5366 11.5536 12.7095 11.939C12.6982 11.942 12.6866 11.9451 12.6745 11.9482C12.6687 11.9498 12.6628 11.9513 12.6568 11.9528C12.611 11.9647 12.5599 11.978 12.5088 11.995C8.80408 13.1908 6.71 16.3033 6.27989 16.982C5.10741 15.6445 4.414 13.9075 4.414 12.018ZM19.4646 13.2966C19.117 15.3199 17.9708 17.0755 16.3572 18.2011C16.2381 17.5126 15.8228 15.4594 14.9258 12.9807C17.0907 12.6701 18.9846 13.1652 19.4646 13.2966Z" stroke-width="0.2"/>
-                </svg>
-            </a>
-            <a href="#" class="footer-socials__link">
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.77 3.6a9 9 0 0 1 9.953 2.416l-2.763 2.46a5.302 5.302 0 1 0 .046 6.996l2.796 2.422A9 9 0 1 1 9.77 3.599Z"/><circle cx="12.877" cy="11.877" r="2.959"/></svg>
-            </a>
-            <a href="#" class="footer-socials__link">
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.635 10.618c.486-.244.853-.517 1.105-.81.448-.53.669-1.233.669-2.104 0-.848-.221-1.572-.663-2.18-.738-.99-1.987-1.496-3.752-1.522H1v14.276h6.521c.735 0 1.416-.063 2.045-.192a4.02 4.02 0 0 0 1.635-.717c.41-.303.752-.68 1.025-1.123.43-.67.645-1.43.645-2.276 0-.82-.189-1.518-.563-2.091-.38-.574-.936-.994-1.673-1.26Zm-6.75-4.136h3.15c.693 0 1.263.074 1.711.222.519.215.778.653.778 1.32 0 .6-.198 1.018-.589 1.253-.394.236-.904.355-1.531.355H3.885v-3.15Zm4.981 9.068c-.348.168-.838.251-1.466.251H3.885v-3.807h3.563c.62.005 1.104.087 1.45.24.614.278.92.788.92 1.533 0 .878-.316 1.47-.952 1.783ZM22.168 4.094h-6.202V5.87h6.202V4.094ZM23.903 11.043c-.129-.826-.412-1.554-.855-2.182-.484-.711-1.099-1.232-1.847-1.562-.745-.33-1.584-.496-2.518-.495-1.567 0-2.84.49-3.826 1.464-.982.977-1.474 2.38-1.474 4.21 0 1.951.543 3.36 1.635 4.226 1.088.866 2.344 1.298 3.77 1.298 1.725 0 3.067-.514 4.026-1.538.613-.647.96-1.284 1.037-1.909h-2.858c-.165.309-.357.55-.576.726-.399.322-.917.483-1.552.483-.605 0-1.117-.133-1.544-.398-.706-.425-1.075-1.168-1.122-2.226h7.798c.012-.912-.018-1.613-.094-2.097Zm-7.633.274c.102-.686.35-1.23.746-1.633.395-.401.955-.603 1.67-.605.66 0 1.212.189 1.662.568.443.382.694.937.745 1.67H16.27Z" /></svg>
-            </a>
-            <a href="#" class="footer-socials__link">
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.298 3C3.908 3 3 3.913 3 5.113c0 1.173.882 2.112 2.246 2.112h.026c1.418 0 2.3-.939 2.3-2.112C7.544 3.913 6.689 3 5.298 3ZM3.242 8.894h4.064V21.12H3.242V8.894ZM17.274 8.607c-2.192 0-3.662 2.06-3.662 2.06V8.894H9.548V21.12h4.064v-6.828c0-.365.026-.73.134-.991.293-.73.962-1.486 2.085-1.486 1.47 0 2.058 1.12 2.058 2.764v6.541h4.064v-7.01c0-3.756-2.005-5.503-4.679-5.503Z" /></svg>
-            </a>
-            <a href="#" class="footer-socials__link">
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.687 12.008h-2.413V21H9.699v-8.993h-1.7V8.83h1.7V6.774C9.699 5.3 10.368 3 13.307 3l2.649.01v3.086h-1.923c-.313 0-.758.163-.758.865V8.83h2.724l-.312 3.178Z" /></svg>
-            </a>
-            <a href="#" class="footer-socials__link">
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4.13c-.818.362-1.69.602-2.599.718a4.51 4.51 0 0 0 1.984-2.51 8.977 8.977 0 0 1-2.86 1.1A4.505 4.505 0 0 0 17.231 2c-2.497 0-4.507 2.04-4.507 4.543 0 .36.03.706.104 1.036-3.75-.185-7.067-1.994-9.296-4.751a4.597 4.597 0 0 0-.618 2.296c0 1.573.805 2.967 2.004 3.774a4.43 4.43 0 0 1-2.038-.56v.05a4.555 4.555 0 0 0 3.614 4.463c-.368.101-.768.15-1.183.15-.289 0-.58-.017-.854-.078.585 1.799 2.243 3.121 4.215 3.164a9.023 9.023 0 0 1-5.593 1.937c-.37 0-.724-.017-1.079-.062A12.633 12.633 0 0 0 8.919 20c8.3 0 12.837-6.923 12.837-12.924 0-.2-.007-.395-.017-.587A9.034 9.034 0 0 0 24 4.13Z"/></svg>
-            </a>
-            <a href="#" class="footer-socials__link">
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.817 5.66c-.234-1.04-.917-1.86-1.784-2.14C18.45 3 12.117 3 12.117 3S5.783 3 4.2 3.5c-.85.28-1.55 1.12-1.783 2.16C2 7.56 2 11.5 2 11.5s0 3.96.417 5.84c.233 1.04.916 1.86 1.783 2.14 1.6.52 7.917.52 7.917.52s6.333 0 7.916-.5c.867-.28 1.55-1.1 1.784-2.14.416-1.9.416-5.84.416-5.84s.017-3.96-.416-5.86Z" /><path d="M10.102 7.86v7.28l5.266-3.64-5.266-3.64Z" fill="#fff"/></svg>
-            </a>
-          </div>
-        </div>
-        <div class="footer__box footer-links">
-          <div class="footer-links__box">
-            <div class="footer-links__list">
-              <a href="#" class="footer-links__link">Products</a>
-            </div>
-            <div class="footer-links__list">
-              <a href="#" class="footer-links__link">About us</a>
-              <a href="#" class="footer-links__sublink">Coverage</a>
-              <a href="#" class="footer-links__sublink">Pricing</a>
-            </div>
-            <div class="footer-links__list">
-              <a href="#" class="footer-links__link">Mobile app</a>
-            </div>
-          </div>
-          <div class="footer-links__box">
-            <div class="footer-links__list">
-              <a href="#" class="footer-links__link">FAQ</a>
-            </div>
-            <div class="footer-links__list">
-              <a href="#" class="footer-links__link">Warranty</a>
-            </div>
-            <div class="footer-links__list">
-              <a href="#" class="footer-links__link">News</a>
-            </div>
-          </div>
+  {% include "footer.html" %}
 
-        </div>
-      </div>
-      <div class="footer__content">
-        <a href="#" class="footer__logo footer-logo">
-          <img class="footer-logo__img " src="{% static 'core/img/svg/logo-without-name.svg' %}" alt="">
-          <span class="footer-logo__text">SpaceBeaver</span>
-        </a>
-        <div class="footer__copyright footer-copyright">
-          <a href="#" class="footer-copyright__link">Privacy Policy</a>
-          <p class="footer-copyright__text">2011-2022 © Space Beaver</p>
-        </div>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>

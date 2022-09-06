@@ -1,0 +1,203 @@
+{% load cms_tags sekizai_tags menu_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'core/style/style.css' %}">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
+  <title>Mobile</title>
+  {% render_block "css" %}
+
+</head>
+<body>
+  {% include "header.html" %}
+
+  <section class="home__section home__section--usp">
+    <div class="home-usp">
+      <div class="home-usp__wrapper main-wrapper">
+        <div class="home-usp__content">
+          <div class="home-usp__box home-usp__box--title">
+            <h1 class="home-usp__title page-h1">
+              App for Phones and Tablets
+            </h1>
+          </div>
+          <div class="home-usp__box home-usp__box--text">
+            <p class="home-usp__text page-text">
+              Messaging, SOS, Check-in, Weather Forecasts, GPS Location and More
+            </p>
+            <div class="home-usp__btns base-btn__group home-usp__btns--mobile">
+              <a href="#" class="home-usp-btns__btn">
+                <img src="{% static 'core/img/svg/download-ios.svg' %}" alt="Download ios">
+              </a>
+              <a href="#" class="home-usp-btns__btn">
+                <img src="{% static 'core/img/svg/download-android.svg' %}" alt="Download android">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="home-usp__img-wrap">
+        <img class="home-usp__img" src="{% static 'core/img/jpg/mobile-usp.jpg' %}" alt="USP image">
+      </div>
+    </div>
+  </section>
+
+  <section class="home__section home__section--features">
+    <div class="home-features">
+      <div class="home-features__wrapper main-wrapper">
+        <h6 class="home-features__subtitle page-subtitle text-center">Features</h6>
+        <h2 class="home-features__title page-h2 text-center">What Can Space Beaver do?</h2>
+        <div class="home-features__list">
+          <div class="home-features__item home-features-item">
+            <div class="home-features-item__ico-wrap">
+              <img src="{% static 'core/img/svg/mobile-features-1.svg' %}" alt="" class="home-features-item__ico">
+            </div>
+            <h4 class="home-features-item__title page-h4">Message anywhere</h4>
+            <p class="home-features-item__text page-text">To receive real-time progress updates and exchange messages</p>
+          </div>
+
+          <div class="home-features__item home-features-item">
+            <div class="home-features-item__ico-wrap">
+              <img src="{% static 'core/img/svg/mobile-features-2.svg' %}" alt="" class="home-features-item__ico">
+            </div>
+            <h4 class="home-features-item__title page-h4">Manage your contacts</h4>
+            <p class="home-features-item__text page-text">If something goes wrong, SOS alerting ensures you can get help.</p>
+          </div>
+
+          <div class="home-features__item home-features-item">
+            <div class="home-features-item__ico-wrap">
+              <img src="{% static 'core/img/svg/mobile-features-3.svg' %}" alt="" class="home-features-item__ico">
+            </div>
+            <h4 class="home-features-item__title page-h4">Send SOS notifications</h4>
+            <p class="home-features-item__text page-text">Easily check in with one button press to let others know you’re OK.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home__section home__section--coverage">
+    <div class="home-coverage home-coverage--mobile">
+      <div class="home-coverage__wrapper main-wrapper">
+        <div class="home-coverage__content">
+          <div class="home-coverage__box">
+            <h6 class="home-coverage__subtitle page-subtitle">Count on Space Beaver</h6>
+            <h3 class="home-coverage__title page-h3">Hello Space Beaver, Goodbye Coverage Gaps</h3>
+            <p class="home-coverage__text page-text">
+              Meet the affordable accessory that extends your smartphone messaging coverage to everywhere on Earth.
+            </p>
+          </div>
+          <div class="home-coverage__img-wrap">
+            <img src="{% static 'core/img/jpg/mobile-coverage-img.png' %}" alt="" class="home-coverage__img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home__section home__section--image mb-4">
+    <div class="home-image">
+      <div class="home-image__wrapper main-wrapper">
+        <div class="home-image__content">
+          <div class="home-image__box">
+            <img src="{% static 'core/img/jpg/mobile-home-img-1.png' %}" alt="" class="home-image__img">
+          </div>
+          <div class="home-image__box home-image__box--text">
+            <div class="home-image__text-wrap">
+            <h6 class="home-image__subtitle page-subtitle">Count on Space Beaver</h6>
+            <h3 class="home-image__title page-h3">
+              Hello Space Beaver, Goodbye Coverage Gaps
+            </h3>
+            <p class="home-image__text page-text">Meet the affordable accessory that extends your smartphone messaging coverage to everywhere on Earth.</p>
+            <div class="home-image__btns base-btn__group">
+              <a href="#" class="home-image__btn base-btn base-btn--black">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home__section home__section--coverage">
+    <div class="home-coverage home-coverage--mobile-green">
+      <div class="home-coverage__wrapper main-wrapper">
+        <div class="home-coverage__content">
+          <div class="home-coverage__box">
+            <h6 class="home-coverage__subtitle page-subtitle">Count on Space Beaver</h6>
+            <h3 class="home-coverage__title page-h3">For Anyone Who Ventures Beyond Cell Coverage</h3>
+            <p class="home-coverage__text page-text">
+              Meet the affordable accessory that extends your smartphone messaging coverage to everywhere on Earth.
+            </p>
+          </div>
+          <div class="home-coverage__img-wrap">
+            <img src="{% static 'core/img/jpg/mobile-2-coverage-img.png' %}" alt="" class="home-coverage__img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home__section home__section--image mb-4">
+    <div class="home-image">
+      <div class="home-image__wrapper main-wrapper">
+        <div class="home-image__content">
+          <div class="home-image__box">
+            <img src="{% static 'core/img/jpg/mobile-home-img-2.png' %}" alt="" class="home-image__img">
+          </div>
+          <div class="home-image__box home-image__box--text">
+            <div class="home-image__text-wrap">
+            <h6 class="home-image__subtitle page-subtitle">Count on Space Beaver</h6>
+            <h3 class="home-image__title page-h3">
+              When you're within cell coverage
+            </h3>
+            <p class="home-image__text page-text">Meet the affordable accessory that extends your smartphone messaging coverage to everywhere on Earth.</p>
+            <div class="home-image__btns base-btn__group">
+              <a href="#" class="home-image__btn base-btn base-btn--black">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="mobile-page__section mobile__section--reviews">
+    <div class="mobile-page-reviews">
+      <div class="mobile-page-reviews__wrapper main-wrapper">
+        <div class="mobile-page-reviews__content">
+          <div class="mobile-page-reviews__slider">
+            <div class="mobile-page-reviews__item">
+              <div class="mobile-page-reviews__img-wrap">
+                <img src="{% static 'core/img/jpg/mobile-page-review-1.png' %}" alt="" class="mobile-page-reviews__img"></div>
+                <h4 class="mobile-page-reviews__title text-center">Space Beaver is an indispensible part of my hiking gear. My spouse can finally stop stressing every time I trek out</h4>
+                <p class="mobile-page-reviews__name page-text text-center">Carter</p>
+                <p class="mobile-page-reviews__text page-text text-center">Space Beaver enthusiast</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  {% include "footer.html" %}
+
+</body>
+</html>

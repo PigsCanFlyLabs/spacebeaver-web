@@ -97,7 +97,7 @@ view_urlpatterns = [
     ),
     # EXAMPLE PATH FOR KIRILL
     path("homepage/", TemplateView.as_view(template_name="homepage.html")),
-    path("mobile/", TemplateView.as_view(template_name="about_example.html")),
+    path("mobile/", TemplateView.as_view(template_name="page-mobile.html")),
     path("product/", TemplateView.as_view(template_name="about_example.html")),
     path("about/", TemplateView.as_view(template_name="about_example.html")),
     path("faq/", TemplateView.as_view(template_name="about_example.html")),
