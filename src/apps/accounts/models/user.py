@@ -209,3 +209,9 @@ class User(AbstractBaseUser, PermissionsMixin):
             customer__email=self.email, status="active"
         ).exists()
         return have_subscription and not have_active_subscription
+
+
+class EmailChangeAuth(models.Model):
+    uuid = models.CharField(max_length=42)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    new_email = models.CharField(max_length=256)

@@ -1,4 +1,5 @@
 import datetime
+import uuid
 
 from django import forms
 from django.conf import settings
@@ -10,6 +11,7 @@ from django.views import View
 
 from templated_email import send_templated_mail
 
+from apps.accounts.models.user import EmailChangeAuth
 from apps.core.consts import ProfileStepsEnum
 
 
@@ -88,12 +90,18 @@ class SettingsView(View):
                 request.user.email_reset_request_time
                 + datetime.timedelta(days=3)
             ):
-                request.user.customer.email = change_email
-                request.user.customer.save()
-                request.user.email = change_email
-                request.user.save()
-                self.email_changed_notification = True
-
+                email_change = EmailChangeAuth.objects.filter(
+                    uuid=change_email
+                ).first()
+                if email_change:
+                    request.user.customer.email = email_change.new_email
+                    request.user.customer.save()
+                    request.user.email = email_change.new_email
+                    request.user.save()
+                    self.email_changed_notification = True
+                    email_change.delete()
+                else:
+                    self.expired_link = True
             else:
                 self.expired_link = True
 
@@ -173,7 +181,15 @@ class SettingsView(View):
         return self.get(request)
 
     def change_email_url(self, request, new_email):
-        reset_url = f"{request.build_absolute_uri()}?change_email={new_email}"
+
+        change_mail_uuid = uuid.uuid4()
+        EmailChangeAuth.objects.create(
+            new_email=new_email, uuid=change_mail_uuid, user=request.user
+        )
+
+        reset_url = (
+            f"{request.build_absolute_uri()}?change_email={change_mail_uuid}"
+        )
         email_template = "change_email_confirmation.email"
         send_templated_mail(
             email_template,

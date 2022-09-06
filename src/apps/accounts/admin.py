@@ -5,6 +5,7 @@ from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 
 from apps.accounts.forms import User
+from apps.accounts.models.user import EmailChangeAuth
 
 
 @admin.register(User)
@@ -32,3 +33,8 @@ class UserAdmin(BaseUserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
+
+
+@admin.register(EmailChangeAuth)
+class EmailChangeAuthAdmin(admin.ModelAdmin):
+    list_display = ("new_email", "user")
