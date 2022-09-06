@@ -51,14 +51,22 @@ class BlockedNumbersView(View):
             "show_success_notification": getattr(
                 self, "success_notification", False
             ),
+            "show_success_unblock_notification": getattr(
+                self, "show_success_unblock_notification", False
+            ),
             "blocked_number": getattr(self, "blocked_number", ""),
+            "unblocked_number": getattr(self, "unblocked_number", ""),
         }
 
 
-class DeleteBlockedNumberView(View):
+class DeleteBlockedNumberView(BlockedNumbersView):
     def post(self, request, pk):
-        BlockedNumber.object.delete_user_blocked_number(pk, request.user)
-        return redirect(reverse("core:blocked-numbers"))
+        unblocked_number = BlockedNumber.object.delete_user_blocked_number(
+            pk, request.user
+        )
+        self.show_success_unblock_notification = True
+        self.unblocked_number = unblocked_number.number
+        return self.get(request)
 
 
 __all__ = ["DeleteBlockedNumberView", "BlockedNumbersView"]

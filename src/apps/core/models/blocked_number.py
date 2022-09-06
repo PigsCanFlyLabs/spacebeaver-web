@@ -19,6 +19,7 @@ class BlockedNumberManager(models.Manager):
         number = self.get(id=number_id)
         number.user.remove(user)
         number.save()
+        return number
 
 
 class BlockedNumber(models.Model):

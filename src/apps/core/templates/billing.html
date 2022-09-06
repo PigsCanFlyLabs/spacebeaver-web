@@ -377,8 +377,8 @@
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       updatePaymentMethodModal();
-      {#setLoading(true);#}
-      {#createPaymentMethod({cardNumberElement});#}
+      setLoading(true);
+      createPaymentMethod({cardNumberElement});
     });
   </script>
 
