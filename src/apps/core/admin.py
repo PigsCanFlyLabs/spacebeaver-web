@@ -6,7 +6,12 @@ from apps.core.models import BlockedNumber, Device
 
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
-    list_display = ("serial_number", "used")
+    list_display = (
+        "serial_number",
+        "used",
+        "external_phone",
+        "external_email",
+    )
 
 
 @admin.register(BlockedNumber)

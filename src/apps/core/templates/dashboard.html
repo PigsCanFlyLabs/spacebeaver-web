@@ -13,13 +13,13 @@
     </div>
   </div>
   <div>
-    {% if user.external_email != None %}
-      <span><i class="fa-solid fa-envelope m-3"></i> {{ user.external_email }}</span><br>
+    {% if external_email != None %}
+      <span><i class="fa-solid fa-envelope m-3"></i> {{ external_email }}</span><br>
     {% else %}
 
     {% endif %}
-    {% if user.external_email != None %}
-      <span><i class="fa-solid fa-phone m-3"></i> {{ user.external_phone }}</span>
+    {% if external_email != None %}
+      <span><i class="fa-solid fa-phone m-3"></i> {{ external_phone }}</span>
     {% else %}
 
     {% endif %}

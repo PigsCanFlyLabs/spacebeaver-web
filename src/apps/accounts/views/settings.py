@@ -94,8 +94,10 @@ class SettingsView(View):
                     uuid=change_email
                 ).first()
                 if email_change:
-                    request.user.customer.email = email_change.new_email
-                    request.user.customer.save()
+                    customer = request.user.customer
+                    if customer:
+                        request.user.customer.email = email_change.new_email
+                        request.user.customer.save()
                     request.user.email = email_change.new_email
                     request.user.save()
                     self.email_changed_notification = True
@@ -195,7 +197,11 @@ class SettingsView(View):
             email_template,
             settings.DEFAULT_FROM_EMAIL,
             [request.user.email],
-            {"username": request.user.full_name, "reset_url": reset_url},
+            {
+                "username": request.user.full_name,
+                "reset_url": reset_url,
+                "root_link": request._current_scheme_host,
+            },
         )
 
     def send_confirmation_email(self, request, change_email):
@@ -212,7 +218,11 @@ class SettingsView(View):
             email_template,
             settings.DEFAULT_FROM_EMAIL,
             [request.user.email],
-            {"username": request.user.full_name, "reset_url": reset_url},
+            {
+                "username": request.user.full_name,
+                "reset_url": reset_url,
+                "root_link": request._current_scheme_host,
+            },
         )
 
     @property

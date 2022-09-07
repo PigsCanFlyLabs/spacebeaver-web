@@ -1,13 +1,11 @@
-{% block plain %}
-Hi {{ username }}
+{% block subject %} Spacebeaver {% endblock %}
+{% block html %}
+<h3>Hi {{ username }}</h3>
 
-We received a request for a email change on your Spacebeaver account.
-You can change your email here
+<p>We received a request for a email change on your Spacebeaver account.</p>
+<p>You can change your email <a href="{{reset_url}}">here</a></p>
 
-{{reset_url}}
+<p>Thanks</p>
 
-Thanks
-
-Spacebeaver team
+<p><a href="{{root_link}}">Spacebeaver</a> team</p>
 {% endblock %}
-

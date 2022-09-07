@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 
 from apps.core.consts import ProfileStepsEnum
+from apps.core.models import Device
 from apps.core.outside_db.services import get_user_message_count
 
 
@@ -11,6 +12,9 @@ class DashboardView(View):
     def get(self, request):
         user = request.user
         # TODO select all in single query
+
+        device = Device.objects.filter(user_id=request.user.id).first()
+
         daily_message_count = get_user_message_count(
             user.twillion_number, "day"
         )
@@ -28,6 +32,8 @@ class DashboardView(View):
                 "daily": daily_message_count,
                 "monthly": monthly_message_count,
                 "yearly": yearly_message_count,
+                "external_phone": device.external_phone if device else None,
+                "external_email": device.external_email if device else None,
             },
         )
 

@@ -43,6 +43,8 @@ class Device(models.Model):
     )
 
     objects = DeviceManager()
+    external_email = models.EmailField(null=True, blank=True)
+    external_phone = models.CharField(max_length=20, null=True, blank=True)
 
     def __str__(self):
         return f"Device: {self.serial_number}"
