@@ -2,12 +2,16 @@ from enum import Enum
 
 
 class OnboardingStepsEnum(Enum):
-    SIGN_UP = 1
-    DETAILS = 2
-    ADD_DEVICE = 3
-    PICK_PLAN = 4
-    PAYMENT = 5
-    ACTIVATION = 6
+    SIGN_UP = 0
+    # DETAILS = 2
+    # ADD_DEVICE = 3
+    # PICK_PLAN = 4
+    # PAYMENT = 5
+    # ACTIVATION = 6
+    DETAILS = 1
+    ADD_DEVICE = 2
+    PICK_PLAN = 3
+    PAYMENT = 4
 
 
 class ProfileStepsEnum(Enum):

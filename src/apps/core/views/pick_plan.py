@@ -22,6 +22,11 @@ class PickPlanView(View):
         return render(request, self.template, self.base_context)
 
     def post(self, request):
+        request.user.selected_plan = 1
+        if request.user.last_wizard_step <= 3:
+            request.user.last_wizard_step += 1
+        request.user.save()
+
         return redirect(reverse("core:subscription"))
 
     @property

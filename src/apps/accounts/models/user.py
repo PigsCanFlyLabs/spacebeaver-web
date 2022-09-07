@@ -131,7 +131,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
     company = models.CharField(max_length=100, blank=True, null=True)
-    country = CountryField(blank=True, null=True)
+    country = CountryField(blank=False, null=True)
     twillion_number = models.CharField(max_length=100, null=True, blank=True)
     company_email = models.EmailField(null=True, blank=True)
     external_email = models.EmailField(null=True, blank=True)
@@ -139,6 +139,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email_reset_request_time = models.DateTimeField(default=timezone.now)
     password_reset_request_time = models.DateTimeField(default=timezone.now)
+    last_wizard_step = models.IntegerField(default=1)
+    selected_plan = models.IntegerField(default=0)
 
     objects = UserManager()
 

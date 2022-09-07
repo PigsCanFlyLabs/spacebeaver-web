@@ -15,7 +15,6 @@ class PersonalInfoView(views.View):
     form_class = PersonalInfoForm
 
     def get(self, request):
-
         form = self.form_class(
             initial={
                 "full_name": request.user.full_name,
@@ -32,6 +31,9 @@ class PersonalInfoView(views.View):
         if form.is_valid():
             form.save()
             request.user.create_customer_account()
+            if request.user.last_wizard_step <= 1:
+                request.user.last_wizard_step += 1
+                request.user.save()
             return redirect(reverse("core:add-device"))
         return render(
             request, self.template, {"form": form, **self.base_context}

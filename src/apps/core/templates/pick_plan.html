@@ -2,35 +2,41 @@
 
 
 {% block content %}
+
+  <style>
+    .selected-plan {
+      box-shadow: 0px 0px 10px  violet;
+    }
+  </style>
   <script>
 
-    function createSubscription() {
-      $.ajax({
-        url: "{% url 'core:create-subscription' %}",
-        method: "POST",
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        headers: {'X-CSRFToken': '{{ csrf_token }}'},
-        data: {
-        }
-      }).done(function () {
-        alert("success");
-      })
-        .fail(function () {
-          alert("error");
-        })
-        .always(function () {
-          alert("complete");
-        });
+    $(document).ready(function () {
+      {% if user.selected_plan != 0 %}
+        $('#plan-card').addClass('selected-plan')
+      {% endif %}
 
-      alert("123123");
-    }
+      $('#non-select-plan-alert').hide();
+      $('#next-btn').click(function () {
+        {% if user.selected_plan == 0 %}
+          $('#non-select-plan-alert').show();
+          return false;
+        {% else %}
+          return true;
+        {% endif %}
+      })
+    })
 
 
   </script>
+
+  <div id="non-select-plan-alert" class="alert alert-danger" role="alert">
+    No plan selected, please select a plan
+  </div>
+
+
   <form class="form-body form-body__flex-layout form" action="" method="post">
     {% csrf_token %}
-    <div class="plan-card mb-2">
+    <div id="plan-card" class="plan-card mb-2 ">
       <div class="plan-card__header d-flex align-items-center">
         <div class="plan-card__img-wrap gap-right">
           <!-- <img class="plan-card__img" src="./img/svg/icon-mirroring-screen.svg" alt=""> -->
@@ -44,13 +50,14 @@
 
       {{ description }}
 
-            <a href="{% url 'core:subscription' %}" class="plan-card__btn mt-3">Select plan</a>
-{#      <a class="plan-card__btn mt-3">Select plan</a>#}
+      {#            <a href="{% url 'core:subscription' %}" class="plan-card__btn mt-3">Select plan</a>#}
+      {#      <a class="plan-card__btn mt-3">Select plan</a>#}
+      <button type="submit" class="plan-card__btn mt-3">Select plan</button>
+
     </div>
     <footer class="form-body__footer col d-lg-flex">
 
-      <button type="submit" class="btn form-body__footer-btn order-md-2" data-bs-toggle="modal"
-              data-bs-target="#successfullyPaid">Next
+      <button id="next-btn" class="btn form-body__footer-btn order-md-2">Next
       </button>
 
       <a type="button" href="{{ back_url }}"

@@ -34,6 +34,9 @@ class AddDeviceView(views.View):
             device.assign_to_user(request.user)
             device.set_nickname(form.cleaned_data["nickname"])
             device.save()
+            if request.user.last_wizard_step <= 2:
+                request.user.last_wizard_step += 1
+                request.user.save()
             return redirect(reverse("core:pick-plan"))
         return render(
             request, self.template, {"form": form, **self.base_context}

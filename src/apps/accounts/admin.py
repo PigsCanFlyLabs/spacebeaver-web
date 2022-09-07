@@ -17,7 +17,15 @@ class UserAdmin(BaseUserAdmin):
         (None, {"fields": ("email", "password")}),
         (
             _("Personal info"),
-            {"fields": ("full_name", "external_email", "external_phone")},
+            {
+                "fields": (
+                    "full_name",
+                    "external_email",
+                    "external_phone",
+                    "last_wizard_step",
+                    "selected_plan",
+                )
+            },
         ),
         (
             _("Permissions"),
