@@ -1745,6 +1745,55 @@ body {
 
 .header-nav {
   flex: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav__item {
+  margin: 0;
+  position: relative;
+  margin-right: 32px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .header-nav__item {
+    margin-right: 15px;
+  }
+}
+
+.header-nav__item--dropdown i {
+  transition: all 0.2s ease;
+  font-size: 10px;
+  margin-left: 7px;
+  position: relative;
+  top: 1px;
+  
+}
+
+.header-nav__item--dropdown:hover {
+  cursor: pointer;
+}
+
+.header-nav__item--dropdown:hover i {
+  color: #316AFF;
+  transform: rotate(180deg);
+}
+
+.header-nav__item--dropdown:hover .header-nav__link {
+  color: #316AFF;
+}
+
+.header-nav__item--dropdown:hover .header-nav__dropdown-wrap { 
+  top: 20px; 
+}
+
+
+.header-nav__item--dropdown:hover .header-nav__dropdown { 
+  opacity: 1; 
+  margin-top: 20px;
 }
 
 .header-nav__link {
@@ -1754,19 +1803,73 @@ body {
   font-weight: 500;
   color: #1F1F1F;
   text-decoration: none;
-  margin-right: 32px;
   transition: all 0.2s ease;
+  position: relative;
 }
 
-@media (max-width: 1100px) {
-  .header-nav__link {
-    margin-right: 15px;
-  }
-}
+
 
 .header-nav__link:hover {
   color: #316AFF;
 }
+
+.header-nav__dropdown-wrap {
+	width: 160px;
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	top: -400px;
+}
+
+.header-nav__dropdown {
+	min-width: 160px;
+	background: white;
+	float: left;
+	position: relative;
+	margin-top: 0px;
+	opacity: 0;
+	border-radius: 4px;
+	box-shadow: 0 1px 6px rgba(0,0,0,.15);
+	transition: all .1s ease-out;
+}
+
+.header-nav__dropdown::before {
+  content: "";
+  width: 0;
+	height: 0;
+	position: absolute;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid white;
+	top: -8px;
+	left: 20%;
+	margin-left: -8px;
+}
+
+
+
+.header-nav-dropdown__list {
+  padding: 15px;
+  list-style: none;
+}
+
+.header-nav-dropdown__list a {
+  font-family: Aeonik, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #1F1F1F;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.header-nav-dropdown__list a:hover {
+  color: #316AFF;
+}
+
 
 .header-btns__btn:first-child {
   margin-right: 20px;
@@ -3000,6 +3103,18 @@ body {
 .home-image__btns {
   margin-top: 40px;
 }
+
+.home-image__btn {
+
+}
+
+@media  (max-width: 991px) {
+  .home-image__btn {
+    width: 100%;
+  }
+}
+
+/* FOOTER */
 
 .footer {}
 

@@ -6,13 +6,27 @@
         <span class="header-logo__text">SpaceBeaver</span>
       </a>
 
-      <div class="header__nav header-nav d-none d-lg-flex">
-        <a href="#" class="header-nav__link">Homepage</a>
-        <a href="#" class="header-nav__link">Products</a>
-        <a href="#" class="header-nav__link">About us</a>
-        <a href="#" class="header-nav__link">Pricing</a>
-        <a href="#" class="header-nav__link">Mobile app</a>
-      </div>
+      <ul class="header__nav header-nav d-none d-lg-flex">
+        <li class="header-nav__item"><a href="#" class="header-nav__link">Homepage</a></li>
+        <li class="header-nav__item header-nav__item--dropdown">
+          <a href="#" class="header-nav__link">Products</a>
+          <i class="fa-solid fa-chevron-down"></i>
+          <div class="header-nav__dropdown-wrap">
+            <div class="header-nav__dropdown">
+              <ul class="header-nav-dropdown__list">
+                <li><a href="#">Sub-1</a></li>
+                <li><a href="#">Sub-2</a></li>
+                <li><a href="#">Sub-3</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="header-nav__item"><a href="#" class="header-nav__link">About us</a></li>
+        <li class="header-nav__item"><a href="#" class="header-nav__link">Pricing</a></li>
+        <li class="header-nav__item"><a href="#" class="header-nav__link">Mobile app</a></li>
+        
+   
+      </ul>
 
       <div class="header__btns header-btns base-btn__group d-none d-lg-flex">
         <a href="#" class="header-btns__btn base-btn base-btn--s base-btn--transparent">Sign in</a>
