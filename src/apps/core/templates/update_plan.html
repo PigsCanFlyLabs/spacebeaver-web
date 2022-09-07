@@ -1,0 +1,62 @@
+{% extends 'dashboard-layout.html' %}
+
+{% block content %}
+
+  <style>
+    .selected-plan {
+      box-shadow: 0px 0px 10px  violet;
+    }
+  </style>
+  <script>
+
+    $(document).ready(function () {
+      {% if user.selected_plan != 0 %}
+        $('#plan-card').addClass('selected-plan')
+      {% endif %}
+
+      $('#non-select-plan-alert').hide();
+      $('#next-btn').click(function () {
+        {% if user.selected_plan == 0 %}
+          $('#non-select-plan-alert').show();
+          return false;
+        {% else %}
+          return true;
+        {% endif %}
+      })
+    })
+
+
+  </script>
+
+  <div id="non-select-plan-alert" class="alert alert-danger" role="alert">
+    No plan selected, please select a plan
+  </div>
+
+
+  <form class="form-body form-body__flex-layout form" action="" method="post">
+    {% csrf_token %}
+    <div id="plan-card" class="plan-card mb-2 ">
+      <input type="hidden" name="selected_plan" {% if user.selected_plan == 1 %} value="-1" {% else %} value="1" {% endif %} />
+      <div class="plan-card__header d-flex align-items-center">
+        <div class="plan-card__img-wrap gap-right">
+          <!-- <img class="plan-card__img" src="./img/svg/icon-mirroring-screen.svg" alt=""> -->
+          <img class="plan-card__img" src="{{ image }}" alt="">
+        </div>
+        <h2 class="plan-card__title">{{ plan_title }}</h2>
+      </div>
+      <div class="plan-card__pricing d-flex align-items-baseline">
+        <span class="plan-card__price">{{ price }}$</span><span class="plan-card__period">/month</span>
+      </div>
+
+      {{ description }}
+
+      {#            <a href="{% url 'core:subscription' %}" class="plan-card__btn mt-3">Select plan</a>#}
+      {#      <a class="plan-card__btn mt-3">Select plan</a>#}
+      <button type="submit" class="plan-card__btn mt-3">{% if user.selected_plan == 1 %}Cancel plan {% else %} Select plan  {% endif %}</button>
+
+    </div>
+    <footer class="form-body__footer col d-lg-flex">
+
+    </footer>
+  </form>
+{% endblock %}

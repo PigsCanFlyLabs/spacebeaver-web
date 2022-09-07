@@ -82,6 +82,11 @@ view_urlpatterns = [
         name="new-password-link",
     ),
     path(
+        "update-plan/",
+        login_required(UpdatePlanView.as_view()),
+        name="update-plan",
+    ),
+    path(
         "forget-password/",
         auth_view.PasswordResetView.as_view(
             template_name="forget_password.html",

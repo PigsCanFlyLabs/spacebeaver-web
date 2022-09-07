@@ -121,6 +121,8 @@ class CancelSubscriptionAPIView(APIView):
             user = request.user
             subscription = user.customer_subscription
             delete_subscription(subscription.id)
+            request.user.selected_plan = 0
+            request.user.save()
             return Response({"success": True}, status=status.HTTP_200_OK)
         except Exception as e:
             if hasattr(e, "user_message"):
