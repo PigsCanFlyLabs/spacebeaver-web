@@ -26,7 +26,7 @@
 <body>
 {% cms_toolbar %}
 {% if user.dont_have_active_subscriptions %}
-  <div class="alert alert-danger" role="alert">
+  <div id="no-have-subscription" class="alert alert-danger" role="alert">
     You have not active subscription. Click <a href="{% url 'core:update-plan' %}">here</a> to solve it.
   </div>
 {% endif %}
@@ -79,7 +79,7 @@
             <div
               class="progress-item__step   {% if step == 1 %}progress-item__step--active{% endif %} {% if step > 1 %}progress-item__step--checked{% endif %}">
               <span class="progress-item__number {% if step == 1 %}progress-item__number--active{% endif %}">1</span>
-              <span class="progress-item__check {% if step > 1 %}progress-item__check--checked{% endif %}">
+              <span class="progress-item__check {% if user.last_wizard_step > 1 and step != 1 %}progress-item__check--checked{% endif %}">
                           <img class="progress-item__check-icon" src=" {% static 'core/img/svg/icon-check.svg' %}"
                                alt="">
 
@@ -93,8 +93,8 @@
              class="progress-item {% if step == 2 %}progress-item--active{% endif %}">
             <div
               class="progress-item__step   {% if step == 2 %}progress-item__step--active{% endif %} {% if step > 2 %}progress-item__step--checked{% endif %}">
-              <span class="progress-item__number {% if step == 2 %}progress-item__number--active{% endif %}">2</span>
-              <span class="progress-item__check {% if step > 2 %}progress-item__check--checked{% endif %}">
+              {% if user.last_wizard_step <= 2 or step == 2 %}<span class="progress-item__number {% if step == 2 %}progress-item__number--active{% endif %}">2</span> {% endif %}
+              <span class="progress-item__check {% if step > 2 or user.last_wizard_step > 2 and step != 2 %}progress-item__check--checked{% endif %}">
                           <img class="progress-item__check-icon" src=" {% static 'core/img/svg/icon-check.svg' %}"
                                alt="">
 
@@ -108,8 +108,8 @@
                                                  class="progress-item {% if step == 3 %}progress-item--active{% endif %}">
             <div
               class="progress-item__step   {% if step == 3 %}progress-item__step--active{% endif %} {% if step > 3 %}progress-item__step--checked{% endif %}">
-              <span class="progress-item__number {% if step == 3 %}progress-item__number--active{% endif %}">3</span>
-              <span class="progress-item__check {% if step > 3 %}progress-item__check--checked{% endif %}">
+              {% if user.last_wizard_step <= 3 or step == 3 %}<span class="progress-item__number {% if step == 3 %}progress-item__number--active{% endif %}">3</span> {% endif %}
+              <span class="progress-item__check {% if step > 3 or user.last_wizard_step > 3 and step != 3 %}progress-item__check--checked{% endif %}">
                           <img class="progress-item__check-icon" src=" {% static 'core/img/svg/icon-check.svg' %}"
                                alt="">
 
@@ -122,9 +122,9 @@
           <a {% if user.last_wizard_step >= 4 %}href="{% url 'core:subscription' %}"{% endif %}
              class="progress-item {% if step == 4 %}progress-item--active{% endif %}">
             <div
-              class="progress-item__step   {% if step == 4 %}progress-item__step--active{% endif %} {% if step > 5 %}progress-item__step--checked{% endif %}">
-              <span class="progress-item__number {% if step == 4 %}progress-item__number--active{% endif %}">4</span>
-              <span class="progress-item__check {% if step > 4 %}progress-item__check--checked{% endif %}">
+              class="progress-item__step   {% if step == 4 %}progress-item__step--active{% endif %} {% if step > 4 %}progress-item__step--checked{% endif %}">
+              {% if user.last_wizard_step <= 4 or step == 4 %}<span class="progress-item__number {% if step == 4 %}progress-item__number--active{% endif %}">4</span>{% endif %}
+              <span class="progress-item__check {% if step > 4 or user.last_wizard_step > 4 and step != 4 %}progress-item__check--checked{% endif %}">
                           <img class="progress-item__check-icon" src=" {% static 'core/img/svg/icon-check.svg' %}"
                                alt="">
 
