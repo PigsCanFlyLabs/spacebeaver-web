@@ -35,7 +35,7 @@
 </head>
 <body>
 {% cms_toolbar %}
-{% if user.dont_have_active_subscriptions and user.selected_plan == 0 %}
+{% if user.dont_have_active_subscriptions %}
   <div class="alert alert-danger" role="alert">
     You have not active subscription. Click <a href="{% url 'core:update-plan' %}">here</a> to solve it.
   </div>
