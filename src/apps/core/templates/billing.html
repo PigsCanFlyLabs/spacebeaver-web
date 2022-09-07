@@ -78,11 +78,11 @@
               <p class="plan-card-simple__duration">You have not plan now</p>
             {% endif %}
             {% if plan %}
-              <button style="margin-left: 30px;" class="btn-outline plan-card-simple__btn" type="button"
+              <button style="margin-left: auto;" class="btn-outline plan-card-simple__btn" type="button"
                       onclick="cancelSubscription(true)">Cancel plan
               </button>
             {% else %}
-              <a href="{% url 'core:update-plan' %}" class="btn-outline plan-card-simple__btn ms-lg-3" style="margin-left: auto" type="button">Update
+              <a href="{% url 'core:update-plan' %}" class="btn-outline plan-card-simple__btn " style="margin-left: auto" type="button">Update
                 plan</a>
 
             {% endif %}
