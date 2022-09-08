@@ -12,16 +12,21 @@
       <p class="banner__subtitle">You could view recap with number of messages for this month, year and for today</p>
     </div>
   </div>
-  <div style="display: flex; justify-content: center; margin: 15px">
+  <div style="justify-content: center; margin: 15px" class="d-lg-flex d-md-block ">
     {% if external_email != None %}
-      <img style="width: 24px; height: 24px;" src="{% static 'core/img/svg/mail-dashboard.svg' %}"/>
-      <span style="margin-left: 10px"> {{ external_email }}</span>
+      <div>
+        <img style="width: 24px; height: 24px;" src="{% static 'core/img/svg/mail-dashboard.svg' %}"/>
+        <span class="m-2"> {{ external_email }}</span>
+      </div>
     {% else %}
-
     {% endif %}
+  <div class="ms-lg-4 ms-0"></div>
     {% if external_email != None %}
-      <img style="width: 24px; height: 24px; margin-left: 40px" src="{% static 'core/img/svg/phone-dashboard.svg' %}"/>
-      <span style="margin-left: 10px">{{ external_phone }}</span>
+      <div class="mt-2 mt-md-0">
+        <img style="width: 24px; height: 24px; "
+             src="{% static 'core/img/svg/phone-dashboard.svg' %}"/>
+        <span class="m-2">{{ external_phone }}</span>
+      </div>
     {% else %}
 
     {% endif %}
