@@ -31,6 +31,7 @@ class SubscriptionView(View):
             "stripe_api_key": STRIPE_PUBLIC_API_KEY,
             "step": OnboardingStepsEnum.PAYMENT.value,
             "back_url": reverse("core:pick-plan"),
+            "price": config.PRICE,
         }
 
 

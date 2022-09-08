@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.views import View
 
+from constance import config
 from djstripe.models import Customer
 from rest_framework import serializers, status
 from rest_framework.permissions import IsAuthenticated
@@ -48,6 +49,7 @@ class BillingView(View):
             "page": page,
             "card": card,
             "plan": plan_info,
+            "amount": config.PRICE,
         }
         return render(request, self.template, {**self.base_context, **context})
 
