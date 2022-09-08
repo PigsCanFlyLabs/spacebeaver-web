@@ -11,7 +11,7 @@
   <script>
 
     $(document).ready(function () {
-      {% if user.selected_plan != 0 %}
+      {% if user.selected_plan == 0 %}
         $('#plan-card').addClass('selected-plan')
       {% endif %}
 

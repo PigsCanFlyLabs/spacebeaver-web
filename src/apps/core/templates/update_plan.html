@@ -4,15 +4,16 @@
 
   <style>
     .selected-plan {
-      box-shadow: 0px 0px 10px  violet;
+      box-shadow: 0px 0px 10px violet;
     }
   </style>
   <script>
 
     $(document).ready(function () {
 
-      {% if user.selected_plan != 0 %}
+      {% if user.selected_plan == 0 %}
         $('#plan-card').addClass('selected-plan')
+      {% else %}
         $('#no-have-subscription').hide();
       {% endif %}
 
@@ -38,7 +39,8 @@
   <form class="form-body form-body__flex-layout form" action="" method="post">
     {% csrf_token %}
     <div id="plan-card" class="plan-card mb-2 ">
-      <input type="hidden" name="selected_plan" {% if user.selected_plan == 1 %} value="-1" {% else %} value="1" {% endif %} />
+      <input type="hidden" name="selected_plan" {% if user.selected_plan == 1 %} value="-1" {% else %}
+             value="1" {% endif %} />
       <div class="plan-card__header d-flex align-items-center">
         <div class="plan-card__img-wrap gap-right">
           <!-- <img class="plan-card__img" src="./img/svg/icon-mirroring-screen.svg" alt=""> -->
@@ -54,7 +56,8 @@
 
       {#            <a href="{% url 'core:subscription' %}" class="plan-card__btn mt-3">Select plan</a>#}
       {#      <a class="plan-card__btn mt-3">Select plan</a>#}
-      <button type="submit" class="plan-card__btn mt-3">{% if user.selected_plan == 1 %}Cancel plan {% else %} Select plan  {% endif %}</button>
+      <button type="submit" class="plan-card__btn mt-3">{% if user.selected_plan == 1 %}Cancel plan {% else %} Select
+        plan  {% endif %}</button>
 
     </div>
     <footer class="form-body__footer col d-lg-flex">
