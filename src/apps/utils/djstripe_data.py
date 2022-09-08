@@ -1,3 +1,4 @@
+from constance import config
 from djstripe.models import PaymentMethod, Subscription
 
 
