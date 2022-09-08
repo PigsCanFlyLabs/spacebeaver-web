@@ -103,7 +103,10 @@ view_urlpatterns = [
     path("faq/", TemplateView.as_view(template_name="page-faq.html")),
     path("pricing/", TemplateView.as_view(template_name="page-pricing.html")),
     path(
-        "warranty/", TemplateView.as_view(template_name="about_example.html")
+        "warranty/", TemplateView.as_view(template_name="page-warranty.html")
+    ),
+    path(
+        "blog/", TemplateView.as_view(template_name="blog.html")
     ),
 ]
 
