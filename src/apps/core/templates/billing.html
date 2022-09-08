@@ -135,7 +135,7 @@
                   </div>
                 </td>
                 <td class="align-middle">
-                  <p class="transaction-amount">$200</p>
+                  <p class="transaction-amount">{{ amount }}</p>
                 </td>
                 <td class="align-middle">
                   <div class="transaction-tag transaction-tag--paid">
@@ -147,7 +147,7 @@
 
                 </td>
                 <td class="align-middle">
-                  <p class="transaction-description text-end">Plan update</p>
+                  <p class="transaction-description text-end">{{ product_description}}</p>
                 </td>
               </tr>
             {% endfor %}
