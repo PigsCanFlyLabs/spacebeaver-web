@@ -100,8 +100,8 @@ view_urlpatterns = [
     path("mobile/", TemplateView.as_view(template_name="page-mobile.html")),
     path("product/", TemplateView.as_view(template_name="page-product.html")),
     path("about/", TemplateView.as_view(template_name="page-about.html")),
-    path("faq/", TemplateView.as_view(template_name="about_example.html")),
-    path("pricing/", TemplateView.as_view(template_name="about_example.html")),
+    path("faq/", TemplateView.as_view(template_name="page-faq.html")),
+    path("pricing/", TemplateView.as_view(template_name="page-pricing.html")),
     path(
         "warranty/", TemplateView.as_view(template_name="about_example.html")
     ),
