@@ -20,17 +20,18 @@
           <div class="field">
             <label class="field__label" for="card-number-element">Card number</label>
             <div id="card-number-element" class="field__input" style="padding: 16px 16px"></div>
-            <span class="field__input-error field__input--shown"></span>
+            <span id="card-error-message" style="color:violet; display: none">Card Error</span>
+
           </div>
           <div class="field">
             <label class="field__label" for="card-expiry-element">Expiration month and year</label>
             <div id="card-expiry-element" class="field__input" style="padding: 16px 16px"></div>
-            <span class="field__input-error field__input--shown"></span>
+            <span id="expiry-error-message" style="color:violet; display: none">Card Error</span>
           </div>
           <div class="field">
             <label class="field__label" for="card-cvc-element">CVV</label>
             <div id="card-cvc-element" class="field__input" style="padding: 16px 16px"></div>
-            <span class="field__input-error"></span>
+            <span id="cvc-error-message" style="color:violet; display: none">Card Error</span>
           </div>
           <div id="card-cardholder-element" class="field">
             <label class="field__label" for="cardName">Cardholder name</label>
@@ -117,35 +118,71 @@
       fontSize: '16px',
       border: "1px solid #f6f6f8",
     }
+    const invalidStyle = {
+      iconColor: 'violet',
+      color: 'violet',
+    }
     let stripe = Stripe("{{ stripe_api_key }}");
     let elements = stripe.elements();
     var cardNumberElement = elements.create('cardNumber', {
       placeholder: 'Card number',
       style: {
-        base: baseStyle
+        base: baseStyle,
+        invalid: invalidStyle,
       }
     });
     cardNumberElement.mount('#card-number-element');
+    cardNumberElement.on('change', function (event) {
+      let elementError = document.getElementById('card-error-message');
+      if (event.error) {
+        elementError.textContent = event.error.message;
+        elementError.style.display = "block";
+      } else {
+        elementError.textContent = '';
+        elementError.style.display = "none";
+      }
+    })
 
     var cardExpiryElement = elements.create('cardExpiry', {
       placeholder: 'Expiry date',
       style: {
-        base: baseStyle
+        base: baseStyle,
+        invalid: invalidStyle,
       }
     });
     cardExpiryElement.mount('#card-expiry-element');
-
+    cardExpiryElement.on('change', function (event) {
+      let elementError = document.getElementById('expiry-error-message');
+      if (event.error) {
+        elementError.textContent = event.error.message;
+        elementError.style.display = "block";
+      } else {
+        elementError.textContent = '';
+        elementError.style.display = "none";
+      }
+    })
     var cardCvcElement = elements.create('cardCvc', {
       placeholder: 'CVC',
       style: {
-        base: baseStyle
+        base: baseStyle,
+        invalid: invalidStyle,
       }
     });
     cardCvcElement.mount('#card-cvc-element');
+    cardCvcElement.on('change', function (event) {
+      let elementError = document.getElementById('cvc-error-message');
+      if (event.error) {
+        elementError.textContent = event.error.message;
+        elementError.style.display = "block";
+      } else {
+        elementError.textContent = '';
+        elementError.style.display = "none";
+      }
+    })
 
     function setErrorText(text) {
-      let displayError = document.getElementById('card-element-errors');
-      displayError.textContent = text;
+      {#let displayError = document.getElementById('card-element-errors');#}
+      {#displayError.textContent = text;#}
     }
 
     function displayError(event) {
@@ -220,8 +257,15 @@
 
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
-      setLoading(true);
-      createPaymentMethod();
+      let cvcError = document.getElementById('cvc-error-message');
+      let expiryError = document.getElementById('expiry-error-message');
+      let cardError = document.getElementById('card-error-message');
+      if (cvcError.style.display !== 'none' || expiryError.style.display !== 'none' || cardError.style.display !== 'none') {
+        document.getElementById('form-error').style.display = 'block';
+      } else {
+        setLoading(true);
+        createPaymentMethod();
+      }
     });
   </script>
 {% endblock %}

@@ -11,9 +11,8 @@
 
     $(document).ready(function () {
 
-      {% if user.selected_plan == 0 %}
-        $('#plan-card').addClass('selected-plan')
-      {% else %}
+      {% if user.selected_plan != 0 %}
+        $('#plan-card').addClass('selected-plan');
         $('#no-have-subscription').hide();
       {% endif %}
 
