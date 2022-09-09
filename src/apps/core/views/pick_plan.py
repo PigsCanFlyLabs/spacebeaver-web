@@ -36,7 +36,9 @@ class PickPlanView(View):
             "title": "Pick a plan",
             "navname": "Please, pick a plan",
             "plan_title": config.TITLE,
-            "image": f"{settings.MEDIA_URL}{config.IMAGE}",
+            "image": f"{settings.MEDIA_URL}{config.IMAGE}"
+            if not config.IMAGE_URL
+            else f"{config.IMAGE_URL}",
             "description": config.DESCRIPTION,
             "price": config.PRICE,
             "step": OnboardingStepsEnum.PICK_PLAN.value,
