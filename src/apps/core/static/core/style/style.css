@@ -2238,6 +2238,7 @@ body {
 }
 
 
+
 .home-usp-btns__btn {
   margin-right: 10px;
 }
@@ -2255,6 +2256,16 @@ body {
 .home-usp-btns__btn img:hover {
   opacity: .9;
 }
+
+@media  (max-width: 991px) {
+  .home-usp__btns--mobile {
+    margin: -5px;
+  }
+  .home-usp__btns--mobile .home-usp-btns__btn {
+    margin: 5px;
+  }
+}
+ 
 
 .home-usp__img-wrap {
   width: 100%;
