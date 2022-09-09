@@ -270,7 +270,7 @@ body {
 }
 
 .field__input--invalid, .field__input--invalid:active, .field__input--invalid:focus, .field__input--invalid:hover {
-  border-color: #f481fe
+  color: #f481fe
 }
 
 .field__input.form-select {

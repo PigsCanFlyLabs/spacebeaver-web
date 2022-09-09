@@ -8,9 +8,21 @@
       window.location.href = "/accounts/settings"
     }
 
+    function reloadGeneralInformation() {
+      window.location.href = "/accounts/profile"
+    }
+
+    function reloadDeviceInformation() {
+      window.location.href = "/replace-device"
+    }
+
     $(document).ready(function () {
       if ("{{ show_replace_success_notification }}" === "True") {
         $('#successfullyReplace').modal('show');
+      }
+
+      if ("{{ show_exists_email_notification }}" === "True") {
+        $('#emailExistsNotification').modal('show');
       }
 
       if ("{{ show_profile_success_change }}" === "True") {
@@ -36,11 +48,10 @@
       }
 
       {% if not  expired_link  %}
-        {% if 'reset_password' in request.GET  %}
+        {% if 'change_password' in request.GET  %}
           $('#changePass').modal('show');
 
-        {% elif 'reset_email' in request.GET  %}
-          $('#changeEmail').modal('show');
+        {% elif 'change_email' in request.GET  %}
         {% endif %}
       {% endif %}
     })
@@ -58,7 +69,7 @@
           </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+          <button type="button" class="btn modal__footer-btn" onclick="reloadDeviceInformation()">OK</button>
         </div>
       </div>
     </div>
@@ -76,7 +87,7 @@
           </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+          <button type="button" class="btn modal__footer-btn" onclick="reloadGeneralInformation()">OK</button>
         </div>
       </div>
     </div>
@@ -96,7 +107,25 @@
           </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" >OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="emailExistsNotification" tabindex="-1" aria-labelledby="emailExistsNotificationLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal__content">
+        <div class="modal-body p-0">
+          <header class="form-header text-center">
+            <h1 class="title title--sm">Sorry, this email is in use. </h1>
+            <p class="subtitle">Choose any other</p>
+
+          </header>
+        </div>
+        <div class="modal-footer modal__footer p-0 border-0">
+          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" >OK</button>
         </div>
       </div>
     </div>
@@ -115,7 +144,7 @@
           </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+          <button onclick="reloadPage()" type="button" class="btn modal__footer-btn" >OK</button>
         </div>
       </div>
     </div>
@@ -133,7 +162,7 @@
           </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" >OK</button>
         </div>
       </div>
     </div>
@@ -151,12 +180,11 @@
           </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" >OK</button>
         </div>
       </div>
     </div>
   </div>
-
 
   <div class="modal fade" id="expiredLink" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -170,7 +198,7 @@
           </header>
         </div>
         <div class="modal-footer modal__footer p-0 border-0">
-          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+          <button type="button" onclick="reloadPage()" class="btn modal__footer-btn" >OK</button>
         </div>
       </div>
     </div>

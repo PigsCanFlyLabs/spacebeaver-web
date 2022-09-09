@@ -6,7 +6,9 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static 'core/style/style.css' %}">
@@ -19,6 +21,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
           integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
           crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+          integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>SB:
     {% block title %}
       {{ title }}
@@ -40,13 +45,30 @@
   </style>
 
   <script>
-    function toggleSideBar() {
+    $(document).ready(function () {
+      const hideNavBar = $.cookie('hideNavBar') === 'true';
+      if (hideNavBar) {
+        $('#sidebar').toggleClass('active');
+        $('#content-container').toggleClass('without-navbar');
+        $('.nav-item__text, .toggle-component').toggle();
+        $('#hide-panel-img').toggleClass('rotate-btn');
+      }
+    });
 
+    function toggleSideBar() {
+      let hideNavBar = $.cookie('hideNavBar') === 'true';
+      $.cookie('hideNavBar', !hideNavBar, { expires: 7, path: '/' });
       $('#sidebar').toggleClass('active');
       $('#content-container').toggleClass('without-navbar');
       $('.nav-item__text, .toggle-component').toggle();
       $('#hide-panel-img').toggleClass('rotate-btn');
     }
+
+    function removeSideBarCookie(){
+      $.removeCookie('hideNavBar');
+    }
+
+
   </script>
 
 
@@ -56,7 +78,8 @@
 <body>
 {% cms_toolbar %}
 {% if user.dont_have_active_subscriptions %}
-  <div id="no-have-subscription" class="alert alert-danger" role="alert">
+  <div id="no-have-subscription" class="alert alert-danger" style="position: absolute; z-index: 999; width: 100%"
+       role="alert">
     You have not active subscription. Click
     <a href="{% url 'core:update-plan' %}">here</a>
     to solve it.
@@ -128,7 +151,8 @@
           <ul class="navigation-list p-0">
             <li class="navigation-list__item">
               <a href="{% url 'core:dashboard' %}" class="nav-item {% if step == 1 %}nav-item--active{% endif %}">
-                <svg class="nav-item__icon {% if step == 1 %}nav-item__i  con--active {% endif %}" width="24" height="24"
+                <svg class="nav-item__icon {% if step == 1 %}nav-item__i  con--active {% endif %}" width="24"
+                     height="24"
                      viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M21.9887 9.93749C21.3016 5.74419 17.7166 2.62467 13.442 2.50041C13.0141 2.49058 12.6014 2.65775 12.3024 2.96196C12.0136 3.25955 11.8641 3.6641 11.8904 4.07665L12.3287 10.6167C12.3971 11.4422 13.0904 12.078 13.9241 12.0798H14.0293L20.6037 11.6444C20.9985 11.622 21.3679 11.4438 21.6297 11.1493C21.8914 10.8549 22.0239 10.4688 21.9975 10.0768V9.93749H21.9887ZM13.9241 10.5122L13.4858 4.08536C16.9251 4.224 19.8051 6.71929 20.4109 10.0855L13.9241 10.5122ZM16.7993 14.9884C16.9225 14.5712 17.3582 14.3277 17.7811 14.4398C17.9885 14.489 18.1671 14.6195 18.2761 14.8016C18.3851 14.9837 18.4152 15.2019 18.3597 15.4064C17.7643 17.5651 16.3122 19.3911 14.3361 20.4661C11.9113 21.8013 8.97567 21.8458 6.51098 20.5848C4.04629 19.3238 2.37792 16.9237 2.06387 14.1872C2.01293 13.8677 1.99238 13.544 2.00251 13.2206C1.99827 9.29931 4.76558 5.91373 8.62952 5.11297C9.06523 5.02639 9.48909 5.30712 9.57623 5.73998C9.66338 6.17284 9.3808 6.59393 8.94509 6.6805C5.82643 7.33954 3.59908 10.0792 3.60667 13.2467C3.5994 13.4943 3.61407 13.742 3.6505 13.9869C4.03513 17.1495 6.61427 19.6021 9.81143 19.8456C13.0086 20.0891 15.9339 18.0558 16.7993 14.9884Z"
@@ -210,7 +234,7 @@
           {#                                <i class="bi bi-bell" ></i>#}
           {#                            </button>#}
           <div class="user user-dropdown__user-ava  d-flex align-items-center">
-{#            <img class="user__icon" src="{% static 'core/img/jpg/ava.jpg' %}" alt="">#}
+            {#            <img class="user__icon" src="{% static 'core/img/jpg/ava.jpg' %}" alt="">#}
             <span class="user__name">{{ user.full_name }} </span>
           </div>
 
@@ -234,7 +258,7 @@
         </header>
       </div>
       <div class="modal-footer modal__footer p-0 border-0">
-        <a class="btn modal__footer-btn" href="{% url 'accounts:logout' %}">Log out</a>
+        <a class="btn modal__footer-btn" onclick="removeSideBarCookie()" href="{% url 'accounts:logout' %}">Log out</a>
         <button type="button" class="btn-outline modal__footer-btn" data-dismiss="modal">Back to Account</button>
       </div>
     </div>

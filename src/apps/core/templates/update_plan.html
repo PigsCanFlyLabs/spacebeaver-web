@@ -9,7 +9,20 @@
   </style>
   <script>
 
+    function reloadPage(){
+      window.location.href = '{% url 'core:billing' %}';
+    }
+
     $(document).ready(function () {
+
+      {% if show_select_notification %}
+        $('#successSelectPlan').modal('show');
+      {% endif %}
+
+      {% if show_cancel_plan_notification %}
+        $('#cancelPlan').modal('show');
+      {% endif %}
+
 
       {% if user.selected_plan != 0 %}
         $('#plan-card').addClass('selected-plan');
@@ -29,11 +42,6 @@
 
 
   </script>
-
-  <div id="non-select-plan-alert" class="alert alert-danger" role="alert">
-    No plan selected, please select a plan
-  </div>
-
 
   <form class="form-body form-body__flex-layout form" action="" method="post">
     {% csrf_token %}
@@ -63,4 +71,40 @@
 
     </footer>
   </form>
+
+  <div class="modal fade" id="successSelectPlan" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal__content">
+        <div class="modal-body p-0">
+          <header class="form-header text-center">
+            <img class="form-header-icon" src="{% static 'core/img/svg/icon-aprove.svg' %}" alt="">
+            <h1 class="title title--sm">Plan selected successfully</h1>
+
+          </header>
+        </div>
+        <div class="modal-footer modal__footer p-0 border-0">
+          <button type="button" class="btn modal__footer-btn" onclick="reloadPage()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="cancelPlan" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal__content">
+        <div class="modal-body p-0">
+          <header class="form-header text-center">
+            <h1 class="title title--sm">Plan canceled successfully</h1>
+
+          </header>
+        </div>
+        <div class="modal-footer modal__footer p-0 border-0">
+          <button type="button" class="btn modal__footer-btn" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 {% endblock %}

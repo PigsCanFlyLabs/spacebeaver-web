@@ -1,0 +1,27 @@
+{% extends 'spacebeaver.html' %}
+
+
+{% block title %} Login {% endblock %}
+{% block navname %} Login {% endblock %}
+
+{% block content %}
+  <div class="col-12 col-lg-6 d-flex align-items-center">
+
+    <div class="form-container form-container--centered centered">
+
+        <header class="form-header">
+          {% if expired_link != True %}
+            <h2> Email changed successfully.</h2>
+            <p>Your new email <b>{{ new_email }}</b></p>
+            <p>Log in with a new email</p>
+          {% else %}
+            <h2>This link is expired</h2>
+          {% endif %}
+        </header>
+        <footer class="form-footer text-center">
+          <a href="{% url 'accounts:login' %}" class="form-submit btn btn--wide">Login</a>
+        </footer>
+    </div>
+
+  </div>
+{% endblock %}

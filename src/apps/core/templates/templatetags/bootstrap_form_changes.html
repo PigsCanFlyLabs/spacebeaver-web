@@ -3,10 +3,10 @@
     {% csrf_token %}
     {% for field in form %}
       <div class="form-group field">
-  
+
         <label for="{{ field.id_for_label }}"  class="field__label {% if field.field.required %} field__label--required {% endif %}">{{ field.label_tag }}</label>
         {% if field.field.widget.input_type == 'select' %}
-  
+
           {{ field }}
         {% else %}
           <input type="{{ field.field.widget.input_type }}"
@@ -31,8 +31,7 @@
         {{ form.non_field_errors }}
       </div>
     {% endif %}
-    
+
     <button type="submit" class="btn btn-primary">{{ button_name }}</button>
   </form>
-  
-  
+

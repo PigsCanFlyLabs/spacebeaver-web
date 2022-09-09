@@ -52,7 +52,23 @@ class UpdatePlanView(PickPlanView):
     template = "update_plan.html"
 
     def get(self, request):
-        return render(request, self.template, self.base_context)
+
+        context = self.base_context
+        context.update()
+
+        return render(
+            request,
+            self.template,
+            {
+                **self.base_context,
+                "show_select_notification": getattr(
+                    self, "show_select_plan_notification", False
+                ),
+                "show_cancel_plan_notification": getattr(
+                    self, "show_cancel_plan_notification", False
+                ),
+            },
+        )
 
     def post(self, request):
 
@@ -67,6 +83,7 @@ class UpdatePlanView(PickPlanView):
                     delete_subscription(subscription.id)
                 request.user.selected_plan = 0
                 request.user.save()
+                self.show_cancel_plan_notification = True
             else:
                 if subscription:
                     delete_subscription(subscription.id)
@@ -75,4 +92,5 @@ class UpdatePlanView(PickPlanView):
                 )
                 request.user.selected_plan = form.cleaned_data["selected_plan"]
                 request.user.save()
+                self.show_select_plan_notification = True
         return self.get(request)

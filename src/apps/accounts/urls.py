@@ -5,7 +5,7 @@ from django.urls import path
 
 from apps.accounts.views import (
     ChangeEmailView,
-    ChangePasswordView,
+    PasswordChangeView,
     ProfileView,
     SettingsView,
 )
@@ -16,21 +16,15 @@ app_name = "accounts"
 
 urlpatterns = [
     path("profile", login_required(ProfileView.as_view()), name="profile"),
-    path(
-        "change-password",
-        login_required(ChangePasswordView.as_view()),
-        name="change-password",
-    ),
-    path(
-        "change-email",
-        login_required(ChangeEmailView.as_view()),
-        name="change-email",
-    ),
     path("login/", LoginView.as_view(), name="login"),
     path(
         "settings",
-        login_required(SettingsView.as_view()),
+        SettingsView.as_view(),
         name="settings",
     ),
     path("logout", LogoutView.as_view(next_page="/"), name="logout"),
+    path("change-email", ChangeEmailView.as_view(), name="change-email"),
+    path(
+        "change-password", PasswordChangeView.as_view(), name="change-password"
+    ),
 ]
