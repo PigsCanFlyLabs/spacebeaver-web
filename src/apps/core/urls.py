@@ -108,6 +108,9 @@ view_urlpatterns = [
     path(
         "blog/", TemplateView.as_view(template_name="blog.html")
     ),
+    path(
+        "article/", TemplateView.as_view(template_name="article.html")
+    ),
 ]
 
 api_urlpatterns = [
