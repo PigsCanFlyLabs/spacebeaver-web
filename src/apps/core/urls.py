@@ -105,12 +105,8 @@ view_urlpatterns = [
     path(
         "warranty/", TemplateView.as_view(template_name="page-warranty.html")
     ),
-    path(
-        "blog/", TemplateView.as_view(template_name="blog.html")
-    ),
-    path(
-        "article/", TemplateView.as_view(template_name="article.html")
-    ),
+    path("blog/", TemplateView.as_view(template_name="blog.html")),
+    path("article/", TemplateView.as_view(template_name="article.html")),
 ]
 
 api_urlpatterns = [
