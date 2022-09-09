@@ -439,6 +439,7 @@ class Settings:
             "image_field",
         ),
         "DESCRIPTION": ("", "Plan description"),
+        "IMAGE_URL": ("", "Image url"),
         "PRICE": (
             "",
             "Plan price",
@@ -448,7 +449,13 @@ class Settings:
     }
 
     CONSTANCE_CONFIG_FIELDSETS = {
-        "Plan options": ("TITLE", "IMAGE", "DESCRIPTION", "PRICE"),
+        "Plan options": (
+            "TITLE",
+            "IMAGE",
+            "IMAGE_URL",
+            "DESCRIPTION",
+            "PRICE",
+        ),
         "Stripe setup": ("STRIPE_PRICE_ID",),
     }
 
@@ -456,7 +463,8 @@ class Settings:
     LIBS += ["djstripe"]
 
     STRIPE_LIVE_MODE = DEBUG  # Change to True in production
-    DJSTRIPE_WEBHOOK_SECRET = "whsec_d1e28f144fa2b70e468a8fb483937ed019f1c9ce60387eab505df34881253ea6"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
+    # DJSTRIPE_WEBHOOK_SECRET = "whsec_d1e28f144fa2b70e468a8fb483937ed019f1c9ce60387eab505df34881253ea6"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
+    DJSTRIPE_WEBHOOK_SECRET = "whsec_1a83c1500b43dfc4e337b6e0d783dd140294492fcf06b45f03bd1f00b146c91c"
     DJSTRIPE_USE_NATIVE_JSONFIELD = (
         True  # We recommend setting to True for new installations
     )
