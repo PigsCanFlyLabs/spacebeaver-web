@@ -51,6 +51,7 @@ class BillingView(View):
             "plan": plan_info,
             "amount": config.PRICE,
             "name": config.TITLE,
+            "product_description": config.DESCRIPTION,
         }
         return render(request, self.template, {**self.base_context, **context})
 
