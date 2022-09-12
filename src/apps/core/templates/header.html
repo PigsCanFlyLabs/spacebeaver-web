@@ -1,31 +1,32 @@
 <header class="header">
   <div class="header__wrapper main-wrapper">
     <div class="header__content">
-      <a href="#" class="header__logo header-logo">
+      <a href="/homepage" class="header__logo header-logo">
         <img class="header-logo__img " src="{% static 'core/img/svg/logo-without-name.svg' %}" alt="">
         <span class="header-logo__text">SpaceBeaver</span>
       </a>
 
       <ul class="header__nav header-nav d-none d-lg-flex">
-        <li class="header-nav__item"><a href="#" class="header-nav__link">Homepage</a></li>
+        <li class="header-nav__item"><a href="/homepage" class="header-nav__link">Homepage</a></li>
         <li class="header-nav__item header-nav__item--dropdown">
-          <a href="#" class="header-nav__link">Products</a>
+          <a href="/product" class="header-nav__link">Products</a>
           <i class="fa-solid fa-chevron-down"></i>
           <div class="header-nav__dropdown-wrap">
             <div class="header-nav__dropdown">
               <ul class="header-nav-dropdown__list">
-                <li><a href="#">Sub-1</a></li>
-                <li><a href="#">Sub-2</a></li>
-                <li><a href="#">Sub-3</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/warranty">Warranty</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/article">Article</a></li>
               </ul>
             </div>
           </div>
         </li>
-        <li class="header-nav__item"><a href="#" class="header-nav__link">About us</a></li>
-        <li class="header-nav__item"><a href="#" class="header-nav__link">Pricing</a></li>
-        <li class="header-nav__item"><a href="#" class="header-nav__link">Mobile app</a></li>
-
-
+        <li class="header-nav__item"><a href="/about-us" class="header-nav__link">About us</a></li>
+        <li class="header-nav__item"><a href="/pricing" class="header-nav__link">Pricing</a></li>
+        <li class="header-nav__item"><a href="/mobile" class="header-nav__link">Mobile app</a></li>
+        
+   
       </ul>
 
       <div class="header__btns header-btns base-btn__group d-none d-lg-flex">
@@ -44,19 +45,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class=" text-uppercase nav-link nav-link text-dark" href="#">Homepage</a>
+          <a class=" text-uppercase nav-link nav-link text-dark" href="/homepage">Homepage</a>
         </li>
         <li class="nav-item">
-          <a class=" text-uppercase nav-link nav-link text-dark" href="#">Products</a>
+          <a class=" text-uppercase nav-link nav-link text-dark" href="/product">Products</a>
         </li>
         <li class="nav-item">
-          <a class=" text-uppercase nav-link text-dark" href="#">About us</a>
+          <a class=" text-uppercase nav-link text-dark" href="/about-us">About us</a>
         </li>
         <li class="nav-item">
-          <a class=" text-uppercase nav-link text-dark" href="#">Pricing</a>
+          <a class=" text-uppercase nav-link text-dark" href="/pricing">Pricing</a>
         </li>
         <li class="nav-item">
-          <a class=" text-uppercase nav-link text-dark" href="#">Mobile app</a>
+          <a class=" text-uppercase nav-link text-dark" href="/mobile">Mobile app</a>
         </li>
         <li class="nav-item">
           <a class=" text-uppercase nav-link text-dark" href="{% url 'accounts:login' %}">Login</a>
