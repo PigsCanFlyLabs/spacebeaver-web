@@ -6,6 +6,7 @@ from django.core.files.storage import default_storage
 from django.utils import timezone
 from django.utils.text import normalize_newlines
 
+
 from constance import LazyConfig, settings
 from constance.admin import ConstanceAdmin, ConstanceForm
 import stripe
@@ -112,9 +113,15 @@ class CustomConstanceForm(ConstanceForm):
             config.STRIPE_PRICE_ID = ""
 
         elif (
-            config.STRIPE_PRODUCT_ID and (not old_values["STRIPE_PRICE_ID"] and not new_values["STRIPE_PRICE_ID"])
-            or
-            (old_values["STRIPE_PRICE_ID"] and not new_values["STRIPE_PRICE_ID"])
+            config.STRIPE_PRODUCT_ID
+            and (
+                not old_values["STRIPE_PRICE_ID"]
+                and not new_values["STRIPE_PRICE_ID"]
+            )
+            or (
+                old_values["STRIPE_PRICE_ID"]
+                and not new_values["STRIPE_PRICE_ID"]
+            )
         ):
             try:
                 recurring = {}
