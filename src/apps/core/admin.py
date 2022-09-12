@@ -33,7 +33,7 @@ class BlockedNumbersAdmin(admin.ModelAdmin):
 
 config = LazyConfig()
 
-DATA_FIELDS = ("TITLE", "DESCRIPTION", "IMAGE", "IMAGE_URL", "PERIOD", "PRICE")
+DATA_FIELDS = ("TITLE", "DESCRIPTION", "IMAGE", "IMAGE_URL")
 PRICES_FIELDS = ("STRIPE_PRICE_ID", "STRIPE_PRODUCT_ID")
 
 
@@ -129,6 +129,16 @@ class CustomConstanceForm(ConstanceForm):
             and old_values["STRIPE_PRICE_ID"]
         ):
             setattr(config, "STRIPE_PRICE_ID", "")
+
+        elif (
+            old_values["TITLE"] != new_values["TITLE"]
+            or old_values["DESCRIPTION"] != new_values["DESCRIPTION"]
+        ):
+            stripe.Product.modify(
+                sid=config.STRIPE_PRODUCT_ID,
+                name=new_values["TITLE"],
+                description=new_values["DESCRIPTION"],
+            )
 
 
 ConstanceAdmin.change_list_form = CustomConstanceForm
