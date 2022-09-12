@@ -123,7 +123,6 @@ api_urlpatterns = [
         name="cancel-subscription",
     ),
     path("device-owner", DeviceOwnerApiView.as_view()),
-    path("update-product-webhook/", update_product_webhook),
 ]
 
 urlpatterns = view_urlpatterns + api_urlpatterns
