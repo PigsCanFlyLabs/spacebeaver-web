@@ -18,3 +18,11 @@ class ProfileStepsEnum(Enum):
     DASHBOARD = 1
     BILLING = 2
     SETTINGS = 3
+
+
+class STRIPE_PLAN_PERIOD(Enum):
+    ONETIME = "onetime"
+    DAILY = "day"
+    WEEKLY = "week"
+    MONTHLY = "month"
+    YEARLY = "year"

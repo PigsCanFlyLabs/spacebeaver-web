@@ -8,6 +8,8 @@ import warnings
 
 from kombu import Exchange, Queue
 
+from apps.core.consts import STRIPE_PLAN_PERIOD
+
 
 gettext = lambda s: s  # noqa
 
@@ -429,6 +431,19 @@ class Settings:
     CONSTANCE_ADDITIONAL_FIELDS = {
         "image_field": ["django.forms.ImageField", {}],
         "decimal_field": ["django.forms.DecimalField", {}],
+        "period_select": [
+            "django.forms.fields.ChoiceField",
+            {
+                "widget": "django.forms.Select",
+                "choices": (
+                    (None, "-----"),
+                    *[
+                        (period.value, period.name)
+                        for period in STRIPE_PLAN_PERIOD
+                    ],
+                ),
+            },
+        ],
     }
 
     CONSTANCE_CONFIG = {
@@ -445,7 +460,9 @@ class Settings:
             "Plan price",
             "decimal_field",
         ),
-        "STRIPE_PRICE_ID": ("", "Product price id"),
+        "STRIPE_PRODUCT_ID": ("", "Product price id"),
+        "STRIPE_PRICE_ID": ("", "Price price id"),
+        "PERIOD": (None, "select plan period", "period_select"),
     }
 
     CONSTANCE_CONFIG_FIELDSETS = {
@@ -455,8 +472,12 @@ class Settings:
             "IMAGE_URL",
             "DESCRIPTION",
             "PRICE",
+            "PERIOD",
         ),
-        "Stripe setup": ("STRIPE_PRICE_ID",),
+        "Stripe setup": (
+            "STRIPE_PRODUCT_ID",
+            "STRIPE_PRICE_ID",
+        ),
     }
 
     # DJANGO-STRIPE
