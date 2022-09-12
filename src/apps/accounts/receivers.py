@@ -9,11 +9,13 @@ from apps.core.consts import STRIPE_PLAN_PERIOD
 
 
 DATA_FIELDS = ("TITLE", "DESCRIPTION", "IMAGE", "IMAGE_URL", "PERIOD", "PRICE")
+PRICES_FIELDS = ("STRIPE_PRICE_ID", "STRIPE_PRODUCT_ID")
 
 
 @receiver(config_updated)
 def product_management(sender, key, old_value, new_value, **kwargs):
     if key in DATA_FIELDS:
+        recurring = {}
         if not sender.STRIPE_PRODUCT_ID:
 
             stripe_product = stripe.Product.create(
@@ -21,24 +23,21 @@ def product_management(sender, key, old_value, new_value, **kwargs):
                 description=sender.DESCRIPTION,
             )
             sender.STRIPE_PRODUCT_ID = stripe_product.id
-            if not sender.STRIPE_PRICE_ID:
-                recurring = {}
-                if sender.PERIOD != STRIPE_PLAN_PERIOD.ONETIME.value:
-                    recurring = {"recurring": {"interval": sender.PERIOD}}
-                stripe_price = stripe.Price.create(
-                    currency="usd",
-                    unit_amount=sender.PRICE * 100,
-                    product=stripe_product.id,
-                    **recurring,
-                )
-                sender.STRIPE_PRICE_ID = stripe_price.id
+            if sender.PERIOD != STRIPE_PLAN_PERIOD.ONETIME.value:
+                recurring = {"recurring": {"interval": sender.PERIOD}}
+            stripe_price = stripe.Price.create(
+                currency="usd",
+                unit_amount=sender.PRICE * 100,
+                product=stripe_product.id,
+                **recurring,
+            )
+            sender.STRIPE_PRICE_ID = stripe_price.id
         else:
             stripe.Product.modify(
                 sid=config.STRIPE_PRODUCT_ID,
                 name=sender.TITLE,
                 description=sender.DESCRIPTION,
             )
-            recurring = {}
             if sender.PERIOD != STRIPE_PLAN_PERIOD.ONETIME.value:
                 recurring = {"recurring": {"interval": sender.PERIOD}}
             stripe_price = stripe.Price.create(

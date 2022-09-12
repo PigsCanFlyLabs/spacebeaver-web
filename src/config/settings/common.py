@@ -454,7 +454,6 @@ class Settings:
             "image_field",
         ),
         "DESCRIPTION": ("", "Plan description"),
-        "IMAGE_URL": ("", "Image url"),
         "PRICE": (
             "",
             "Plan price",
@@ -469,7 +468,6 @@ class Settings:
         "Plan options": (
             "TITLE",
             "IMAGE",
-            "IMAGE_URL",
             "DESCRIPTION",
             "PRICE",
             "PERIOD",

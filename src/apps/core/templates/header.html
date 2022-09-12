@@ -24,21 +24,21 @@
         <li class="header-nav__item"><a href="#" class="header-nav__link">About us</a></li>
         <li class="header-nav__item"><a href="#" class="header-nav__link">Pricing</a></li>
         <li class="header-nav__item"><a href="#" class="header-nav__link">Mobile app</a></li>
-        
-   
+
+
       </ul>
 
       <div class="header__btns header-btns base-btn__group d-none d-lg-flex">
-        <a href="#" class="header-btns__btn base-btn base-btn--s base-btn--transparent">Sign in</a>
-        <a href="#" class="header-btns__btn base-btn base-btn--gray base-btn--s">Sign up</a>
+        <a href="{% url 'accounts:login' %}" class="header-btns__btn base-btn base-btn--s base-btn--transparent">Sign in</a>
+        <a href="/sign-up/" class="header-btns__btn base-btn base-btn--gray base-btn--s">Sign up</a>
       </div>
 
       <button class="navbar-toggler d-lg-none d-block" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  
+
         <img class="navbar-toggler__icon" src="{% static 'core/img/svg/burger.svg' %}" alt="">
       </button>
-  
+
 
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -59,10 +59,10 @@
           <a class=" text-uppercase nav-link text-dark" href="#">Mobile app</a>
         </li>
         <li class="nav-item">
-          <a class=" text-uppercase nav-link text-dark" href="#">Login</a>
+          <a class=" text-uppercase nav-link text-dark" href="{% url 'accounts:login' %}">Login</a>
         </li>
         <li class="nav-item">
-          <a class=" text-uppercase nav-link text-dark" href="#">sign up</a>
+          <a class=" text-uppercase nav-link text-dark" href="/sign-up/">sign up</a>
         </li>
 
       </ul>
