@@ -33,8 +33,9 @@ class BlockedNumbersAdmin(admin.ModelAdmin):
 
 config = LazyConfig()
 
-DATA_FIELDS = ("TITLE", "DESCRIPTION", "IMAGE", "IMAGE_URL")
-PRICES_FIELDS = ("STRIPE_PRICE_ID", "STRIPE_PRODUCT_ID")
+DATA_FIELDS = ("TITLE", "DESCRIPTION")
+PRICE_FIELDS = ("PRICE", "PERIOD")
+ID_FIELDS = ("STRIPE_PRICE_ID", "STRIPE_PRODUCT_ID")
 
 
 class CustomConstanceForm(ConstanceForm):
@@ -64,11 +65,16 @@ class CustomConstanceForm(ConstanceForm):
 
             if current != new:
                 setattr(config, name, new)
+        diff = set()
+        for item in (*DATA_FIELDS, *PRICE_FIELDS, *ID_FIELDS):
+            if new_values[item] != old_values[item]:
+                diff.add(item)
 
         if (
-            not new_values["STRIPE_PRODUCT_ID"]
-            and not old_values["STRIPE_PRODUCT_ID"]
+            not old_values["STRIPE_PRODUCT_ID"]
+            and not new_values["STRIPE_PRODUCT_ID"]
         ):
+
             try:
                 stripe_product = stripe.Product.create(
                     name=new_values["TITLE"],
@@ -95,21 +101,47 @@ class CustomConstanceForm(ConstanceForm):
                 setattr(config, "STRIPE_PRICE_ID", stripe_price.id)
             except Exception as e:
                 setattr(
-                    config, "STRIPE_PRICE_ID", "PRICE NOT CREATED \n" + str(e)
+                    config,
+                    "STRIPE_PRICE_ID",
+                    "PRICE NOT CREATED \n" + str(e),
                 )
-        elif (
-            new_values["STRIPE_PRODUCT_ID"]
-            and new_values["STRIPE_PRODUCT_ID"]
-            == old_values["STRIPE_PRODUCT_ID"]
-            and (
-                old_values["PRICE"] != new_values["PRICE"]
-                or old_values["PERIOD"] != new_values["PERIOD"]
-            )
-        ):
 
+        elif (
+            old_values["STRIPE_PRODUCT_ID"] == new_values["STRIPE_PRODUCT_ID"]
+        ) and (old_values["STRIPE_PRICE_ID"] == new_values["STRIPE_PRICE_ID"]):
             try:
                 recurring = {}
+                if config.PERIOD != STRIPE_PLAN_PERIOD.ONETIME.value:
+                    recurring = {"recurring": {"interval": config.PERIOD}}
+                stripe_price = stripe.Price.create(
+                    currency="usd",
+                    unit_amount=config.PRICE * 100,
+                    product=config.STRIPE_PRODUCT_ID,
+                    **recurring,
+                )
+                setattr(config, "STRIPE_PRICE_ID", stripe_price.id)
+            except Exception as e:
+                setattr(
+                    config,
+                    "STRIPE_PRICE_ID",
+                    "PRICE NOT CREATED \n" + str(e),
+                )
+        elif (
+            old_values["STRIPE_PRODUCT_ID"]
+            and not new_values["STRIPE_PRODUCT_ID"]
+        ):
+            config.STRIPE_PRICE_ID = ""
 
+        elif (set(DATA_FIELDS) & diff) and not (set(PRICE_FIELDS) & diff):
+            stripe.Product.modify(
+                sid=config.STRIPE_PRODUCT_ID,
+                name=new_values["TITLE"],
+                description=new_values["DESCRIPTION"],
+            )
+
+        elif not (set(DATA_FIELDS) & diff) and (set(PRICE_FIELDS) & diff):
+            try:
+                recurring = {}
                 if config.PERIOD != STRIPE_PLAN_PERIOD.ONETIME.value:
                     recurring = {"recurring": {"interval": config.PERIOD}}
                 stripe_price = stripe.Price.create(
@@ -123,22 +155,105 @@ class CustomConstanceForm(ConstanceForm):
                 setattr(
                     config, "STRIPE_PRICE_ID", "PRICE NOT CREATED \n" + str(e)
                 )
-        elif (
-            old_values["STRIPE_PRODUCT_ID"]
-            and not new_values["STRIPE_PRODUCT_ID"]
-            and old_values["STRIPE_PRICE_ID"]
-        ):
-            setattr(config, "STRIPE_PRICE_ID", "")
 
-        elif (
-            old_values["TITLE"] != new_values["TITLE"]
-            or old_values["DESCRIPTION"] != new_values["DESCRIPTION"]
-        ):
+        elif (set(DATA_FIELDS) & diff) and (set(PRICE_FIELDS) & diff):
             stripe.Product.modify(
                 sid=config.STRIPE_PRODUCT_ID,
                 name=new_values["TITLE"],
                 description=new_values["DESCRIPTION"],
             )
+            try:
+                recurring = {}
+                if config.PERIOD != STRIPE_PLAN_PERIOD.ONETIME.value:
+                    recurring = {"recurring": {"interval": config.PERIOD}}
+                stripe_price = stripe.Price.create(
+                    currency="usd",
+                    unit_amount=config.PRICE * 100,
+                    product=config.STRIPE_PRODUCT_ID,
+                    **recurring,
+                )
+                setattr(config, "STRIPE_PRICE_ID", stripe_price.id)
+            except Exception as e:
+                setattr(
+                    config, "STRIPE_PRICE_ID", "PRICE NOT CREATED \n" + str(e)
+                )
+
+        #
+        #
+        # if (
+        #     not new_values["STRIPE_PRODUCT_ID"]
+        #     and not old_values["STRIPE_PRODUCT_ID"]
+        # ):
+        #     try:
+        #         stripe_product = stripe.Product.create(
+        #             name=new_values["TITLE"],
+        #             description=new_values["DESCRIPTION"],
+        #         )
+        #         setattr(config, "STRIPE_PRODUCT_ID", stripe_product.id)
+        #     except Exception as e:
+        #         setattr(
+        #             config,
+        #             "STRIPE_PRODUCT_ID",
+        #             "PRODUCT NOT CREATED \n" + str(e),
+        #         )
+        #
+        #     try:
+        #         recurring = {}
+        #         if config.PERIOD != STRIPE_PLAN_PERIOD.ONETIME.value:
+        #             recurring = {"recurring": {"interval": config.PERIOD}}
+        #         stripe_price = stripe.Price.create(
+        #             currency="usd",
+        #             unit_amount=config.PRICE * 100,
+        #             product=config.STRIPE_PRODUCT_ID,
+        #             **recurring,
+        #         )
+        #         setattr(config, "STRIPE_PRICE_ID", stripe_price.id)
+        #     except Exception as e:
+        #         setattr(
+        #             config, "STRIPE_PRICE_ID", "PRICE NOT CREATED \n" + str(e)
+        #         )
+        # elif (
+        #     new_values["STRIPE_PRODUCT_ID"]
+        #     and new_values["STRIPE_PRODUCT_ID"]
+        #     == old_values["STRIPE_PRODUCT_ID"]
+        #     and (
+        #         old_values["PRICE"] != new_values["PRICE"]
+        #         or old_values["PERIOD"] != new_values["PERIOD"]
+        #     )
+        # ):
+        #
+        #     try:
+        #         recurring = {}
+        #
+        #         if config.PERIOD != STRIPE_PLAN_PERIOD.ONETIME.value:
+        #             recurring = {"recurring": {"interval": config.PERIOD}}
+        #         stripe_price = stripe.Price.create(
+        #             currency="usd",
+        #             unit_amount=config.PRICE * 100,
+        #             product=config.STRIPE_PRODUCT_ID,
+        #             **recurring,
+        #         )
+        #         setattr(config, "STRIPE_PRICE_ID", stripe_price.id)
+        #     except Exception as e:
+        #         setattr(
+        #             config, "STRIPE_PRICE_ID", "PRICE NOT CREATED \n" + str(e)
+        #         )
+        # elif (
+        #     old_values["STRIPE_PRODUCT_ID"]
+        #     and not new_values["STRIPE_PRODUCT_ID"]
+        #     and old_values["STRIPE_PRICE_ID"]
+        # ):
+        #     setattr(config, "STRIPE_PRICE_ID", "")
+        #
+        # elif (
+        #     old_values["TITLE"] != new_values["TITLE"]
+        #     or old_values["DESCRIPTION"] != new_values["DESCRIPTION"]
+        # ):
+        #     stripe.Product.modify(
+        #         sid=config.STRIPE_PRODUCT_ID,
+        #         name=new_values["TITLE"],
+        #         description=new_values["DESCRIPTION"],
+        #     )
 
 
 ConstanceAdmin.change_list_form = CustomConstanceForm
