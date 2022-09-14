@@ -9,7 +9,6 @@ from apps.core.views import *
 app_name = "core"
 
 view_urlpatterns = [
-    path("index/", IndexView.as_view(), name="index"),
     path("sign-up/", SignUpView.as_view(), name="sign-up"),
     path(
         "successful-registration/",

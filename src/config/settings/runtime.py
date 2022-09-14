@@ -26,7 +26,7 @@ if os.environ.get("SENTRY_ENDPOINT"):
 
 class Runtime(Settings, Configuration):
     DIST = True
-    DEBUG = True
+    DEBUG = False
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SECURE_HSTS_SECONDS = 60
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True

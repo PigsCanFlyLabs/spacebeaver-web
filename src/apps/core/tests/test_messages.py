@@ -82,7 +82,7 @@ class TestMessageCountOnDashboard(TestCase):
         yearly_message_count = get_user_message_count(
             self.user.twillion_number, "year"
         )
-        self.assertEqual(daily_message_count, 1)
+        self.assertEqual(daily_message_count, 0)
         self.assertEqual(monthly_message_count, 1)
         self.assertEqual(yearly_message_count, 12)
 
