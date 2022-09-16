@@ -1,10 +1,26 @@
 @import './function/index';
 @import './var/index';
 @import './mixins/index';
+@import './base/index';
 
 body {
     background-color: white;
 }
+
+
+.main-wrapper {
+  display: block;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  @media (max-width: 991px) {
+    padding: 0 16px;
+  }
+}
+
 
 .logo {
     display: block;
@@ -82,3 +98,52 @@ body {
     top: 10px;
 }
 @import './components/index';
+
+
+
+.breadcrumbs__section {}
+
+.breadcrumbs__wrapper {}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+}
+
+a.breadcrumbs__item {
+  display: flex;
+  margin-right: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #616E7B;
+  transition: all .3s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+a.breadcrumbs__item:hover {
+  color: #171717;
+}
+
+a.breadcrumbs__item::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-image: url(../img/svg/breaddcrumbs-arrow.svg);
+  background-size: contain;
+  position: absolute;
+  top: 50%;
+  right: -31px;
+  transform: translateY(-50%);
+
+}
+
+span.breadcrumbs__item {
+  display: flex;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #171717;
+}
