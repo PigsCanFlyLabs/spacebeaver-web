@@ -88,13 +88,13 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar--simple navbar-expand-lg d-lg-none d-block">
   <div class="container-fluid">
-    <a class="navbar-brand d-none d-lg-block" href="{% url 'core:index' %}">
+    <a class="navbar-brand d-none d-lg-block" href="/">
       SpaceBeaver
       {% block navname %}
         {{ navname }}
       {% endblock %}
     </a>
-    <a href="{% url 'core:index' %}"
+    <a href="/"
        class="logo logo-with-beaver d-block d-lg-none text-decoration-none text-dark fw-bold">
       <img class="logo__img" src="{% static 'core/img/svg/logo-without-name.svg' %}" alt="">
       <span class="toggle-logo-name toggle-component">SPACEBEAVER</span>
