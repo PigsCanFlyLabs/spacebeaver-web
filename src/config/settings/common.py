@@ -595,16 +595,17 @@ class Settings:
     MIDDLEWARE.append("cms.middleware.language.LanguageCookieMiddleware")
     CMS_TEMPLATES = [
         ("home.html", "Home page template"),
-        # ("base.html", "Base page template"),
-        ("homepage.html", "homepage "),
-        ("page-mobile.html", "Mobile "),
-        ("page-product.html", "Product "),
-        ("page-about.html", "About page "),
-        ("page-pricing.html", "Pricing "),
-        ("page-faq.html", "FAQ "),
-        ("page-warranty.html", "Warranty "),
-        ("blog.html", "Blog "),
-        ("article.html", "Article "),
+        ("base.html", "Base page template"),
+        # ("homepage.html", "homepage "),
+        # ("page-mobile.html", "Mobile "),
+        # ("page-product.html", "Product "),
+        # ("page-about.html", "About page "),
+        # ("page-pricing.html", "Pricing "),
+        # ("page-faq.html", "FAQ "),
+        # ("page-warranty.html", "Warranty "),
+        # ("blog.html", "Blog "),
+        # ("article.html", "Article "),
+        # ("article.html", "Article "),
     ]
     X_FRAME_OPTIONS = "SAMEORIGIN"
 

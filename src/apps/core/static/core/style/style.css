@@ -2254,6 +2254,16 @@ body {
   height: 402px;
   position: relative;
 }
+.article-img__wrap img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
 .article-img {
   position: absolute;
@@ -3069,8 +3079,22 @@ body {
 .home-review__ico-wrap {
   margin-bottom: 24px;
   width: 34px;
-  padding-bottom: 24px;
+  height: 24px;
   position: relative;
+}
+.home-review__ico-wrap::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 34px;
+  background: url("../img/svg/quote.svg");
+  background-size: contain;
 }
 .home-review__ico-wrap img {
   position: absolute;
@@ -4395,6 +4419,11 @@ body {
   font-size: 24px;
   line-height: 1.25;
   color: #111111;
+  transition: all 0.3s ease-in;
+  text-decoration: none;
+}
+.blog-item__text:hover {
+  color: #316AFF;
 }
 
 @media (max-width: 768px) {

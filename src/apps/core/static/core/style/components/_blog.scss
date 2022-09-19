@@ -108,6 +108,12 @@
   font-size: 24px;
   line-height: 1.25;
   color: #111111;
+  transition: all .3s ease-in;
+  text-decoration: none;
+
+  &:hover {
+    color: #316AFF;
+  }
 }
 
 

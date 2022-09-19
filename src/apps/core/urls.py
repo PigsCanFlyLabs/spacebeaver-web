@@ -95,17 +95,17 @@ view_urlpatterns = [
         name="forget-password",
     ),
     # EXAMPLE PATH FOR KIRILL
-    path("homepage/", TemplateView.as_view(template_name="homepage.html")),
-    path("mobile/", TemplateView.as_view(template_name="page-mobile.html")),
-    path("product/", TemplateView.as_view(template_name="page-product.html")),
-    path("about/", TemplateView.as_view(template_name="page-about.html")),
-    path("faq/", TemplateView.as_view(template_name="page-faq.html")),
-    path("pricing/", TemplateView.as_view(template_name="page-pricing.html")),
-    path(
-        "warranty/", TemplateView.as_view(template_name="page-warranty.html")
-    ),
-    path("blog/", TemplateView.as_view(template_name="blog.html")),
-    path("article/", TemplateView.as_view(template_name="article.html")),
+    # path("homepage/", TemplateView.as_view(template_name="homepage.html")),
+    # path("mobile/", TemplateView.as_view(template_name="page-mobile.html")),
+    # path("product/", TemplateView.as_view(template_name="page-product.html")),
+    # path("about/", TemplateView.as_view(template_name="page-about.html")),
+    # path("faq/", TemplateView.as_view(template_name="page-faq.html")),
+    # path("pricing/", TemplateView.as_view(template_name="page-pricing.html")),
+    # path(
+    #     "warranty/", TemplateView.as_view(template_name="page-warranty.html")
+    # ),
+    # path("blog/", TemplateView.as_view(template_name="blog.html")),
+    # path("article/", TemplateView.as_view(template_name="article.html")),
 ]
 
 api_urlpatterns = [
