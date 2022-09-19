@@ -20,3 +20,42 @@
         }
     }
 }
+
+@media screen and (min-width: 900px) {
+  .main-layout {
+    position: relative;
+    padding: 30px;
+    padding-bottom: 150px;
+    margin-left: 270px;
+
+  }
+}
+
+
+.with-navbar {
+  width: calc(100% - 270px);
+}
+
+.without-navbar {
+  width: calc(100% - 80px);
+  margin-left: 80px;
+}
+
+.main-layout__dashbord {
+  padding-top: 23px;
+  padding-bottom: 30px;
+
+}
+
+
+@media (max-width: 1024px) {
+  .main-layout {
+    width: 100%;
+    padding: 32px 16px 40px;
+
+  }
+
+  .main-layout__dashbord {
+    width: 100%
+  }
+}

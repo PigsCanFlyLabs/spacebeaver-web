@@ -1,9 +1,8 @@
 .side-nav {
-    background-color: $grayscale-gray-800;
-    width: width(10);
-    padding: width(1);
-    position: relative;
-
+    width: 270px;
+    padding: 30px;
+    height: 100%;
+    position: fixed;
 
     &--smaller {
         width: width(9);

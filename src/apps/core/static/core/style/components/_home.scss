@@ -104,22 +104,26 @@
   width: 100%;
   position: relative;
   padding-bottom: 402px;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  
+    @media  (max-width: 991px) {
+      object-position: 40% 50%;
+    }
+  }
 }
 
 .home-usp__img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-
-  @media  (max-width: 991px) {
-    object-position: 40% 50%;
-  }
+  
 }
 
 
