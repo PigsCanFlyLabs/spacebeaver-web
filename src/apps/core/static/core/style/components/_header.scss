@@ -39,6 +39,20 @@
   align-items: center;
   text-decoration: none;
   padding-right: 50px;
+
+  img {
+    width: 50px;
+    height: auto;
+  }
+}
+
+.header-logo__img-wrap {
+  width: 50px;
+  height: auto;
+
+  img {
+    width: 100%;
+  }
 }
 
 .header-logo__img {

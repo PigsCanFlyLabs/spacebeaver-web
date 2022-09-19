@@ -172,6 +172,10 @@
 .article-content-img__img-wrap {
   flex: 1;
   max-width: 372px;
+
+  img {
+    width: 100%;
+  }
 }
 
 .article-content-img__img {
