@@ -4,7 +4,6 @@ from django.urls import path, reverse_lazy
 from django.views.generic import TemplateView
 
 from apps.core.views import *
-from apps.core.views.index import CMSPagesViewset
 
 
 app_name = "core"
