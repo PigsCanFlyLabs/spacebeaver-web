@@ -4,6 +4,7 @@ from django.urls import path, reverse_lazy
 from django.views.generic import TemplateView
 
 from apps.core.views import *
+from apps.core.views.index import CMSPagesViewset
 
 
 app_name = "core"
@@ -122,6 +123,7 @@ api_urlpatterns = [
         name="cancel-subscription",
     ),
     path("device-owner", DeviceOwnerApiView.as_view()),
+    path("technical", CMSPagesViewset.as_view()),
 ]
 
 urlpatterns = view_urlpatterns + api_urlpatterns
