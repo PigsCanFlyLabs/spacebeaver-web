@@ -4150,7 +4150,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/92/87/92873735-e634-4288-83d5-2abc978bfab8/search.svg",
+      "file": "filer_public/img/search.svg",
       "_file_size": 1613,
       "sha1": "9a026ce62289705f2514e3e1061a26089893b7f0",
       "has_all_mandatory_data": false,
@@ -4170,7 +4170,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/05/99/0599b986-b4b2-4614-a65a-a175ada08096/product-works-3.svg",
+      "file": "filer_public/img/product-works-3.svg",
       "_file_size": 3142,
       "sha1": "6b2404fd9bc22e3ae390cc60454a7ee6755589ed",
       "has_all_mandatory_data": false,
@@ -4190,7 +4190,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/08/cd/08cd1c75-2b0e-451a-bd27-6a50a6374fc4/icon-close-circle.svg",
+      "file": "filer_public/img/icon-close-circle.svg",
       "_file_size": 540,
       "sha1": "9b0268f516b731a5c9081b69612da0e9629b1aea",
       "has_all_mandatory_data": false,
@@ -4210,7 +4210,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/5d/7d/5d7de942-ae53-4b50-aa85-04496885f671/icon-aprove.svg",
+      "file": "filer_public/img/icon-aprove.svg",
       "_file_size": 6117,
       "sha1": "cd525b5ce74ce34683372bcfb70a4dce78e33081",
       "has_all_mandatory_data": false,
@@ -4230,7 +4230,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/6c/52/6c526c1f-035d-4fc4-b90a-bb4e08eb1cd7/product-works-2.svg",
+      "file": "filer_public/img/product-works-2.svg",
       "_file_size": 3327,
       "sha1": "9f7ba001c2db487486b469f46750b0bb6652ab71",
       "has_all_mandatory_data": false,
@@ -4250,7 +4250,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/84/f2/84f255ac-ae64-41b3-88b0-0a21ef9b3e45/icon-mail.svg",
+      "file": "filer_public/img/icon-mail.svg",
       "_file_size": 6747,
       "sha1": "76d62fd56292ac5333ea8c36fafc97a9a8eaf2d5",
       "has_all_mandatory_data": false,
@@ -4270,7 +4270,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/6b/b4/6bb46979-8749-4967-b208-84b6f0c1faad/download-android.svg",
+      "file": "filer_public/img/download-android.svg",
       "_file_size": 8624,
       "sha1": "91598b47d7373085c963acf07eed691f3f1358e7",
       "has_all_mandatory_data": false,
@@ -4290,7 +4290,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/77/ad/77ad3407-2307-49fe-a4b5-d2511bf01abc/phone-dashboard.svg",
+      "file": "filer_public/img/phone-dashboard.svg",
       "_file_size": 3914,
       "sha1": "5b468b825bde630823ae6637f756776c32152349",
       "has_all_mandatory_data": false,
@@ -4310,7 +4310,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/07/8d/078df563-f667-4c21-abb3-d75ec5706f38/product-works-1.svg",
+      "file": "filer_public/img/product-works-1.svg",
       "_file_size": 2983,
       "sha1": "cb16bd1a4e5f005148bec2bfd0587ba708331b2e",
       "has_all_mandatory_data": false,
@@ -4330,7 +4330,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/39/a4/39a42376-8180-4be6-97fb-df4ce8e21209/icon-card.svg",
+      "file": "filer_public/img/icon-card.svg",
       "_file_size": 863,
       "sha1": "f6f8cd0bef43033fa7b65ea64b3dc6cd6191a0c5",
       "has_all_mandatory_data": false,
@@ -4350,7 +4350,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/20/6d/206d1c47-2994-411a-9f1a-be8dae4f6418/mobile-features-1.svg",
+      "file": "filer_public/img/mobile-features-1.svg",
       "_file_size": 607,
       "sha1": "0f3a001f986d6d5cc893b3eedb51d2c77e86bab1",
       "has_all_mandatory_data": false,
@@ -4370,7 +4370,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/97/47/97476b0a-177c-4055-b9ce-c25ff37a1b46/icon-sms-tracking.svg",
+      "file": "filer_public/img/icon-sms-tracking.svg",
       "_file_size": 853,
       "sha1": "a9b4046286cedf221dccb0ae9edeb0002dc4f5e4",
       "has_all_mandatory_data": false,
@@ -4390,7 +4390,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/f0/69/f0693ad0-2770-48ab-b190-352abe1d6b61/icon-mirroring-screen.svg",
+      "file": "filer_public/img/icon-mirroring-screen.svg",
       "_file_size": 871,
       "sha1": "ae6bdf3669914cb3574330b57d31c6063afaa735",
       "has_all_mandatory_data": false,
@@ -4410,7 +4410,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/d1/c1/d1c1175f-163d-4a33-a7ad-4ea279d7100a/icon-warning.svg",
+      "file": "filer_public/img/icon-warning.svg",
       "_file_size": 5146,
       "sha1": "7e57a29d00a9689e7fde84c0b088e6a5518aba87",
       "has_all_mandatory_data": false,
@@ -4430,7 +4430,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/33/f5/33f55bcb-3944-4893-af70-b72b86f6418f/mail-dashboard.svg",
+      "file": "filer_public/img/mail-dashboard.svg",
       "_file_size": 2966,
       "sha1": "4582c28971c58c09f87a9e0b5b33acd83efc4a4d",
       "has_all_mandatory_data": false,
@@ -4450,7 +4450,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/20/e7/20e72581-80d4-4a66-a2ef-ffa4ad9cf0cf/home-coverage-arrow.svg",
+      "file": "filer_public/img/home-coverage-arrow.svg",
       "_file_size": 1042,
       "sha1": "15fff1e333b5eaa579ea9297fea8cbe8b7b49a38",
       "has_all_mandatory_data": false,
@@ -4470,7 +4470,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/a9/84/a9842d0f-a10d-4562-bf63-efad55aebcac/mobile-features-2.svg",
+      "file": "filer_public/img/mobile-features-2.svg",
       "_file_size": 1189,
       "sha1": "f5146114211425f20a1be8df6d3a46e220f4f390",
       "has_all_mandatory_data": false,
@@ -4490,7 +4490,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/ac/44/ac44e48a-d038-452e-b74a-f3c5c95b9261/icon-wallet.svg",
+      "file": "filer_public/img/icon-wallet.svg",
       "_file_size": 1507,
       "sha1": "32dcfad21694b9b726fca7f23d8007ec150cca54",
       "has_all_mandatory_data": false,
@@ -4510,7 +4510,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/c9/c3/c9c3b3e4-8104-4864-937a-8e086818a14a/mobile-features-3.svg",
+      "file": "filer_public/img/mobile-features-3.svg",
       "_file_size": 670,
       "sha1": "fc85c3cfa550aec39190bbf1f9c079aa0cffd8a0",
       "has_all_mandatory_data": false,
@@ -4530,7 +4530,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/0e/89/0e8950bd-87a5-4e3c-877e-ce8be414adc7/home-count-bg.svg",
+      "file": "filer_public/img/home-count-bg.svg",
       "_file_size": 741479,
       "sha1": "399518574a49ee0daa57debda5a7830f1f988b82",
       "has_all_mandatory_data": false,
@@ -4550,7 +4550,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/d5/e7/d5e75fb5-04e3-4ff2-b457-34d65413336c/quote-white.svg",
+      "file": "filer_public/img/quote-white.svg",
       "_file_size": 379,
       "sha1": "1c70ac2100d1f9852bc2ed1a42adaa0cacd40619",
       "has_all_mandatory_data": false,
@@ -4570,7 +4570,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/a6/c4/a6c46dd1-20d0-4d9b-a3d7-67a7f22e6c74/logo-without-name.svg",
+      "file": "filer_public/img/logo-without-name.svg",
       "_file_size": 715102,
       "sha1": "365036f37eb3e1d5815ccaccb7d29442501e136f",
       "has_all_mandatory_data": false,
@@ -4590,7 +4590,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/af/2b/af2bfe48-c5e3-46c0-bcc8-a217e3f4368e/page-faq-bg.svg",
+      "file": "filer_public/img/page-faq-bg.svg",
       "_file_size": 724504,
       "sha1": "81d57e6e7008cef65bbfc06ec736ac15cb3424c3",
       "has_all_mandatory_data": false,
@@ -4610,7 +4610,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/ee/26/ee269e83-eba3-4fa9-abe8-94a7b154049d/icon-card-send.svg",
+      "file": "filer_public/img/icon-card-send.svg",
       "_file_size": 927,
       "sha1": "8a98eb2580e02e75916b9b910b44bb0d6a11cdb0",
       "has_all_mandatory_data": false,
@@ -4630,7 +4630,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/8a/fc/8afc44f5-2d45-4da0-b138-18a6e92cf59c/product-works-bg.svg",
+      "file": "filer_public/img/product-works-bg.svg",
       "_file_size": 306,
       "sha1": "7c1cb1ede32c446bcd728751cdf70e2e8c607dd1",
       "has_all_mandatory_data": false,
@@ -4650,7 +4650,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/39/d6/39d66dc2-1cad-4333-9b7f-a50edd971c9c/home-features-arrow-1.svg",
+      "file": "filer_public/img/home-features-arrow-1.svg",
       "_file_size": 1316,
       "sha1": "ee245b831fe9f7bcc8d79ea63def34e201ecce3b",
       "has_all_mandatory_data": false,
@@ -4670,7 +4670,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/ac/59/ac5959bb-b244-4632-ba7e-2ff8e2590488/home-review-ico-2.svg",
+      "file": "filer_public/img/home-review-ico-2.svg",
       "_file_size": 174,
       "sha1": "699cd1d9f483ef4bda503312f09cec399af2e60c",
       "has_all_mandatory_data": false,
@@ -4690,7 +4690,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/7e/f0/7ef01743-9c8e-4995-bcdc-e13949fcadf6/icon-arrow-left.svg",
+      "file": "filer_public/img/icon-arrow-left.svg",
       "_file_size": 544,
       "sha1": "0b157b1a119025040ea9b1a18a4f26b74240a7ea",
       "has_all_mandatory_data": false,
@@ -4710,7 +4710,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/de/79/de79e07d-cd25-4c50-8d30-488862f5c3ec/home-features-arrow-2.svg",
+      "file": "filer_public/img/home-features-arrow-2.svg",
       "_file_size": 1554,
       "sha1": "39030712f358e84216a0c786c511726f386f7b18",
       "has_all_mandatory_data": false,
@@ -4730,7 +4730,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/ca/c6/cac699b5-7025-424b-9f84-8907cf5bb9e0/home-review-ico-1.svg",
+      "file": "filer_public/img/home-review-ico-1.svg",
       "_file_size": 185,
       "sha1": "ea76ba678f6c355afc5981dee2d1b334fb80a1fb",
       "has_all_mandatory_data": false,
@@ -4750,7 +4750,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/16/12/161241af-4040-4100-bcc1-4a308e2934dc/icon-sms-notification.svg",
+      "file": "filer_public/img/icon-sms-notification.svg",
       "_file_size": 848,
       "sha1": "080ec6321d4a7b8bcbcc235b474fc2a11068f361",
       "has_all_mandatory_data": false,
@@ -4770,7 +4770,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/29/27/2927bca9-26cb-4498-8bb0-5f556cf36673/home-features-ico-2.svg",
+      "file": "filer_public/img/home-features-ico-2.svg",
       "_file_size": 1609,
       "sha1": "e88e3b644fd6e57101234ff02d55814c988c00b7",
       "has_all_mandatory_data": false,
@@ -4790,7 +4790,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/48/c3/48c36ee3-5485-4a24-b7cf-ff5afa273a5b/about-page-quote-bg.svg",
+      "file": "filer_public/img/about-page-quote-bg.svg",
       "_file_size": 1022,
       "sha1": "fb59f87225afd5d224ac1c7fdd6309199bafcd70",
       "has_all_mandatory_data": false,
@@ -4810,7 +4810,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/65/e9/65e99b7f-1d85-4c0d-9192-f165cec926e0/icon-eye.svg",
+      "file": "filer_public/img/icon-eye.svg",
       "_file_size": 785,
       "sha1": "c54b3a7e922e152ecdba9888f9cd1916eca1c364",
       "has_all_mandatory_data": false,
@@ -4830,7 +4830,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/73/85/73859db0-3f7e-4017-a31c-7fc31e80b126/home-features-ico-3.svg",
+      "file": "filer_public/img/home-features-ico-3.svg",
       "_file_size": 1978,
       "sha1": "7542d4abd8183ab83615aa6b14b08afb1482b15f",
       "has_all_mandatory_data": false,
@@ -4850,7 +4850,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/08/71/0871dbf9-a98d-4be1-9e25-dfc56d9164d6/home-features-ico-1.svg",
+      "file": "filer_public/img/home-features-ico-1.svg",
       "_file_size": 1600,
       "sha1": "9d9a6471fee57c4516bada23a35c15209e2f7d4a",
       "has_all_mandatory_data": false,
@@ -4870,7 +4870,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/9f/1a/9f1a41d9-e8eb-447d-8b29-e6b1b7d000c7/icon-cancel.svg",
+      "file": "filer_public/img/icon-cancel.svg",
       "_file_size": 684,
       "sha1": "b2fcc303f83703c54f1fedcc6d7cf4936acdd359",
       "has_all_mandatory_data": false,
@@ -4890,7 +4890,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/bc/86/bc86c70f-8f3a-48a3-b869-23e003634699/burger.svg",
+      "file": "filer_public/img/burger.svg",
       "_file_size": 272,
       "sha1": "d541e8a1d14de4ea783dd38656747e44cd06db4e",
       "has_all_mandatory_data": false,
@@ -4910,7 +4910,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/51/c6/51c617ba-8bfc-4d46-9745-e83b8e3315b7/check-blue.svg",
+      "file": "filer_public/img/check-blue.svg",
       "_file_size": 363,
       "sha1": "b5c74b051aa7b3820e28a303e2799e778f3de258",
       "has_all_mandatory_data": false,
@@ -4930,7 +4930,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/f7/1a/f71a33ff-01dd-4c67-932b-16dc73644fa8/icon-blocked.svg",
+      "file": "filer_public/img/icon-blocked.svg",
       "_file_size": 687,
       "sha1": "1faf1f3e3a8ab77856235c4838f002917e29f458",
       "has_all_mandatory_data": false,
@@ -4950,7 +4950,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/7f/de/7fde9cfa-b760-43e7-8bcc-7994af79a6e6/breaddcrumbs-arrow.svg",
+      "file": "filer_public/img/breaddcrumbs-arrow.svg",
       "_file_size": 269,
       "sha1": "2de5a0f1e7d2851e00fa3d83f3dd7527617265d1",
       "has_all_mandatory_data": false,
@@ -4970,7 +4970,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/67/4d/674dd3bd-6cfb-48df-83b6-bdc3c45e74d4/blog-title-bg.svg",
+      "file": "filer_public/img/blog-title-bg.svg",
       "_file_size": 736450,
       "sha1": "9391ad4be9822b4b6c3147c187f2dcc1a573593a",
       "has_all_mandatory_data": false,
@@ -4990,7 +4990,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/e0/f7/e0f7351f-22d4-4ac5-8efd-4ac1eb591197/product-works-arrow-2.svg",
+      "file": "filer_public/img/product-works-arrow-2.svg",
       "_file_size": 211,
       "sha1": "71ea4f651fcebdd24640f73fcbd5aa44cc17440d",
       "has_all_mandatory_data": false,
@@ -5010,7 +5010,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/aa/70/aa709204-eb7c-4b69-82ba-488389f347df/text-frame-2.svg",
+      "file": "filer_public/img/text-frame-2.svg",
       "_file_size": 17672,
       "sha1": "bdf3d83ee493a2ad5e41ee24f133872e051e79dd",
       "has_all_mandatory_data": false,
@@ -5030,7 +5030,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/27/f4/27f4668f-6f2a-4a60-b7cc-e4f95763f629/product-works-arrow-1.svg",
+      "file": "filer_public/img/product-works-arrow-1.svg",
       "_file_size": 214,
       "sha1": "7d54743ef257c741a11d74fcca874e1587df0506",
       "has_all_mandatory_data": false,
@@ -5050,7 +5050,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/56/ae/56ae2346-70ab-4d18-97f3-a6484e97740f/beaver.svg",
+      "file": "filer_public/img/beaver.svg",
       "_file_size": 9574761,
       "sha1": "087b2326511052acadd1aea7d66cd4faafe6578a",
       "has_all_mandatory_data": false,
@@ -5070,7 +5070,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/1c/f4/1cf44ee5-3702-457c-8b40-3a2aaf503b80/text-frame-1.svg",
+      "file": "filer_public/img/text-frame-1.svg",
       "_file_size": 17984,
       "sha1": "72f769feac52f5d511dd260edf29a666e338a51b",
       "has_all_mandatory_data": false,
@@ -5090,7 +5090,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/fb/9e/fb9e8c43-8508-41b1-abae-4e30bf98a5ac/icon-check.svg",
+      "file": "filer_public/img/icon-check.svg",
       "_file_size": 489,
       "sha1": "6561416270d03db89d1a270e1a82e3965ad6e102",
       "has_all_mandatory_data": false,
@@ -5110,7 +5110,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/ee/9e/ee9ecb0a-83b8-413a-9502-f1f66eb3bede/icon-setting.svg",
+      "file": "filer_public/img/icon-setting.svg",
       "_file_size": 704,
       "sha1": "a6d3061277e050fe504c83d3df968901e522be1b",
       "has_all_mandatory_data": false,
@@ -5130,7 +5130,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/5b/fb/5bfbb394-f18f-4798-9730-eebf7dc034c5/icon-dots-more.svg",
+      "file": "filer_public/img/icon-dots-more.svg",
       "_file_size": 700,
       "sha1": "6789daae855e61d06e1b487cc99212254db17ab5",
       "has_all_mandatory_data": false,
@@ -5150,7 +5150,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/ee/48/ee48711f-4216-4b4c-946a-fc108cf97709/icon-arrow-left-simple.svg",
+      "file": "filer_public/img/icon-arrow-left-simple.svg",
       "_file_size": 3991,
       "sha1": "4e945e362d82a2411d377e6316c4daf955e8f374",
       "has_all_mandatory_data": false,
@@ -5170,7 +5170,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/c0/52/c052be58-6589-4de1-b025-e477317c39d5/icon-diagram.svg",
+      "file": "filer_public/img/icon-diagram.svg",
       "_file_size": 1305,
       "sha1": "f92518b95a88cf2c64caa79d603c927e3f673fa0",
       "has_all_mandatory_data": false,
@@ -5190,7 +5190,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/9d/c5/9dc573f5-4ec9-42dd-9f60-9abf5c09b61d/icon-notification.svg",
+      "file": "filer_public/img/icon-notification.svg",
       "_file_size": 732,
       "sha1": "7e85cdf0f8326bfa5bc3a864952b2a64a92dcad8",
       "has_all_mandatory_data": false,
@@ -5210,7 +5210,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/82/28/82289ba1-feea-47a8-bc00-89604d089c7a/warranty-contact-bg.svg",
+      "file": "filer_public/img/warranty-contact-bg.svg",
       "_file_size": 1106,
       "sha1": "5125fcc91ac87516fba7527b0832433c266c5b82",
       "has_all_mandatory_data": false,
@@ -5230,7 +5230,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/38/3a/383ab9ef-745f-41b6-94db-6616b34293ff/warranty-title-bg.svg",
+      "file": "filer_public/img/warranty-title-bg.svg",
       "_file_size": 2064,
       "sha1": "3155c54a83a4c745030b10160185ff36fd2f8cca",
       "has_all_mandatory_data": false,
@@ -5250,7 +5250,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/e5/11/e5119581-bce1-45fa-b73b-b04ced385d47/download-ios.svg",
+      "file": "filer_public/img/download-ios.svg",
       "_file_size": 6816,
       "sha1": "0319c01d4f817b44f015f2bbf68923a0fce7c981",
       "has_all_mandatory_data": false,
@@ -5270,7 +5270,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/be/f0/bef0576e-80bd-4e55-bf30-1ca4dc24b4e1/icon-check-circle.svg",
+      "file": "filer_public/img/icon-check-circle.svg",
       "_file_size": 3206,
       "sha1": "29de0954263cb2866c38cb72b2f607ebb7704ae1",
       "has_all_mandatory_data": false,
@@ -5290,7 +5290,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/68/12/68125c50-e786-42df-a719-f7622578214a/quote.svg",
+      "file": "filer_public/img/quote.svg",
       "_file_size": 397,
       "sha1": "ad9a55fda215d32a79aad928feda1e847723ab9b",
       "has_all_mandatory_data": false,
@@ -5310,7 +5310,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/1b/1f/1b1f2f44-7bc6-4c33-be7d-0632ba7103a4/list-check.svg",
+      "file": "filer_public/img/list-check.svg",
       "_file_size": 371,
       "sha1": "8ae06877c254c02d4d955d3953345b71ba20ee3a",
       "has_all_mandatory_data": false,
@@ -5330,7 +5330,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/b3/7a/b37a180f-7288-432a-a6f8-969b60ad4c0f/icon-wallet-2.svg",
+      "file": "filer_public/img/icon-wallet-2.svg",
       "_file_size": 1187,
       "sha1": "825290ee7a9b571ac87d6ef638bc63b98348e759",
       "has_all_mandatory_data": false,
@@ -5350,7 +5350,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/9d/76/9d768f4d-4b7b-4a4f-9e43-653a86938163/icon-sms.svg",
+      "file": "filer_public/img/icon-sms.svg",
       "_file_size": 495,
       "sha1": "42e0b684207c320984c77aa23fe0a158fc2ba372",
       "has_all_mandatory_data": false,
@@ -5370,7 +5370,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/3e/84/3e84e156-8072-4c5b-a7c3-34c42eec0f3b/icon-s.svg",
+      "file": "filer_public/img/icon-s.svg",
       "_file_size": 595,
       "sha1": "58b20208dcb34ec80083401a459299bb2f2736b1",
       "has_all_mandatory_data": false,
@@ -5390,7 +5390,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/9e/c8/9ec86092-72bc-4e79-8c15-1ab8e720144e/logo-with-beaver.svg",
+      "file": "filer_public/img/logo-with-beaver.svg",
       "_file_size": 720449,
       "sha1": "e85e82677024eace19e01ac89e94b4484449fc41",
       "has_all_mandatory_data": false,
@@ -5410,7 +5410,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/61/ad/61adb495-5c3b-409b-9b39-01c894b578da/blog-item-5.png",
+      "file": "filer_public/img/blog-item-5.png",
       "_file_size": 79126,
       "sha1": "80c72bf59f08c825981c0e92814e59931c8a4bff",
       "has_all_mandatory_data": false,
@@ -5430,7 +5430,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/27/ed/27edcf2b-e870-4df8-86e3-bd239afc0cb0/mobile-2-coverage-img-bg.png",
+      "file": "filer_public/img/mobile-2-coverage-img-bg.png",
       "_file_size": 13945,
       "sha1": "6079c6684ac8fdad25762107386c1fb9623eb044",
       "has_all_mandatory_data": false,
@@ -5450,7 +5450,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/a4/13/a413a26a-8575-487d-abba-e522ca2bfcc4/about-page-img-2.png",
+      "file": "filer_public/img/about-page-img-2.png",
       "_file_size": 138611,
       "sha1": "e38e98b5341a2546bf017c445a7f63e9df077c33",
       "has_all_mandatory_data": false,
@@ -5470,7 +5470,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/b1/41/b1411cf8-c588-445f-9c5c-4d3b122b7241/home-explore-1.jpg",
+      "file": "filer_public/img/home-explore-1.jpg",
       "_file_size": 27661,
       "sha1": "bd586e4c65eabafe39298402e8f8627f4cd5b25d",
       "has_all_mandatory_data": false,
@@ -5490,7 +5490,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/40/45/404576f5-724a-4083-9404-39e32fc8e787/about-explore-1.png",
+      "file": "filer_public/img/about-explore-1.png",
       "_file_size": 14921,
       "sha1": "56087857d3fd716173e1732eaa7fd33dd8dbefee",
       "has_all_mandatory_data": false,
@@ -5510,7 +5510,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/3c/a9/3ca9f59f-741a-47dc-b88d-0c8b6ffc9ba2/blog-item-4.png",
+      "file": "filer_public/img/blog-item-4.png",
       "_file_size": 96859,
       "sha1": "19e2148d32cc622db86607ae99eedc648460e7f6",
       "has_all_mandatory_data": false,
@@ -5530,7 +5530,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/7c/1d/7c1d527f-7faa-4213-9009-8d5f11be5738/about-explore-3.png",
+      "file": "filer_public/img/about-explore-3.png",
       "_file_size": 9706,
       "sha1": "f7314798251bf90077f05e68aa5de0808cd2e167",
       "has_all_mandatory_data": false,
@@ -5550,7 +5550,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/63/b7/63b71b96-22d2-4d9e-9be9-64c23a3fd865/blog-item-6.png",
+      "file": "filer_public/img/blog-item-6.png",
       "_file_size": 103280,
       "sha1": "41a86ed0c3b627bd1992647dc7892ee8eb6bc56f",
       "has_all_mandatory_data": false,
@@ -5570,7 +5570,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/4b/37/4b37abe8-e48f-473a-bc67-6d2b8be0ce27/home-safety-bg-mobile.jpg",
+      "file": "filer_public/img/home-safety-bg-mobile.jpg",
       "_file_size": 2634,
       "sha1": "c7bd8d4eb4a70fe9ac49e11c451fcafbce0cb8a5",
       "has_all_mandatory_data": false,
@@ -5590,7 +5590,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/68/84/6884de9d-0446-4235-8b18-621e1905f27b/home-explore-3.jpg",
+      "file": "filer_public/img/home-explore-3.jpg",
       "_file_size": 20588,
       "sha1": "e547e757a1b54f9b44f86c6a24267d1af846da2b",
       "has_all_mandatory_data": false,
@@ -5610,7 +5610,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/6b/5e/6b5e84e6-3c0e-443e-bbef-094658b94243/mobile-coverage-img.png",
+      "file": "filer_public/img/mobile-coverage-img.png",
       "_file_size": 38013,
       "sha1": "aab7cf38e206b8427a2f50ed1732bbb116066233",
       "has_all_mandatory_data": false,
@@ -5630,7 +5630,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/23/12/2312c598-7291-426d-acff-48ef1ce47059/home-coverage-bg-mobile.png",
+      "file": "filer_public/img/home-coverage-bg-mobile.png",
       "_file_size": 12353,
       "sha1": "35b2e6b5368eb104e19fb0ceb94548d6cc3fd919",
       "has_all_mandatory_data": false,
@@ -5650,7 +5650,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/61/96/6196bbe2-0154-4c53-8e85-0bd5b2743d6e/about-page-img-1.png",
+      "file": "filer_public/img/about-page-img-1.png",
       "_file_size": 24700,
       "sha1": "9c57ebe2ca02aee06e617218cd1dfc8355e2254f",
       "has_all_mandatory_data": false,
@@ -5670,7 +5670,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/81/14/81143675-5099-4f60-890b-acf333df720d/home-explore-2.jpg",
+      "file": "filer_public/img/home-explore-2.jpg",
       "_file_size": 29899,
       "sha1": "bd91a20e69b0be84a08b75cb99ea520a1cb89c1f",
       "has_all_mandatory_data": false,
@@ -5690,7 +5690,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/d8/c3/d8c36e62-048b-430f-a6c5-c7dbdb7b9729/about-explore-2.png",
+      "file": "filer_public/img/about-explore-2.png",
       "_file_size": 14219,
       "sha1": "0e18914d6ceb4a21e1cadd86d1212a4494e8ad08",
       "has_all_mandatory_data": false,
@@ -5710,7 +5710,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/06/2c/062cbd49-3cbf-484f-9e1b-c89ab94fe255/blog-item-3.png",
+      "file": "filer_public/img/blog-item-3.png",
       "_file_size": 94263,
       "sha1": "c5ea19d8324b33dfba272086d812b8cc9961f049",
       "has_all_mandatory_data": false,
@@ -5730,7 +5730,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/90/67/9067fe61-c81d-46f0-a679-70b353b785a4/blog-item-2.png",
+      "file": "filer_public/img/blog-item-2.png",
       "_file_size": 99325,
       "sha1": "0cfcdebe58dae5c66dd8649de38a03d3e5ec1c56",
       "has_all_mandatory_data": false,
@@ -5750,7 +5750,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/0c/29/0c29ac0c-5140-46ea-b6a1-75d8bfcd3e14/home-count-space.png",
+      "file": "filer_public/img/home-count-space.png",
       "_file_size": 197560,
       "sha1": "ca38014b8d8de8f97f85556f22dc8cec6edcb7bd",
       "has_all_mandatory_data": false,
@@ -5770,7 +5770,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/e5/fb/e5fb6d58-ca5e-4544-ab59-2db3a8a44854/banner-small.jpg",
+      "file": "filer_public/img/banner-small.jpg",
       "_file_size": 529481,
       "sha1": "35b0342606d5a47a357eec686474fc091cab9426",
       "has_all_mandatory_data": false,
@@ -5790,7 +5790,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/98/87/988759cb-2109-4f0a-b384-c1815f95de49/banner.jpg",
+      "file": "filer_public/img/banner.jpg",
       "_file_size": 983014,
       "sha1": "1f4a19cb1e95445377536637011aeb087256a878",
       "has_all_mandatory_data": false,
@@ -5810,7 +5810,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/d4/26/d4266379-8b8d-4688-aceb-dd1ccacab828/home-safety-img.png",
+      "file": "filer_public/img/home-safety-img.png",
       "_file_size": 41900,
       "sha1": "96bf3fbe30abe536208133880eff378109d7e293",
       "has_all_mandatory_data": false,
@@ -5830,7 +5830,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/28/48/28488ab7-b795-40c0-979c-8efdc3acad1b/blog-item-1.png",
+      "file": "filer_public/img/blog-item-1.png",
       "_file_size": 63816,
       "sha1": "2f52522f569f67b73bd141e119e4dd67daf146f6",
       "has_all_mandatory_data": false,
@@ -5850,7 +5850,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/54/e6/54e686ac-8ba6-4dfd-b120-e44828cbcd9a/home-count-bg.png",
+      "file": "filer_public/img/home-count-bg.png",
       "_file_size": 367454,
       "sha1": "92bc8ee3b8e7f4690419f0ba3b8a8fdaf62cb67d",
       "has_all_mandatory_data": false,
@@ -5870,7 +5870,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/5e/e9/5ee94956-d987-4476-b888-2d02ee058ed6/ava.jpg",
+      "file": "filer_public/img/ava.jpg",
       "_file_size": 2973,
       "sha1": "0de3e1ff9770a3e1b2a51c96f9ba9ea22271019e",
       "has_all_mandatory_data": false,
@@ -5890,7 +5890,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/89/bf/89bf00d8-9a87-4f9b-9d90-fa0c3b34f5c8/mobile-page-review-1.png",
+      "file": "filer_public/img/mobile-page-review-1.png",
       "_file_size": 32747,
       "sha1": "3cfee7271f6407779c226c17fc6fd121855602c7",
       "has_all_mandatory_data": false,
@@ -5910,7 +5910,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/f7/7a/f77a4c46-97c1-481d-ac5f-2801c3a7b4ab/mobile-2-coverage-img.png",
+      "file": "filer_public/img/mobile-2-coverage-img.png",
       "_file_size": 32729,
       "sha1": "29dc2fca4eaed752600917e6066fef437c982cb8",
       "has_all_mandatory_data": false,
@@ -5930,7 +5930,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/5b/44/5b448c1b-b4bf-42a3-839d-6b5fee85989f/product-page-img-1.png",
+      "file": "filer_public/img/product-page-img-1.png",
       "_file_size": 267416,
       "sha1": "d193f21231f0fa1372bea590c3a691b4434742dc",
       "has_all_mandatory_data": false,
@@ -5950,7 +5950,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/93/07/930754ae-f119-471c-bc78-f8ffeb5b95a1/article-box-img.png",
+      "file": "filer_public/img/article-box-img.png",
       "_file_size": 29967,
       "sha1": "269be7a66ee9cf040afeb0bd77fdffd553f1bcde",
       "has_all_mandatory_data": false,
@@ -5970,7 +5970,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/fd/5a/fd5a44aa-057c-4dca-a6b3-3834677781ca/product-page-img-2.png",
+      "file": "filer_public/img/product-page-img-2.png",
       "_file_size": 145566,
       "sha1": "14895bff8c1e55dc0677f7c7344acb8c654e8560",
       "has_all_mandatory_data": false,
@@ -5990,7 +5990,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/c3/d3/c3d3422b-c3e8-4384-838b-0e45784b137d/home-safety-bg.jpg",
+      "file": "filer_public/img/home-safety-bg.jpg",
       "_file_size": 4698,
       "sha1": "8fe8a65a6aeb84039fb5017ba0669eadecadaba9",
       "has_all_mandatory_data": false,
@@ -6010,7 +6010,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/7d/63/7d630292-3501-448a-b764-fb6af78a315c/mobile-coverage-img-bg.png",
+      "file": "filer_public/img/mobile-coverage-img-bg.png",
       "_file_size": 45051,
       "sha1": "2b78f8d55eff41d74a719ab4830a1576055ec44a",
       "has_all_mandatory_data": false,
@@ -6030,7 +6030,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/5d/6e/5d6e7446-acd2-460a-8abc-7cbf821f920b/home-coverage-bg.png",
+      "file": "filer_public/img/home-coverage-bg.png",
       "_file_size": 2151,
       "sha1": "9c5a7bd2df640f24e94dd4fe1c283fa3e55a4727",
       "has_all_mandatory_data": false,
@@ -6050,7 +6050,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/3a/15/3a15a709-7220-4a20-8557-0212f47a87b3/faq-contact-bg.png",
+      "file": "filer_public/img/faq-contact-bg.png",
       "_file_size": 38949,
       "sha1": "3eb58fa41ae556b5f211808e968610ce02cac48e",
       "has_all_mandatory_data": false,
@@ -6070,7 +6070,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/08/eb/08ebbf51-092a-4dde-a15d-dcd103da761d/mobile-home-img-2.png",
+      "file": "filer_public/img/mobile-home-img-2.png",
       "_file_size": 34442,
       "sha1": "4bd5bbf226fff94e823820d5f9115e8d7acc2438",
       "has_all_mandatory_data": false,
@@ -6090,7 +6090,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/66/c0/66c083f2-f753-4549-b466-62b65d1b6bee/product-usp-bg.jpg",
+      "file": "filer_public/img/product-usp-bg.jpg",
       "_file_size": 85038,
       "sha1": "2801fb2a134c24d331385c609a14b0c6c13e8016",
       "has_all_mandatory_data": false,
@@ -6110,7 +6110,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/16/11/16113e37-f701-4620-9023-11ad514a39ce/mobile-usp.jpg",
+      "file": "filer_public/img/mobile-usp.jpg",
       "_file_size": 177511,
       "sha1": "cfe5863def7152fba1b77671e48fc1dd6f9bb0bb",
       "has_all_mandatory_data": false,
@@ -6130,7 +6130,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/63/42/6342de40-a221-4946-a468-9b754046abd1/mobile-home-img-1.png",
+      "file": "filer_public/img/mobile-home-img-1.png",
       "_file_size": 43475,
       "sha1": "cd6f609724a9c467244765921c61a57f6405ffba",
       "has_all_mandatory_data": false,
@@ -6150,7 +6150,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/a3/28/a3282d63-91be-49ce-b127-a22e1a367b53/home-usp.png",
+      "file": "filer_public/img/home-usp.png",
       "_file_size": 398939,
       "sha1": "8438ca8dee191aaed008c2c10ca73e8dea920e47",
       "has_all_mandatory_data": false,
@@ -6170,7 +6170,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/2e/f1/2ef182be-5a02-41a7-9e11-e6da81279825/home-benefits-2.png",
+      "file": "filer_public/img/home-benefits-2.png",
       "_file_size": 253547,
       "sha1": "4fbcf6992dda386e182bf7392d11b4c9d94fdecc",
       "has_all_mandatory_data": false,
@@ -6190,7 +6190,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/ba/17/ba170a27-01ea-464d-974c-a91c3141e1fe/home-benefits-1.png",
+      "file": "filer_public/img/home-benefits-1.png",
       "_file_size": 231691,
       "sha1": "961b70034d83538917653f65ca5833c5394e9f97",
       "has_all_mandatory_data": false,
@@ -6210,7 +6210,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/bf/09/bf09ae19-f2a8-4cce-a0ad-69e68b7dec8f/home-review-1.png",
+      "file": "filer_public/img/home-review-1.png",
       "_file_size": 3584,
       "sha1": "4d02a91e2bf8f4c23f0b96a01488744dceb2a532",
       "has_all_mandatory_data": false,
@@ -6230,7 +6230,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/fa/d7/fad7b436-507c-4cb8-83dc-4a13dbaf82ee/home-review-2.png",
+      "file": "filer_public/img/home-review-2.png",
       "_file_size": 3596,
       "sha1": "388a6408d28c67ef9c908b12a4823df372eef4d9",
       "has_all_mandatory_data": false,
@@ -6250,7 +6250,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/1a/11/1a118a9f-e283-4353-9839-308bff2a9b27/home-review-3.png",
+      "file": "filer_public/img/home-review-3.png",
       "_file_size": 3547,
       "sha1": "572277963cd10d3c19fafd1d4af0887a9663c3c6",
       "has_all_mandatory_data": false,
@@ -6270,7 +6270,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/12/fb/12fb45b7-a114-4984-92db-4b4f04af272a/home-coverage-img.png",
+      "file": "filer_public/img/home-coverage-img.png",
       "_file_size": 18682,
       "sha1": "d28a4837350ecc330c9ed842c4fe62cc16882b31",
       "has_all_mandatory_data": false,
@@ -6290,7 +6290,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/31/48/3148a892-8342-46b1-a676-61fffba857d0/about-usp-img.jpg",
+      "file": "filer_public/img/about-usp-img.jpg",
       "_file_size": 521542,
       "sha1": "d7124c04cbae6193f12540d2741ab99475b47fa3",
       "has_all_mandatory_data": false,
@@ -6310,7 +6310,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/5b/9e/5b9e75f7-aacc-4ded-9693-123405453f73/pricing-usp-img.png",
+      "file": "filer_public/img/pricing-usp-img.png",
       "_file_size": 181475,
       "sha1": "0eebf9728c68d6bda5e728e9292a2aa0833d1b08",
       "has_all_mandatory_data": false,
@@ -6330,7 +6330,7 @@
     "fields": {
       "polymorphic_ctype": 86,
       "folder": null,
-      "file": "filer_public/c7/97/c7972127-4862-425e-930f-f92e5b353dab/article-img.jpg",
+      "file": "filer_public/img/article-img.jpg",
       "_file_size": 163419,
       "sha1": "5cb7e01bd007039f6b7e1f5a7f596527fd9677f1",
       "has_all_mandatory_data": false,
