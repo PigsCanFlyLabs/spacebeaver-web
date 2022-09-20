@@ -123,7 +123,6 @@ api_urlpatterns = [
         name="cancel-subscription",
     ),
     path("device-owner", DeviceOwnerApiView.as_view()),
-    path("technical", CMSPagesViewset.as_view()),
 ]
 
 urlpatterns = view_urlpatterns + api_urlpatterns
