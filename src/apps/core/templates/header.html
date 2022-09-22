@@ -1,7 +1,7 @@
 <header class="header">
   <div class="header__wrapper main-wrapper">
     <div class="header__content">
-      <a href="/homepage" class="header__logo header-logo">
+      <a href="/" class="header__logo header-logo">
         <div class="header-logo__img-wrap">
           <img class="header-logo__img " src="{% static 'core/img/svg/logo-without-name.svg' %}" alt="">
         </div>
@@ -27,16 +27,21 @@
         <li class="header-nav__item"><a href="/about" class="header-nav__link">About us</a></li>
         <li class="header-nav__item"><a href="/pricing" class="header-nav__link">Pricing</a></li>
         <li class="header-nav__item"><a href="/mobile" class="header-nav__link">Mobile app</a></li>
-        
-   
+
+
       </ul>
-
-      <div class="header__btns header-btns base-btn__group d-none d-lg-flex">
-        <a href="{% url 'accounts:login' %}" class="header-btns__btn base-btn base-btn--s base-btn--transparent">Sign in</a>
-        <a href="/sign-up/" class="header-btns__btn base-btn base-btn--gray base-btn--s">Sign up</a>
-      </div>
-
-      <button class="navbar-toggler d-lg-none d-block" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      {% if user.is_authenticated %}
+        <div class="header__btns header-btns base-btn__group d-none d-lg-flex">
+          <a href="{% url 'core:dashboard' %}" class="header-btns__btn base-btn base-btn--gray base-btn--s">Dashboard</a>
+      {% else %}
+        <div class="header__btns header-btns base-btn__group d-none d-lg-flex">
+          <a href="{% url 'accounts:login' %}" class="header-btns__btn base-btn base-btn--s base-btn--transparent">Sign
+            in</a>
+          <a href="/sign-up/" class="header-btns__btn base-btn base-btn--gray base-btn--s">Sign up</a>
+        </div>
+      {% endif %}
+      <button class="navbar-toggler d-lg-none d-block" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
         <img class="navbar-toggler__icon" src="{% static 'core/img/svg/burger.svg' %}" alt="">
