@@ -12,6 +12,7 @@ class OnboardingStepsEnum(Enum):
     ADD_DEVICE = 2
     PICK_PLAN = 3
     PAYMENT = 4
+    COMPLETED_WIZARD = 5
 
 
 class ProfileStepsEnum(Enum):

@@ -69,6 +69,11 @@ class CreateSubscriptionAPIView(APIView):
                 subscription = create_subscription(
                     config.STRIPE_PRICE_ID, customer.id
                 )
+
+                if request.user.last_wizard_step <= 4:
+                    request.user.last_wizard_step = 5
+                    request.user.save()
+
                 return Response(subscription, status=status.HTTP_200_OK)
             except Exception as e:
                 if hasattr(e, "user_message"):

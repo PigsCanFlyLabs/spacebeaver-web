@@ -11,7 +11,7 @@ def get_plan_info_from_subscription(subscription: Subscription):
         "currency": plan.currency,
         "interval_count": plan.interval_count,
         "interval": plan.interval,
-        "product_name": product.name,
+        "product_name": product.name if product else "",
         "product_description": product.description,
         "period_start": subscription.current_period_start.strftime("%d %b %Y"),
         "period_end": subscription.current_period_end.strftime("%d %b %Y"),
