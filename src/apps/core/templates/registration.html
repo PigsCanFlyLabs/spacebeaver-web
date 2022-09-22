@@ -75,11 +75,12 @@
       <ul class="progress-bar p-0 side-nav__progress-bar">
         <li class="progress-bar__item ">
           <a {% if user.last_wizard_step >= 1 %} href="{% url 'core:personal-info' %}" {% endif %}
-                                                class="progress-item {% if step == 1 %}progress-item--active{% endif %}">
+                                                 class="progress-item {% if step == 1 %}progress-item--active{% endif %}">
             <div
               class="progress-item__step   {% if step == 1 %}progress-item__step--active{% endif %} {% if step > 1 %}progress-item__step--checked{% endif %}">
               <span class="progress-item__number {% if step == 1 %}progress-item__number--active{% endif %}">1</span>
-              <span class="progress-item__check {% if user.last_wizard_step > 1 and step != 1 %}progress-item__check--checked{% endif %}">
+              <span
+                class="progress-item__check {% if user.last_wizard_step > 1 and step != 1 %}progress-item__check--checked{% endif %}">
                           <img class="progress-item__check-icon" src=" {% static 'core/img/svg/icon-check.svg' %}"
                                alt="">
 
@@ -93,8 +94,10 @@
              class="progress-item {% if step == 2 %}progress-item--active{% endif %}">
             <div
               class="progress-item__step   {% if step == 2 %}progress-item__step--active{% endif %} {% if step > 2 %}progress-item__step--checked{% endif %}">
-              {% if user.last_wizard_step <= 2 or step == 2 %}<span class="progress-item__number {% if step == 2 %}progress-item__number--active{% endif %}">2</span> {% endif %}
-              <span class="progress-item__check {% if step > 2 or user.last_wizard_step > 2 and step != 2 %}progress-item__check--checked{% endif %}">
+              {% if user.last_wizard_step <= 2 or step == 2 %}<span
+                class="progress-item__number {% if step == 2 %}progress-item__number--active{% endif %}">2</span> {% endif %}
+              <span
+                class="progress-item__check {% if step > 2 or user.last_wizard_step > 2 and step != 2 %}progress-item__check--checked{% endif %}">
                           <img class="progress-item__check-icon" src=" {% static 'core/img/svg/icon-check.svg' %}"
                                alt="">
 
@@ -108,8 +111,10 @@
                                                  class="progress-item {% if step == 3 %}progress-item--active{% endif %}">
             <div
               class="progress-item__step   {% if step == 3 %}progress-item__step--active{% endif %} {% if step > 3 %}progress-item__step--checked{% endif %}">
-              {% if user.last_wizard_step <= 3 or step == 3 %}<span class="progress-item__number {% if step == 3 %}progress-item__number--active{% endif %}">3</span> {% endif %}
-              <span class="progress-item__check {% if step > 3 or user.last_wizard_step > 3 and step != 3 %}progress-item__check--checked{% endif %}">
+              {% if user.last_wizard_step <= 3 or step == 3 %}<span
+                class="progress-item__number {% if step == 3 %}progress-item__number--active{% endif %}">3</span> {% endif %}
+              <span
+                class="progress-item__check {% if step > 3 or user.last_wizard_step > 3 and step != 3 %}progress-item__check--checked{% endif %}">
                           <img class="progress-item__check-icon" src=" {% static 'core/img/svg/icon-check.svg' %}"
                                alt="">
 
@@ -123,8 +128,10 @@
              class="progress-item {% if step == 4 %}progress-item--active{% endif %}">
             <div
               class="progress-item__step   {% if step == 4 %}progress-item__step--active{% endif %} {% if step > 4 %}progress-item__step--checked{% endif %}">
-              {% if user.last_wizard_step <= 4 or step == 4 %}<span class="progress-item__number {% if step == 4 %}progress-item__number--active{% endif %}">4</span>{% endif %}
-              <span class="progress-item__check {% if step > 4 or user.last_wizard_step > 4 and step != 4 %}progress-item__check--checked{% endif %}">
+              {% if user.last_wizard_step <= 4 or step == 4 %}<span
+                class="progress-item__number {% if step == 4 %}progress-item__number--active{% endif %}">4</span>{% endif %}
+              <span
+                class="progress-item__check {% if step > 4 or user.last_wizard_step > 4 and step != 4 %}progress-item__check--checked{% endif %}">
                           <img class="progress-item__check-icon" src=" {% static 'core/img/svg/icon-check.svg' %}"
                                alt="">
 
@@ -134,7 +141,25 @@
           </a>
         </li>
       </ul>
+      <div style="margin-top: 180%">
+        <button class="log-out d-flex align-items-center border-0 toggle-component" type="button" data-toggle="modal"
+                data-target="#logoutPopup">
+          <svg class="log-out__icon" width="24" height="24" viewbox="0 0 24 24" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 12H9.5" stroke="#222223" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <path d="M11.5 9L8.5 12L11.5 15" stroke="#222223" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <path
+              d="M4 6C2.75 7.67 2 9.75 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C10.57 2 9.2 2.3 7.97 2.85"
+              stroke="#222223" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <span class="log-out__text toggle-component">Log out</span>
+        </button>
+      </div>
     </nav>
+
     <main class="main-layout">
       <header class="form-header">
         <h1 class="title">{{ title }}</h1>
@@ -146,6 +171,25 @@
     </main>
   </div>
 </div>
+<div class="modal fade" id="logoutPopup" tabindex="-1" aria-labelledby="logoutPopupLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal__content">
+      <div class="modal-body p-0">
+        <header class="form-header text-center">
+          <img class="form-header-icon" src="{% static 'core/img/svg/icon-warning.svg' %}" alt="">
+          <h1 class="title title--sm">Log out</h1>
+          <p class="subtitle">Are you sure you want to Log out?</p>
+
+        </header>
+      </div>
+      <div class="modal-footer modal__footer p-0 border-0">
+        <a class="btn modal__footer-btn" onclick="removeSideBarCookie()" href="{% url 'accounts:logout' %}">Log out</a>
+        <button type="button" class="btn-outline modal__footer-btn" data-dismiss="modal">Back to Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% block footer %}
 
 {% endblock %}

@@ -30,7 +30,6 @@ class PersonalInfoView(views.View):
         form = self.form_class(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            request.user.create_customer_account()
             if request.user.last_wizard_step <= 1:
                 request.user.last_wizard_step += 1
                 request.user.save()

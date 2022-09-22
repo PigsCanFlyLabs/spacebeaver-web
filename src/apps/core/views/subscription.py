@@ -51,6 +51,11 @@ class CreateSubscriptionAPIView(APIView):
                 data = serializer.validated_data
 
                 customer = request.user.customer
+
+                if customer is None:
+                    request.user.create_customer_account()
+                    customer = request.user.customer
+
                 subscription = customer.subscriptions.filter(
                     plan__id=config.STRIPE_PRICE_ID, status="active"
                 ).first()

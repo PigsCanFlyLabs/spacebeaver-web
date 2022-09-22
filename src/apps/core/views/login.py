@@ -21,6 +21,8 @@ def login_routing(user: User):
         return reverse("core:add-device")
     elif user.last_wizard_step == OnboardingStepsEnum.PICK_PLAN.value:
         return reverse("core:pick-plan")
+    elif user.last_wizard_step == OnboardingStepsEnum.PAYMENT.value:
+        return reverse("core:subscription")
     elif user.have_any_subscription:
         return reverse("core:dashboard")
 

@@ -158,6 +158,7 @@ class Settings:
         "django.contrib.auth.middleware.AuthenticationMiddleware",
         "django.contrib.messages.middleware.MessageMiddleware",
         "django.middleware.clickjacking.XFrameOptionsMiddleware",
+        "apps.accounts.middlewares.check_wizard_completed",
     ]
 
     # DEBUG
