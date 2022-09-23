@@ -164,12 +164,11 @@ class SettingsView(View):
         self.expired_link = False
 
         if "password_email" in request.POST:
-            form = SendResetPasswordForm(request.POST)
-            change_email = False
-            if form.is_valid():
-                request.user.password_reset_request_time = timezone.now()
-                self.send_change_password_letter(request, change_email)
-                self.show_password_notification = True
+            change_email = request.user.email
+            request.user.password_reset_request_time = timezone.now()
+            request.user.save()
+            self.send_change_password_letter(request, change_email)
+            self.show_password_notification = True
 
         elif "new_email" in request.POST:
             form = ChangeEmailForm(request.POST)

@@ -75,7 +75,7 @@
               </div>
 
             {% else %}
-              <p class="plan-card-simple__duration">You have not plan now</p>
+              <p class="plan-card-simple__duration">You have no active plan now</p>
             {% endif %}
             {% if plan %}
               <button style="margin-left: auto;" class="btn-outline plan-card-simple__btn" type="button"
@@ -168,7 +168,8 @@
                 <label class="field__label" for="card-number-element">Card number</label>
                 <div id="card-number-element" class="field__input" style="padding: 16px 16px"></div>
                 <span class="field__input-error field__input--shown"></span>
-                <span id="card-error-message" style="display: none; opacity: 100;" class="field__input-error">Card Error</span>
+                <span id="card-error-message" style="display: none; opacity: 100;"
+                      class="field__input-error">Card Error</span>
               </div>
               <div class="field mt-2">
                 <label class="field__label" for="card-expiry-element">Expiration month and year</label>
@@ -185,11 +186,14 @@
               <div id="card-cardholder-element" class="field mt-2">
                 <label class="field__label" for="cardName">Cardholder name</label>
                 <div class="field__input"><input type="text" id="cardName" class="border-0 bg-transparent "
-                                                 autocomplete="off" placeholder="{{ card.name }}"></div>
+                                                 autocomplete="off"
+                                                 {% if card.name != None %}placeholder="{{ card.name }}"{% endif %}>
+                </div>
                 <span id="cardholder-error-message" style=" display: none; opacity: 100;" class="field__input-error">Card Error</span>
               </div>
             </fieldset>
-            <p id="form-error" style="margin: 5px 20px 20px 0px; font-size: 22px; display: none; color:#f481fe">Please fix next errors
+            <p id="form-error" class="fw-bold" style="margin: 5px 20px 20px 0px; display: none; color:#f481fe">Please
+              fix next errors
               and try again.</p>
 
             <button type="submit" class="fw-bold text-dark border-0 text-decoration-underline">Update card</button>

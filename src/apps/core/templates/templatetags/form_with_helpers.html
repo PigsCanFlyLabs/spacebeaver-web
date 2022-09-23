@@ -134,7 +134,7 @@
 
         <header class="form-header text-center">
           <h1 class="title title--sm text-start">Change password</h1>
-          <p class="subtitle  text-start">Enter your email address and we'll send you a password reset link.</p>
+          <p class="subtitle  text-start">An email with a link to change your password will be sent to your email.</p>
 
         </header>
         <form class="form-body  form" action="" method="post">
@@ -143,18 +143,17 @@
           {% for field in reset_password_form %}
             <div class="form-group field">
 
-              <label for="{{ field.id_for_label }}"
-                     class="field__label {% if field.field.required %} field__label--required {% endif %}">{{ field.label_tag }}</label>
               {% if field.field.widget.input_type == 'select' %}
 
                 {{ field }}
               {% else %}
-                <input type="{{ field.field.widget.input_type }}"
+                <input type="hidden"
                        {% if field.value %}value="{{ field.value }}"{% endif %}
                        class="field__input {% if field.errors %} field__input--invalid {% endif %}"
                        id="{{ field.id_for_label }}" name="{{ field.name }}"
                        aria-describedby="emailHelp" required="{{ field.field.required }}"
                        placeholder="{{ field.field.widget.attrs.placeholder }}"
+                       value="{{ user.email }}"
                   {% if field.field.disabled %} disabled {% endif %}
                   {% if field.field.widget.attrs.readonly %} readonly {% endif %}
 
