@@ -23,17 +23,8 @@ def login_routing(user: User):
         return reverse("core:pick-plan")
     elif user.last_wizard_step == OnboardingStepsEnum.PAYMENT.value:
         return reverse("core:subscription")
-    elif user.have_any_subscription:
+    else:
         return reverse("core:dashboard")
-
-    # if user.have_any_subscription:
-    #     return reverse("core:dashboard")
-    # user = User.objects.onboarding_complete_annotate(id=user.id).first()
-    # if not user.have_personal_info:
-    #     return reverse("core:personal-info")
-    # if not user.user_have_device:
-    #     return reverse("core:add-device")
-    # return reverse("core:pick-plan")
 
 
 class LoginView(BaseLoginView):

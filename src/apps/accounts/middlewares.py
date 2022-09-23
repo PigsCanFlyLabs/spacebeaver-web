@@ -43,7 +43,6 @@ def check_wizard_completed(get_response):
                     ):
                         return redirect("core:subscription")
 
-                    return redirect("core:personal-info")
         return response
 
     return middleware
