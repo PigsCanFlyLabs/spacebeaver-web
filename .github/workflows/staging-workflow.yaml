@@ -1,0 +1,86 @@
+env:
+  STACK_PREFIX: 'spacebeaver'
+  REGISTRY: ghcr.io
+
+name: Staging workflow
+on:
+  push:
+    branches:
+      - 'develop'
+
+defaults:
+ run:
+  shell: bash
+
+jobs:
+  staging-workflow:
+    runs-on: [self-hosted]
+    environment: staging
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull variables
+        run: |
+          echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} > .env_staging
+          echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env_staging
+          echo AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }} >> .env_staging
+          echo BROKER_NETLOC=${{ secrets.BROKER_NETLOC }} >> .env_staging
+          echo CACHE_NETLOC=${{ secrets.CACHE_NETLOC }} >> .env_staging
+          echo DATA_NETLOC=${{ secrets.DATA_NETLOC }} >> .env_staging
+          echo DJSTRIPE_WEBHOOK_SECRET=${{ secrets.DJSTRIPE_WEBHOOK_SECRET }} >> .env_staging
+          echo DOMAIN=${{ secrets.DOMAIN }} >> .env_staging
+          echo HOST=${{ secrets.HOST }} >> .env_staging
+          echo MEDIA_URL=${{ secrets.MEDIA_URL }} >> .env_staging
+          echo OUTSIDE_DATA_NETLOC=${{ secrets.OUTSIDE_DATA_NETLOC }} >> .env_staging
+          echo OUTSIDE_DB_DATABASE=${{ secrets.OUTSIDE_DB_DATABASE }} >> .env_staging
+          echo OUTSIDE_DB_PASSWORD=${{ secrets.OUTSIDE_DB_PASSWORD }} >> .env_staging
+          echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env_staging
+          echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env_staging
+          echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env_staging
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env_staging
+          echo SMTP_HOST=${{ secrets.SMTP_HOST }} >> .env_staging
+          echo SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }} >> .env_staging
+          echo SMTP_PORT=${{ secrets.SMTP_PORT }} >> .env_staging
+          echo SMTP_USERNAME=${{ secrets.SMTP_USERNAME }} >> .env_staging
+          echo STATIC_URL=${{ secrets.STATIC_URL }} >> .env_staging
+          echo STRIPE_LIVE_PUBLIC_KEY=${{ secrets.STRIPE_LIVE_PUBLIC_KEY }} >> .env_staging
+          echo STRIPE_LIVE_SECRET_KEY=${{ secrets.STRIPE_LIVE_SECRET_KEY }} >> .env_staging
+          echo STRIPE_TEST_PUBLIC_KEY=${{ secrets.STRIPE_TEST_SECRET_KEY }} >> .env_staging
+          echo STACK_PREFIX=${{ env.STACK_PREFIX }} >> .env_staging
+      - name: Making Tests
+        run: |
+          export $(cat .env_staging | xargs)
+          docker pull ${{ env.REGISTRY }}/softformance/${{ env.STACK_PREFIX }}:staging || true
+          docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} up -d
+          docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} exec -T -w /app app make test
+          docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} down -v
+      - name: Build and push staging
+        run: |
+          export $(cat .env_staging | xargs)
+          docker-compose -f compose/action-staging.yml -p ${{ env.STACK_PREFIX }} build app
+          docker-compose -f compose/action-staging.yml -p ${{ env.STACK_PREFIX }} push app
+      - name: Deploy Staging
+        run: |
+          export $(cat .env_staging | xargs)
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+          ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          cat << EOT >> staging.key
+          ${{ secrets.SSH_PRIVATE_KEY }}
+          EOT
+          chmod 400 staging.key
+          eval `ssh-agent -s`
+          ssh-add staging.key
+          ssh root@${{ secrets.HOST }} "echo ${{ secrets.GITHUB_TOKEN }} | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin"
+          ssh root@${{ secrets.HOST }} "docker pull ${{ env.REGISTRY }}/softformance/${{ env.STACK_PREFIX }}:staging"
+          docker -H=ssh://root@${{ secrets.HOST }} stack deploy -c compose/action-staging.yml --prune --with-registry-auth ${{ env.STACK_PREFIX }}
+          ssh root@${{ secrets.HOST }} "docker logout ${{ env.REGISTRY }}"
+          docker logout ${{ env.REGISTRY }}
+          rm -f .env_staging staging.key

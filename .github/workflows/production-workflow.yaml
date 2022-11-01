@@ -1,0 +1,91 @@
+env:
+  STACK_PREFIX: 'spacebeaver'
+  REGISTRY: ghcr.io
+
+name: Production workflow
+on:
+  push:
+    branches:
+      - 'master'
+
+defaults:
+ run:
+  shell: bash
+    
+jobs:
+  production-workflow:
+    runs-on: [self-hosted]
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull variables
+        run: |
+          echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} > .env_production
+          echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env_production
+          echo AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }} >> .env_production
+          echo BROKER_NETLOC=${{ secrets.BROKER_NETLOC }} >> .env_production
+          echo CACHE_NETLOC=${{ secrets.CACHE_NETLOC }} >> .env_production
+          echo DATA_NETLOC=${{ secrets.DATA_NETLOC }} >> .env_production
+          echo DJSTRIPE_WEBHOOK_SECRET=${{ secrets.DJSTRIPE_WEBHOOK_SECRET }} >> .env_production
+          echo DOMAIN=${{ secrets.DOMAIN }} >> .env_production
+          echo HOST=${{ secrets.HOST }} >> .env_production
+          echo MEDIA_URL=${{ secrets.MEDIA_URL }} >> .env_production
+          echo OUTSIDE_DATA_NETLOC=${{ secrets.OUTSIDE_DATA_NETLOC }} >> .env_production
+          echo OUTSIDE_DB_DATABASE=${{ secrets.OUTSIDE_DB_DATABASE }} >> .env_production
+          echo OUTSIDE_DB_PASSWORD=${{ secrets.OUTSIDE_DB_PASSWORD }} >> .env_production
+          echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env_production
+          echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env_production
+          echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env_production
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env_production
+          echo SMTP_HOST=${{ secrets.SMTP_HOST }} >> .env_production
+          echo SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }} >> .env_production
+          echo SMTP_PORT=${{ secrets.SMTP_PORT }} >> .env_production
+          echo SMTP_USERNAME=${{ secrets.SMTP_USERNAME }} >> .env_production
+          echo STATIC_URL=${{ secrets.STATIC_URL }} >> .env_production
+          echo STRIPE_LIVE_PUBLIC_KEY=${{ secrets.STRIPE_LIVE_PUBLIC_KEY }} >> .env_production
+          echo STRIPE_LIVE_SECRET_KEY=${{ secrets.STRIPE_LIVE_SECRET_KEY }} >> .env_production
+          echo STRIPE_TEST_PUBLIC_KEY=${{ secrets.STRIPE_TEST_SECRET_KEY }} >> .env_production
+          echo STACK_PREFIX=${{ env.STACK_PREFIX }} >> .env_production
+      - name: Making Tests
+        run: |
+          export $(cat .env_production | xargs)
+          docker pull ${{ env.REGISTRY }}/softformance/${{ env.STACK_PREFIX }}:production || true
+          docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} up -d
+          docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} exec -T -w /app app make test
+          docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} down -v
+      - name: Build and push production
+        run: |
+          export $(cat .env_production | xargs)
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+          docker-compose -f compose/action-production.yml -p ${{ env.STACK_PREFIX }} build app
+          docker-compose -f compose/action-production.yml -p ${{ env.STACK_PREFIX }} push app
+      - name: Production Deploy
+        run: |
+          export $(cat .env_production | xargs)
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+          cat << EOT >> production.key
+          ${{ secrets.SSH_PRIVATE_KEY }}
+          EOT
+          chmod 400 production.key
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+          eval `ssh-agent -s`
+          ssh-add production.key
+          export $(cat .env_production | xargs)
+          ssh root@${{ secrets.HOST }} "echo ${{ secrets.GITHUB_TOKEN }} | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin"
+          ssh root@${{ secrets.HOST }} "docker pull ${{ env.REGISTRY }}/softformance/${{ env.STACK_PREFIX }}:production"
+          docker -H=ssh://root@${{ secrets.HOST }} stack deploy -c compose/action-production.yml --prune --with-registry-auth ${{ env.STACK_PREFIX }}
+          ssh root@${{ secrets.HOST }} "docker logout ${{ env.REGISTRY }}"
+          docker logout ${{ env.REGISTRY }}
+          rm -f .env_production production.key
