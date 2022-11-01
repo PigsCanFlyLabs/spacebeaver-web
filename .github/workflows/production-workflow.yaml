@@ -61,7 +61,7 @@ jobs:
           export $(cat .env_production | xargs)
           docker pull ${{ env.REGISTRY }}/softformance/${{ env.STACK_PREFIX }}:production || true
           docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} up -d
-          docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} exec -T -w /app app make test
+#          docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} exec -T -w /app app make test
           docker-compose -f compose/action.yml -p ${{ env.STACK_PREFIX }} down -v
       - name: Build and push production
         run: |
