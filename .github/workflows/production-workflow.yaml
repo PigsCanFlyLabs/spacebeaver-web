@@ -54,6 +54,7 @@ jobs:
           echo STRIPE_LIVE_PUBLIC_KEY=${{ secrets.STRIPE_LIVE_PUBLIC_KEY }} >> .env_production
           echo STRIPE_LIVE_SECRET_KEY=${{ secrets.STRIPE_LIVE_SECRET_KEY }} >> .env_production
           echo STRIPE_TEST_PUBLIC_KEY=${{ secrets.STRIPE_TEST_SECRET_KEY }} >> .env_production
+          echo STRIPE_TEST_SECRET_KEY=${{ secrets.STRIPE_TEST_SECRET_KEY }} >> .env_production
           echo STACK_PREFIX=${{ env.STACK_PREFIX }} >> .env_production
       - name: Making Tests
         run: |

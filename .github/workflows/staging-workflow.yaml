@@ -53,7 +53,8 @@ jobs:
           echo STATIC_URL=${{ secrets.STATIC_URL }} >> .env_staging
           echo STRIPE_LIVE_PUBLIC_KEY=${{ secrets.STRIPE_LIVE_PUBLIC_KEY }} >> .env_staging
           echo STRIPE_LIVE_SECRET_KEY=${{ secrets.STRIPE_LIVE_SECRET_KEY }} >> .env_staging
-          echo STRIPE_TEST_PUBLIC_KEY=${{ secrets.STRIPE_TEST_SECRET_KEY }} >> .env_staging
+          echo STRIPE_TEST_PUBLIC_KEY=${{ secrets.STRIPE_TEST_PUBLIC_KEY }} >> .env_staging
+          echo STRIPE_TEST_SECRET_KEY=${{ secrets.STRIPE_TEST_SECRET_KEY }} >> .env_staging
           echo STACK_PREFIX=${{ env.STACK_PREFIX }} >> .env_staging
       - name: Making Tests
         run: |
