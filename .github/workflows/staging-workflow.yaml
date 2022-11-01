@@ -70,7 +70,6 @@ jobs:
       - name: Deploy Staging
         run: |
           export $(cat .env_staging | xargs)
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
           ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
           cat << EOT >> staging.key
           ${{ secrets.SSH_PRIVATE_KEY }}
@@ -82,5 +81,4 @@ jobs:
           ssh root@${{ secrets.HOST }} "docker pull ${{ env.REGISTRY }}/softformance/${{ env.STACK_PREFIX }}:staging"
           docker -H=ssh://root@${{ secrets.HOST }} stack deploy -c compose/action-staging.yml --prune --with-registry-auth ${{ env.STACK_PREFIX }}
           ssh root@${{ secrets.HOST }} "docker logout ${{ env.REGISTRY }}"
-          docker logout ${{ env.REGISTRY }}
           rm -f .env_staging staging.key

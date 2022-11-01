@@ -65,13 +65,11 @@ jobs:
       - name: Build and push production
         run: |
           export $(cat .env_production | xargs)
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
           docker-compose -f compose/action-production.yml -p ${{ env.STACK_PREFIX }} build app
           docker-compose -f compose/action-production.yml -p ${{ env.STACK_PREFIX }} push app
       - name: Production Deploy
         run: |
           export $(cat .env_production | xargs)
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
           cat << EOT >> production.key
           ${{ secrets.SSH_PRIVATE_KEY }}
           EOT
@@ -87,5 +85,4 @@ jobs:
           ssh root@${{ secrets.HOST }} "docker pull ${{ env.REGISTRY }}/softformance/${{ env.STACK_PREFIX }}:production"
           docker -H=ssh://root@${{ secrets.HOST }} stack deploy -c compose/action-production.yml --prune --with-registry-auth ${{ env.STACK_PREFIX }}
           ssh root@${{ secrets.HOST }} "docker logout ${{ env.REGISTRY }}"
-          docker logout ${{ env.REGISTRY }}
           rm -f .env_production production.key
