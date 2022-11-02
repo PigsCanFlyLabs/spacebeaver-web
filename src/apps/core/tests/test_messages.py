@@ -47,7 +47,7 @@ class TestMessageCountOnDashboard(TestCase):
                     sms_text=f"Test message {i}",
                     user_email=self.user.email,
                     sms_id=i * 10000,
-                    sms_date=datetime.datetime(2022, i, i),
+                    sms_date=datetime.datetime(2022, i, 2),
                     sender_phone_number=self.user.twillion_number,
                     recipient_phone_number=self.user.twillion_number + f"{i}",
                 )
@@ -82,7 +82,11 @@ class TestMessageCountOnDashboard(TestCase):
         yearly_message_count = get_user_message_count(
             self.user.twillion_number, "year"
         )
-        self.assertEqual(daily_message_count, 0)
+        if datetime.date.today().day == 2:
+            self.assertEqual(daily_message_count, 12)
+        else:
+            self.assertEqual(daily_message_count, 0)
+
         self.assertEqual(monthly_message_count, 1)
         self.assertEqual(yearly_message_count, 12)
 
