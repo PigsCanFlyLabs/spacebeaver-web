@@ -5,7 +5,6 @@ volumes:
   broker: {}
   cache: {}
   node: {}
-  outside_db: {}
 
 services:
   app:
@@ -29,7 +28,6 @@ services:
       MEDIA_URL: /media/
       SENTRY_DSN_BACKEND: ""
       SENTRY_DSN_FRONTEND: ""
-      OUTSIDE_DATA_NETLOC: mysql+pymysql://root:root@outside_db:3306/test
       STRIPE_LIVE_SECRET_KEY: "sk_test_51LZyo1EEjQANv7IDZs6yQmNW1wVfGNoxzEWHNQ7JtGOG3a5xLvJvYNGdscfFH7CtyaOP0fdYNgcISoB8JhRI9DuA007Avv5g2X"
       STRIPE_TEST_SECRET_KEY: "sk_test_51LZyo1EEjQANv7IDZs6yQmNW1wVfGNoxzEWHNQ7JtGOG3a5xLvJvYNGdscfFH7CtyaOP0fdYNgcISoB8JhRI9DuA007Avv5g2X"
       STRIPE_LIVE_PUBLIC_KEY: "pk_test_51LZyo1EEjQANv7IDhA4GXgqhVkXhAeWdkbgiijCoEDjmEiVUttRJGtuLZy4AZyhbEnJfIt0Sh9pLy2SWmN69lsue00GIoBMHin"
@@ -42,7 +40,6 @@ services:
       - data
       - broker
       - cache
-      - outside_db
       - stripe
 
   data:
@@ -69,19 +66,6 @@ services:
     environment:
       MAX_MEMORY: 300mb
       MAX_MEMORY_POLICY: allkeys-lru
-
-  outside_db:
-    image: mysql:8.0
-    restart: always
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test
-    ports:
-      - '3306:3306'
-    volumes:
-      - outside_db:/var/lib/mysql
-      - ./outside_db/sms_item_init.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
   stripe:
     image: stripe/stripe-cli:v1.7.4

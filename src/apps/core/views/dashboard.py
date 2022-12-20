@@ -3,7 +3,7 @@ from django.views import View
 
 from apps.core.consts import ProfileStepsEnum
 from apps.core.models import Device
-from apps.core.outside_db.services import get_user_message_count
+from apps.core.services import get_user_message_count
 
 
 class DashboardView(View):

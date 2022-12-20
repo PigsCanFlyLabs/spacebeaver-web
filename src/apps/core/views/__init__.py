@@ -2,6 +2,7 @@ from .add_device import AddDeviceView
 from .billing import *
 from .blocked_numbers import *
 from .dashboard import DashboardView
+from .device_lookup import DeviceLookup
 from .device_owner import DeviceOwnerApiView
 from .errors import my_error404
 from .forget_password import ForgetPasswordView
@@ -16,4 +17,3 @@ from .replace_device import ReplaceDeviceView
 from .sign_up import SignUpView, SuccessfulRegistration
 from .subscription import *
 from .success_new_password import SuccessNewPasswordView
-from .device_lookup import DeviceLookup

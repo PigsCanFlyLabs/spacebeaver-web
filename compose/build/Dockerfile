@@ -29,11 +29,10 @@ RUN set -ex; \
 RUN set -xe; \
   	echo "deb http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main $PG_MAJOR" > /etc/apt/sources.list.d/pgdg.list; \
     apt-get update; \
-    apt-get upgrade -y;
+    apt-get upgrade -y; \
     apt-get install -y --no-install-recommends \
     curl \
     procps \
-    netutils \
     make \
     apt-transport-https \
 	ca-certificates \

@@ -214,9 +214,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         app_label = "accounts"
 
+
 class EmailChangeAuth(models.Model):
     uuid = models.CharField(max_length=42)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     new_email = models.CharField(max_length=256)
+
     class Meta:
         app_label = "accounts"

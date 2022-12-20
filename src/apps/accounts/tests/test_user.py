@@ -12,11 +12,13 @@ user_data = {
         "email": "softformanse@gmail.com",
         "full_name": "softformanse test",
         "password": "testpwd",
+        "username": "farts",
     },
     "creation_test": {
         "email": "softformanse1@gmail.com",
         "full_name": "softformanse1 test",
         "password": "testpwd1",
+        "username": "faaaarts",
     },
 }
 
@@ -41,7 +43,8 @@ class UserTestCase(TestCase):
     def create_runtime_user(self):
         user = user_model.objects.create(
             full_name=user_data["creation_test"]["full_name"],
-            email=user_data["creation_test"]["password"],
+            email=user_data["creation_test"]["email"],
+            username=user_data["creation_test"]["username"],
             country=Country("UA"),
             **update_data[0],
         )
@@ -52,9 +55,11 @@ class UserTestCase(TestCase):
         return user
 
     def setUp(self) -> None:
+        user_model.objects.all().delete()
         self.user = user_model.objects.create(
             full_name=user_data["setUp"]["full_name"],
             email=user_data["setUp"]["email"],
+            username=user_data["setUp"]["username"],
         )
         self.user.is_active = True
         self.user.set_password(user_data["setUp"]["password"])

@@ -37,23 +37,10 @@ class Local(Settings, Configuration):
 
     @property
     def CACHES(self):
-        if os.environ["CACHE"] == "false":
-            return {
-                "default": {
-                    "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-                    "LOCATION": "spacebeaver",
-                }
-            }
         return {
             "default": {
-                "BACKEND": "django_redis.cache.RedisCache",
-                "OPTIONS": {
-                    "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                    "PARSER_CLASS": "redis.connection.HiredisParser",
-                    "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
-                    "SERIALIZER": "django_redis.serializers.pickle.PickleSerializer",
-                    "IGNORE_EXCEPTIONS": True,
-                },
+                "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+                "LOCATION": "spacebeaver",
             }
         }
 
