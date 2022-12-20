@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+import os
+
+
 from configurations import Configuration
 import stripe
-import os
 
 from .common import Settings
 
