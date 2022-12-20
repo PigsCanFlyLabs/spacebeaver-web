@@ -9,8 +9,8 @@ from apps.core.views import *
 app_name = "core"
 
 view_urlpatterns = [
-    path("", IndexView.as_view(), name="index"),
-    path("index_real", IndexRealView.as_view(), name="index-real"),
+#    path("", IndexView.as_view(), name="index"),
+    path("", IndexRealView.as_view(), name="index"),
     path("device_lookup", DeviceLookup.as_view(), name="device-lookup"),
     path("sign-up/", SignUpView.as_view(), name="sign-up"),
     path(

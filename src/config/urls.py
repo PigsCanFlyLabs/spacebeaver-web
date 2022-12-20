@@ -52,11 +52,6 @@ if settings.DEBUG or True:
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
     )
 
-if settings.DIST or True:
-    urlpatterns += [
-        path("/", cache_page(3600 * 2)(IndexView.as_view()), name="index")
-    ]
-
 # Error pages
 handler403 = "config.errors.forbidden"
 handler400 = "rest_framework.exceptions.bad_request"

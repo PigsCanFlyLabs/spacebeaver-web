@@ -1,4 +1,4 @@
-FROM revolutionsystems/python:3.8.9-wee-optimized-lto as base
+FROM python:3.8.14 as base
 
 ENV PYTHONBREAKPOINT=ipdb.set_trace \
     DEBIAN_FRONTEND=noninteractive \
