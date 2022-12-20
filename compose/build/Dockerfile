@@ -27,10 +27,13 @@ RUN set -ex; \
 	apt-key list
 
 RUN set -xe; \
-  	echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main $PG_MAJOR" > /etc/apt/sources.list.d/pgdg.list; \
-  	apt-get update; \
-  	apt-get install -y --no-install-recommends \
+  	echo "deb http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main $PG_MAJOR" > /etc/apt/sources.list.d/pgdg.list; \
+    apt-get update; \
+    apt-get upgrade -y;
+    apt-get install -y --no-install-recommends \
     curl \
+    procps \
+    netutils \
     make \
     apt-transport-https \
 	ca-certificates \
