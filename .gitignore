@@ -35,3 +35,4 @@ CACHE
 .vscode
 tmp
 .env
+src/mydatabase

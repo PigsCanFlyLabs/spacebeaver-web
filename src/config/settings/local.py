@@ -17,6 +17,7 @@ class Local(Settings, Configuration):
     DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
     MEDIA_URL = "/media/"
     STATIC_URL = "/static/"
+    DJSTRIPE_WEBHOOK_VALIDATION='retrieve_event'
 
 
     @property
