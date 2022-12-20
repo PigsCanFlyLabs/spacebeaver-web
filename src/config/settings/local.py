@@ -38,7 +38,8 @@ class Local(Settings, Configuration):
         if os.environ["CACHE"] == "false":
             return {
                 'default': {
-                    'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+                    'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+                    'LOCATION': 'spacebeaver',
                 }
                 }
         return {

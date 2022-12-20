@@ -52,9 +52,9 @@ if settings.DEBUG or True:
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
     )
 
-if settings.DIST:
+if settings.DIST or True:
     urlpatterns += [
-        path("", cache_page(3600 * 2)(IndexView.as_view()), name="index")
+        path("/", cache_page(3600 * 2)(IndexView.as_view()), name="index")
     ]
 
 # Error pages
