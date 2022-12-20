@@ -17,7 +17,7 @@ class Local(Settings, Configuration):
     DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
     MEDIA_URL = "/media/"
     STATIC_URL = "/static/"
-    DJSTRIPE_WEBHOOK_VALIDATION='retrieve_event'
+    DJSTRIPE_WEBHOOK_VALIDATION = "retrieve_event"
 
 
     @property
@@ -27,9 +27,9 @@ class Local(Settings, Configuration):
     @property
     def DATABASES(self):
         return {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': 'mydatabase',
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": "mydatabase",
             }
         }
 
@@ -37,11 +37,11 @@ class Local(Settings, Configuration):
     def CACHES(self):
         if os.environ["CACHE"] == "false":
             return {
-                'default': {
-                    'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-                    'LOCATION': 'spacebeaver',
+                "default": {
+                    "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+                    "LOCATION": "spacebeaver",
                 }
-                }
+            }
         return {
             "default": {
                 "BACKEND": "django_redis.cache.RedisCache",
