@@ -9,4 +9,4 @@ class SmsItem(models.Model):
     user_email = models.CharField(max_length=50, null=False)
     recipient_phone_number = models.CharField(max_length=50, null=False)
     sender_phone_number = models.CharField(max_length=50, null=False)
-    sms_date = models.DateField(null=False, auto_now_add=True)
+    sms_date = models.DateField(null=False)
