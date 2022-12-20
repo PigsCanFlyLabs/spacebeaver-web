@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from configurations import Configuration
 import stripe
+import os
 
 from .common import Settings
 
@@ -14,6 +15,8 @@ class Local(Settings, Configuration):
         "https://spacebeaver.s3.amazonaws.com/static/flags/{code}.gif"
     )
     DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
+    MEDIA_URL = "/media/"
+    STATIC_URL = "/static/"
 
 
     @property
@@ -21,11 +24,25 @@ class Local(Settings, Configuration):
         return [r"^.*localhost.*$", "^.*0.0.0.0.*$", "^.*127.0.0.1.*$"]
 
     @property
+    def DATABASES(self):
+        return {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': 'mydatabase',
+            }
+        }
+
+    @property
     def CACHES(self):
+        if os.environ["CACHE"] == "false":
+            return {
+                'default': {
+                    'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+                }
+                }
         return {
             "default": {
                 "BACKEND": "django_redis.cache.RedisCache",
-                "LOCATION": self._CACHE_NETLOC,
                 "OPTIONS": {
                     "CLIENT_CLASS": "django_redis.client.DefaultClient",
                     "PARSER_CLASS": "redis.connection.HiredisParser",

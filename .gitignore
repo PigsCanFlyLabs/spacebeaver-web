@@ -34,3 +34,4 @@ CACHE
 *-schedule.*
 .vscode
 tmp
+.env
